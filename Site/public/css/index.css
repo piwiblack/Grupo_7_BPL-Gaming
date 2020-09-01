@@ -1,0 +1,21 @@
+*{margin: 0px; padding: 0px;}
+
+header div.container{
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+}
+h1{
+    color: white;
+    align-items: center;
+    margin-top:10px;
+}
+.barra{
+   float: right;
+}
+.barra {
+   width: 400px;
+   height: 30px;
+
+}
