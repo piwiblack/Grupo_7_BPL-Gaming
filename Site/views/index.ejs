@@ -1,63 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
-    <link rel="stylesheet" href="/css/index.css">
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>header</title>
+    
+        <link
+          rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous"
+        />
+    
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+        />
+        <link rel="stylesheet" href="css/index.css" />
+      </head>
 <body>
-    <header>
+    <header class="container-fluid">
+        <!--caja contenedora de boostrap-->
         <div class="container">
-        <div class="logo">
-          <h1>logotipo</h1>
-        </div>
-          <div class="barra">
-              <input type="text">
+          <!--caja que contiene el logotipo, el buscador y botón con un link-->
+          <div class="row">
+            <!--caja que contiene el logotipo-->
+            <div class="col-5 col-md-2 col-lg-2 logo">
+              <a href="/"
+                ><img src="img/logo.png" alt=" "
+              /></a>
             </div>
-            <div class="button">
-              <button>login</button>
-          <button>carrito</button>
+    
+            <!--caja que contiene el formulario-->
+            <div class="col-7 col-md-6 col-lg-6">
+              <form action="">
+                <input
+                  type="text"
+                  name="search"
+                  placeholder="Buscar productos, juegos y más"
+                />
+                <button type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+              </form>
+            </div>
+            <!--barra de menu: login y registro-->
+    <div class="col-12 col-md-4 col-lg-4 cuotas">
+      <ul class="usuario navbar-nav">
+          <li>
+            <a href=" "
+              ><i class="fas fa-shopping-basket"></i
+            ></a>
+              
+            </li>
+          <li>
+            <a href=" "
+              ><i class="far fa-address-card"></i
+            ></a>
+          </li>
+        
+          <li>
+            <a href=" "><i class="fas fa-sign-in-alt"></i></a>
+          </li>
+        </ul>
+  </div>
+            <!--finaliza el div.row-->
+          </div>
+    
+    
+          <!--barra de navegación-->
+          <nav class="navbar-expand-md">
+            <!--boton para que desplegar el menu  en caso que el viewport sea tamaño movil-->
+            <button
+              class="navbar-toggler burger"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+    
+            <!--barra de menu que aparece a partir de la vesión de tablet-->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <!--barra de menu izquierdo-->
+              <ul class="menu navbar-nav mr-auto">
+                <li>
+                  <a href=" ">Ofertas</a>
+                </li>
+                <li>
+                  <a href=" ">Categorias</a>
+                </li>
+                <li>
+                  <a href="">Plataformas</a>
+                </li>
+                <li>
+                  <a href=" ">Ayuda</a>
+                </li>
+              </ul>
+              <div>
+                <ul class="ingreso navbar-nav">
+                  <li>
+                      <a href=" "><i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                  <li>
+                    <a href=" "
+                      ><i class="far fa-address-card"></i
+                    ></a>
+                  </li>
+                
+                  <li>
+                    <a href=" "
+                      ><i class="fas fa-shopping-basket"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+               
+            </div>
+ 
+            
+
+            <!--finaliza caja contenedora del menu-->
+          </nav>
         </div>
-    </div>
-    <div class="category">
+        <!--finaliza caja contenedora bootstrap-->
+      </header>
 
-                <a href="#">categorias</a>
-                <a href="#">categorias</a>
-                <a href="#">categorias</a>
-                <a href="#">categorias</a>
-                <a href="#">categorias</a>
-    </div>
-    </header>
- <section class="container">
-
-<p>LoLorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.rem ipsum dolor sit amet consectetur adipisicing elit. Totam at hic, ad nihil debitis sint harum alias repellat corrupti veritatis id molestias repudiandae optio, cum reprehenderit, sed earum incidunt mollitia.
-</p>
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus incidunt facilis voluptates pariatur quasi molestias. Quis ullam voluptatem praesentium esse nostrum voluptas facilis quas sit deleniti enim, libero itaque sed!
-</p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.
-voluptatem praesentium esse nostrum voluptas facilis quas sit deleniti enim, libero itaque sed!
-</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.
-</p>
-<p>LoLorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.rem ipsum dolor sit amet consectetur adipisicing elit. Totam at hic, ad nihil debitis sint harum alias repellat corrupti veritatis id molestias repudiandae optio, cum reprehenderit, sed earum incidunt mollitia.
-</p>
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus incidunt facilis voluptates pariatur quasi molestias. Quis ullam voluptatem praesentium esse nostrum voluptas facilis quas sit deleniti enim, libero itaque sed!
-</p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.
-voluptatem praesentium esse nostrum voluptas facilis quas sit deleniti enim, libero itaque sed!
-</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.
-</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse perspiciatis, enim pariatur minus non cumque libero? Voluptates, nostrum quod recusandae veritatis obcaecati vel consequuntur, perspiciatis, quas aut incidunt velit porro. 
-</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam at hic, ad nihil debitis sint harum alias repellat corrupti veritatis id molestias repudiandae optio, cum reprehenderit, sed earum incidunt mollitia.
-</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus incidunt facilis voluptates pariatur quasi molestias. Quis ullam voluptatem praesentium esse nostrum voluptas facilis quas sit deleniti enim, libero itaque sed!
-</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe fugit esse eum consequuntur dolore fuga facilis necessitatibus minima amet temporibus praesentium illum, accusamus porro expedita alias, harum aut earum illo.
-</p>
-
- </section>
-
-
+      
+      <section>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!
+          </p>    <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!
+          </p>    <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!
+          </p>    <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, inventore? Maiores repudiandae sit, assumenda earum inventore fugiat sapiente temporibus odio officiis quidem numquam ipsa. Ab recusandae delectus voluptas cum neque!
+          </p>
+      </section>
+      
+      <!--scripts de bootstrap-->
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js "
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj "
+    crossorigin="anonymous "
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js "
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo "
+    crossorigin="anonymous "
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js "
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI "
+    crossorigin="anonymous "
+  ></script>
 </body>
 </html>
