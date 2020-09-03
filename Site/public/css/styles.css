@@ -9,8 +9,20 @@ html {
 INCLUDE STYLES AND COMPONENTS
 ===================== */
 /* ================== HELPERS  =================== */
+
+a{
+  color: orange;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+  color: #fff;
+  border-color:orange !important;
+  background-color: orange !important;
+}
+
 a:hover {
-  text-decoration: none; }
+  text-decoration: none;
+  color: orange; }
 
 .img-wrap {
   text-align: center;
@@ -419,7 +431,7 @@ p:last-child {
   .widget-header a {
     color: #343a40; }
     .widget-header a:hover {
-      color: #3167eb; }
+      color: orange; }
   .widget-header i {
     color: #969696; }
   .widget-header form {
@@ -431,7 +443,7 @@ p:last-child {
     top: -3px;
     right: -10px; }
   .widget-header:hover i {
-    color: #3167eb; }
+    color: orange; }
 
 /* desktop only */
 /* desktop only .end */
@@ -441,7 +453,7 @@ p:last-child {
 .section-footer ul a {
   color: inherit; }
   .section-footer ul a:hover {
-    color: #3167eb; }
+    color: orange; }
 .section-footer .logo-footer {
   height: 40px; }
 .section-footer .title {
@@ -691,7 +703,7 @@ ul.row, ul.row-sm {
     margin-bottom: 7px; }
   .list-normal li:before {
     content: "\2022";
-    color: #3167eb;
+    color: orange;
     display: inline-block;
     width: 1em;
     margin-left: -1em; }
@@ -705,7 +717,7 @@ ul.row, ul.row-sm {
   .list-menu a {
     color: #343a40; }
     .list-menu a:hover {
-      color: #3167eb; }
+      color:orange; }
 
 .cols-two {
   -webkit-column-count: 2;
@@ -723,14 +735,14 @@ ul.row, ul.row-sm {
 a[class*='card'] {
   color: initial; }
   a[class*='card']:hover .title {
-    color: #3167eb; }
+    color: orange; }
 
 /* BASE STYLE FOR PRODUCT ITEM */
 [class*='card-product'] a.title {
   color: #212529;
   display: block; }
   [class*='card-product'] a.title:hover {
-    color: #3167eb; }
+    color:orange; }
 [class*='card-product'] .badge {
   top: 10px;
   left: 10px;
@@ -771,7 +783,7 @@ a[class*='card'] {
     .card-product-grid .topbar a {
       color: #ccc; }
       .card-product-grid .topbar a:hover {
-        color: #3167eb; }
+        color:orange; }
   .card-product-grid .fix-height {
     height: 80px;
     overflow: hidden; }
@@ -1034,13 +1046,13 @@ a[class*='card'] {
     display: block;
     margin-top: 7px; }
   .tracking-wrap .step.active .icon {
-    background: #3167eb;
+    background: orange;
     color: #fff; }
   .tracking-wrap .step.active .text {
     font-weight: 400;
     color: #000; }
   .tracking-wrap .step.active:before {
-    background: #3167eb; }
+    background:orange; }
 
 .menu-category {
   margin: 0;
@@ -1119,8 +1131,8 @@ a[class*='card'] {
     z-index: -1;
     opacity: 0; }
   .checkbox-btn input:checked ~ .btn {
-    border-color: #3167eb;
-    background-color: #3167eb;
+    border-color: orange;
+    background-color: orange;
     color: #fff; }
 
 /* ================== PAGES =================== */
