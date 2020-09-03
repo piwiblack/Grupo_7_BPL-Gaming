@@ -19,6 +19,10 @@
 - 23 años
 - Estudiante de ingenieria en informática.
 
+### :man: Bravo, Esteban
+- 20 años
+- Tecnico en informatica personal y profesional.
+
 
 
 ##  Temática del sitio y audiencia
