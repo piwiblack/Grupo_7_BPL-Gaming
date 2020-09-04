@@ -10,44 +10,52 @@
                 <aside class="col-md-6">
                     <article class="gallery-wrap">
                         <div class="img-big-wrap">
-                            <div> <a href="#"><img src="images/micro-intel-core-i3-10100-0.jpg"></a></div>
+                            <div> <a href="#"><img src="images/imagenproducto.jpg"></a></div>
                         </div> <!-- slider-product.// -->
                         <div class="thumbs-wrap">
-                            <a href="" class="item-thumb"> <img src="images/micro-intel-core-i3-10100-0.jpg"></a>
-                            <a href="" class="item-thumb"> <img src="images/micro-intel-core-i3-10100-0.jpg"></a>
-                            <a href="" class="item-thumb"> <img src="images/micro-intel-core-i3-10100-0.jpg"></a>
+                            <a href="" class="item-thumb"> <img src="images/imagenproducto.jpg"></a>
+                            <a href="" class="item-thumb"> <img src="images/imagenproducto.jpg"></a>
+                            <a href="" class="item-thumb"> <img src="images/imagenproducto.jpg"></a>
                         </div> <!-- slider-nav.// -->
                     </article> <!-- gallery-wrap .end// -->
                 </aside>
                 <main class="col-md-6 border-left">
                     <article class="content-body">
 
-                        <h2 class="title">MICRO INTEL CORE I3 10100</h2>
-
-                        <div class="rating-wrap mb-3">
-                            <span class="badge badge-warning"> <i class="fa fa-star"></i> 3.8</span>
-                            <small class="text-muted ml-2">45 reseñas</small>
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre" class="form-control" name="">
                         </div>
 
+
                         <div class="mb-3">
-                            <var class="price h4">$10,000</var>
+                            <div class="form-group">
+                                <input type="number" placeholder="Precio" class="form-control" name="">
+                            </div>
                         </div> <!-- price-detail-wrap .// -->
 
-                        <p>Diseñá, jugá y trabajá cómodamente con la potencia de Intel Core de 10ma Gen. Lista para todo
-                            tipo de usuario a un precio económico.</p>
+                        <div class="form-group">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Descripcion"
+                                rows="3"></textarea>
+                            <small class="form-text text-muted"> El carácter máximo es de 250 letras </small>
+                        </div>
 
 
 
                         <ul class="list-check mb-4">
-                            <li>En stock</li>
-                            <li>Garantia 36 meses</li>
-                            <li>Envios a toda la Argentina</li>
-                        </ul>
 
-                        <hr>
+                            <div class="custom-control custom-switch mb-3">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                <label class="custom-control-label" for="customSwitch1">Stock</label>
+                            </div>
+                            <div class="custom-control custom-switch mb-3">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                <label class="custom-control-label" for="customSwitch2">Envios a toda la
+                                    Argentina</label>
+                            </div>
+                        </ul>
                         <div class="form-row">
                             <div class="form-group col-md flex-grow-0">
-                                <label>Cantidad</label>
+                                <label>Garantia</label>
                                 <div class="input-group mb-3 input-spinner">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-light" type="button" id="button-plus"> + </button>
@@ -59,10 +67,8 @@
                                 </div>
                             </div> <!-- col.// -->
                         </div>
-
-                        <a href="#" class="btn  btn-primary"> Comprar </a>
-                        <a href="#" class="btn  btn-outline-primary"> <span class="text">Añadir</span> <i
-                                class="fas fa-shopping-cart"></i> </a>
+                        <hr>
+                        <a href="#" class="btn  btn-outline-primary"> <span class="text">Añadir</span> </a>
                     </article> <!-- product-info-aside .// -->
                 </main> <!-- col.// -->
             </div> <!-- row.// -->
@@ -76,38 +82,29 @@
             <article class="card">
                 <div class="card-body">
                     <div class="row">
-                        <aside class="col-md-6">
+                        <aside class="col-md-7">
                             <h5>Caracteristicas</h5>
                             <dl class="row">
-                                <dt class="col-sm-4">Modelo</dt>
-                                <dd class="col-sm-8">Core i3 10100</dd>
+                                <dt class="col-sm-5">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Caracteristica" class="form-control" name="">
+                                    </div>
+                                </dt>
+                                <dd class="col-sm-5">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Especifacion" class="form-control" name="">
+                                        
+                                    </div>
+                                </dd>
+                                <div class="col-sm-1">
+                                    <a href="#" class="btn  btn-outline-primary"><i class="fas fa-plus"></i>  </a>
+                                </div>
+                                <dt class="col-sm-5">Caracteristica</dt>
+                                <dd class="col-sm-5">Especifacion</dd>
 
-                                <dt class="col-sm-4">Familia</dt>
-                                <dd class="col-sm-8">Intel Core i3</dd>
-
-                                <dt class="col-sm-4">Nucleos</dt>
-                                <dd class="col-sm-8">4</dd>
-
-                                <dt class="col-sm-4">Hilos</dt>
-                                <dd class="col-sm-8">8</dd>
-
-                                <dt class="col-sm-4">Frecuencia</dt>
-                                <dd class="col-sm-8">3600 Mhz</dd>
-
-                                <dt class="col-sm-4">Frecuencia Turbo</dt>
-                                <dd class="col-sm-8">4300 Mhz</dd>
-
-                                <dt class="col-sm-4">Proceso de Fabricacion</dt>
-                                <dd class="col-sm-8">14 nm</dd>
-
-                                <dt class="col-sm-4">Chipset GPU</dt>
-                                <dd class="col-sm-8">Intel HD Graphics 630</dd>
-
-                                <dt class="col-sm-4">Socket</dt>
-                                <dd class="col-sm-8">1200 Comet Lake</dd>
                             </dl>
                         </aside>
-                        <aside class="col-md-6">
+                        <aside class="col-md-5">
                             <h5>Tener en cuenta</h5>
                             <ul class="list-check">
                                 <li>Hacemos factura A y B.</li>
@@ -119,7 +116,8 @@
                     </div> <!-- row.// -->
                     <hr>
                     <p>
-                        Para mas informacion visitar la pagina del fabricante <a href="https://www.intel.la/content/www/xl/es/products/processors/core/i3-processors/i3-10100.html">Procesador Intel® Core™ i3-10100</a> 
+                        Para mas informacion visitar la pagina del fabricante <a
+                            href="#l">link del producto</a>
                     </p>
                 </div> <!-- card-body.// -->
             </article> <!-- card.// -->
