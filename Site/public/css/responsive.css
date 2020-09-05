@@ -16,6 +16,10 @@
       display: none; } }
   @media all and (max-width: 768px) {
     /* mobile devices */
+
+    .gallery-wrap .img-big-wrap img {
+      width: 100% !important;
+  }
     .section-header .search {
       margin-top: 1rem;
       margin-bottom: 1rem; }
