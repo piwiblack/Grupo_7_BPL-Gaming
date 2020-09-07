@@ -16,7 +16,9 @@
       display: none; } }
   @media all and (max-width: 768px) {
     /* mobile devices */
-
+    .info-wrap .title{
+      height: 80px;
+    }
     .gallery-wrap .img-big-wrap img {
       width: 100% !important;
   }
