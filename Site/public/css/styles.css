@@ -1,21 +1,14 @@
-
-/* ==================== Estilos Globales ======================= */
+/* ==== BASE STYLES ====*/
+/* ==================== GLOBAL STYLES ======================= */
 @import url("https://rsms.me/inter/inter.css");
 html {
   font-family: 'Inter', sans-serif;
   font-size: 15px; }
 
-/*componentes */
-
-body::-webkit-scrollbar{
-  width: 0.5rem;
-}
-body::-webkit-scrollbar-track{
-  background-color: #1e1e24;
-}
-body::-webkit-scrollbar-thumb{
-  background-color: orange;
-}
+/* ========================
+INCLUDE STYLES AND COMPONENTS
+===================== */
+/* ================== HELPERS  =================== */
 
 a{
   color: orange;
@@ -408,13 +401,12 @@ p:last-child {
 .ltr {
   direction: ltr; }
 
-/* ================== Secciones =================== */
+/* ================== SECTIONS =================== */
 /* ================== header main ==================  */
 .header-top-light .nav-link {
   color: #969696; }
   .header-top-light .nav-link:hover {
     color: #212529; }
-
 
 .header-main {
   position: relative;
@@ -567,10 +559,7 @@ p:last-child {
   margin-left: 10px; }
 .btn i + .text {
   margin-left: 10px; }
-.btn-img{
-  border: none;
-  background-color: transparent;
-}
+
 
 .itemside {
   position: relative;
@@ -636,9 +625,6 @@ dl[class="row"] {
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1; }
-  .info{
-    font-size: small;
-  }
 
 /* -------------------- list.row--------------------- */
 ul.row, ul.row-sm {
@@ -771,12 +757,6 @@ a[class*='card'] {
     max-width: 100%;
     width: auto;
     display: inline-block; }
-  /* .col-md-6:last-child{
-    padding-right: 1rem;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    
-} */
-  
 
 /* GRID STYLE PRODUCT ITEM */
 .card-product-grid {
@@ -1168,18 +1148,14 @@ a[class*='card'] {
   overflow: hidden;
   background-color: #fff; }
   .gallery-wrap .img-big-wrap a {
-    text-align: left;
+    text-align: center;
     display: block; }
   .gallery-wrap .img-big-wrap img {
     height: 450px;
-    width: 100%;
+    width: auto;
     display: inline-block;
     cursor: -webkit-zoom-in;
-    cursor: zoom-in; 
-  }
-  .gallery-wrap .img-big-wrap-PD img{
-    width: auto;
-  }
+    cursor: zoom-in; }
 .gallery-wrap .thumbs-wrap {
   text-align: center;
   margin-bottom: 20px; }
@@ -1191,9 +1167,6 @@ a[class*='card'] {
     margin: 3px;
     display: inline-block;
     overflow: hidden; }
-  .item-thumb img{
-    height: 100vh;
-  }
   .gallery-wrap .thumbs-wrap img {
     max-width: 100%;
     max-height: 100%;
@@ -1207,7 +1180,6 @@ a[class*='card'] {
               filter: brightness(1.1);
       cursor: -webkit-zoom-in;
       cursor: zoom-in; }
-      
 
 .item-option-select {
   margin-bottom: 1rem;
@@ -1226,6 +1198,6 @@ a[class*='card'] {
 .table-shopping-cart .price {
   font-weight: bold;
   margin-right: 5px;
-  display: inline; }
+  display: block; }
 
-  
+/*# sourceMappingURL=ui.css.map */

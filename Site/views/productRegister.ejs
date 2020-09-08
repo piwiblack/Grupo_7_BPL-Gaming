@@ -16,38 +16,28 @@
                             <a href="" class="item-thumb"> <img src="images/imagenproducto.jpg"></a>
                             <a href="" class="item-thumb"> <img src="images/imagenproducto.jpg"></a>
                             <a href="" class="item-thumb"> <img src="images/imagenproducto.jpg"></a>
-                            <button class="btn-img"><a href="" class="item-thumb"> <img src="images/agregar.svg"></a></button>
                         </div> <!-- slider-nav.// -->
-                        
                     </article> <!-- gallery-wrap .end// -->
                 </aside>
                 <main class="col-md-6 border-left">
                     <article class="content-body">
-                        <form action="" method="">
-                            <div class="form-group">
-                                <input type="text" placeholder="Nombre" class="form-control" name="nombre">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" placeholder="Categoria" class="form-control" name="categoria">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" placeholder="Plataforma" class="form-control" name="plataforma">
-                            </div>
-                            
+
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre" class="form-control" name="">
+                        </div>
 
 
-                            <div class="mb-3">
-                                <div class="form-group">
-                                    <input type="number" placeholder="Precio" class="form-control" name="">
-                                </div>
-                            </div> <!-- price-detail-wrap .// -->
-
+                        <div class="mb-3">
                             <div class="form-group">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Descripcion"
-                                    rows="3"></textarea>
-                                <small class="form-text text-muted"> El carácter máximo es de 250 letras </small>
+                                <input type="number" placeholder="Precio" class="form-control" name="">
                             </div>
-                        </form>
+                        </div> <!-- price-detail-wrap .// -->
+
+                        <div class="form-group">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Descripcion"
+                                rows="3"></textarea>
+                            <small class="form-text text-muted"> El carácter máximo es de 250 letras </small>
+                        </div>
 
 
 
@@ -57,7 +47,11 @@
                                 <input type="checkbox" class="custom-control-input" id="customSwitch1">
                                 <label class="custom-control-label" for="customSwitch1">Stock</label>
                             </div>
-                            
+                            <div class="custom-control custom-switch mb-3">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                <label class="custom-control-label" for="customSwitch2">Envios a toda la
+                                    Argentina</label>
+                            </div>
                         </ul>
                         <div class="form-row">
                             <div class="form-group flex-grow-0">
@@ -91,8 +85,12 @@
                         <aside class="col-md-7">
                             <h5>Caracteristicas</h5>
                             <dl class="row">
-                                
-                                <dd class="col-sm-10">
+                                <dt class="col-sm-5">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Caracteristica" class="form-control" name="">
+                                    </div>
+                                </dt>
+                                <dd class="col-sm-5">
                                     <div class="form-group">
                                         <input type="text" placeholder="Especifacion" class="form-control" name="">
                                         
@@ -101,18 +99,26 @@
                                 <div class="col-sm-1">
                                     <a href="#" class="btn  btn-outline-primary"><i class="fas fa-plus"></i>  </a>
                                 </div>
-                                
+                                <dt class="col-sm-5">Caracteristica</dt>
+                                <dd class="col-sm-5">Especifacion</dd>
+
                             </dl>
                         </aside>
                         <aside class="col-md-5">
                             <h5>Tener en cuenta</h5>
                             <ul class="list-check">
+                                <li>Hacemos factura A y B.</li>
                                 <li>Todos los precios son finales IVA incluido.</li>
+                                <li>No aceptamos ningún producto en parte de pago.</li>
                                 <li>Todos nuestro artículos son nuevos y se entregan en su empaque original.</li>
                             </ul>
                         </aside>
                     </div> <!-- row.// -->
-                    
+                    <hr>
+                    <p>
+                        Para mas informacion visitar la pagina del fabricante <a
+                            href="#l">link del producto</a>
+                    </p>
                 </div> <!-- card-body.// -->
             </article> <!-- card.// -->
             <!-- ============================ COMPONENT DETAIL 4 .//END ================================= -->
