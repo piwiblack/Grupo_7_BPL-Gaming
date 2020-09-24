@@ -52,3 +52,18 @@ Las páginas que utilizamos como referentes estan vinculadas con los productos q
 
 
 ## :pencil2: Diseño (en proceso)
+#### colores 
+- #ffffff 
+- #ff8000 
+- #9c9c9c.
+#### Familia Tipografica 
+- Inter, Arial, Helvetica Neue, Segoe UI, sans-serif.
+- Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol y Noto Color Emoji.
+- [Logo](https://github.com/piwiblack/Grupo_7_BPL-Gaming/blob/master/Site/public/images/logo.jpeg)
+
+
+## :pushpin: Segundo Sprint (07/09)
+- [Retro.md](https://github.com/piwiblack/Grupo_7_BPL-Gaming/blob/master/retro.md)
+## Tablero de Trabajo
+- [GitHub](https://github.com/piwiblack/Grupo_7_BPL-Gaming/projects/1)
+- [Trello](https://trello.com/b/umPg0yRB/proyecto-integrador-g7)

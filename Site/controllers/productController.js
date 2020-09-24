@@ -1,6 +1,4 @@
 const path = require('path');
-// const dbCategorias = require('../data/dbCategorias');
-// const dbProducts = require('../data/dbProducts')
 const dbProducts = require(path.join(__dirname, "..", "data", "dbProducts"));
 const dbCategorias = require(path.join(__dirname, "..", "data", "dbCategorias"));
 
