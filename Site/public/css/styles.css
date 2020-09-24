@@ -1,6 +1,7 @@
 /* ==== BASE STYLES ====*/
 /* ==================== GLOBAL STYLES ======================= */
 @import url("https://rsms.me/inter/inter.css");
+@import url("responsive.css");
 html {
   font-family: 'Inter', sans-serif;
   font-size: 15px; }
@@ -63,6 +64,11 @@ a:hover {
     border: 1px solid orange !important;
     outline: none !important;
     box-shadow: none !important;
+}
+.btn-plus{
+  position: relative;
+  left: 1rem;
+  bottom: 1.7rem;
 }
 
 /* =================  DEFINED VARIABLES =================== */
@@ -276,7 +282,10 @@ article:after,
   /* Standard syntax */
   -webkit-transition: .5s;
   transition: .5s; }
-
+.error{
+  width: 100%;
+  height: auto;
+}
 .bg-gradient-green {
   background: rgba(33, 37, 41, 0.4);
   /* For browsers that do not support gradients */
@@ -400,6 +409,20 @@ p:last-child {
 
 .ltr {
   direction: ltr; }
+.select{
+  display: block;
+  color: #495057;;
+  width: 100%;
+  height: calc(1.5em + 0.9rem + 2px);
+  border: 1px solid #ced4da;
+  background-clip: padding-box;
+  padding: 0.45rem 0.85rem;
+  border-radius: 0.37rem;
+  line-height: 1.5;
+  font-size: 1rem;
+  display: block;
+  font-family: "Inter", Arial, "Helvetica Neue", "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 
 /* ================== SECTIONS =================== */
 /* ================== header main ==================  */
@@ -1199,5 +1222,7 @@ a[class*='card'] {
   font-weight: bold;
   margin-right: 5px;
   display: block; }
+
+
 
 /*# sourceMappingURL=ui.css.map */

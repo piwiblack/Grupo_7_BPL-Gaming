@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %> 
+<body>
+    <%- include('partials/header') %> 
+    <section class="section-name  padding-y-sm">
+        <div class="container">
+            <header class="section-heading">
+                
+                <h3 class="section-title">Nuestros Productos</h3>
+            </header><!-- sect-heading -->
+            
+            
+            
+            <div class="row">
+ 
+                <% productos.forEach(producto => { %>
+             
+            
+            
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div href="#" class="card card-product-grid">
+                            <a href="#" class="img-wrap"> <img src="/images/products/<%= producto.imagen %> "> </a>
+                            <figcaption class="info-wrap">
+                                <a href="#" class="title"><%= producto.marca+ ' ' + producto.modelo  %> </a>
+                                <div class="price mt-1">$<%= producto.precio %></div> 
+                            </figcaption>
+                        </div>
+                    </div> 
+                <% }) %>
+                
+            </div> <!-- row.// -->
+            
+                
+            </header><!-- sect-heading -->
+        </div><!-- container // -->
+    </section>
+    <%- include('partials/footer') %> 
+</body>
+</html>

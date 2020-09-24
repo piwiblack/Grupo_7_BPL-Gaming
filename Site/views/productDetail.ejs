@@ -10,19 +10,19 @@
                 <aside class="col-md-6">
                     <article class="gallery-wrap">
                         <div class="img-big-wrap">
-                            <div> <a href="#"><img src="images/micro-intel-core-i3-10100-0.jpg"></a></div>
+                            <div> <a href="#"><img src="/images/products/<%= producto.imagen %>" ></a></div>
                         </div> <!-- slider-product.// -->
                         <div class="thumbs-wrap">
-                            <a href="" class="item-thumb"> <img src="images/micro-intel-core-i3-10100-0.jpg"></a>
-                            <a href="" class="item-thumb"> <img src="images/micro-intel-core-i3-10100-0.jpg"></a>
-                            <a href="" class="item-thumb"> <img src="images/micro-intel-core-i3-10100-0.jpg"></a>
+                            <a href="" class="item-thumb"> <img src="/images/products/<%= producto.imagen %> "></a>
+                            <a href="" class="item-thumb"> <img src="/images/products/<%= producto.imagen %> "></a>
+                            <a href="" class="item-thumb"> <img src="/images/products/<%= producto.imagen %>"></a>
                         </div> <!-- slider-nav.// -->
                     </article> <!-- gallery-wrap .end// -->
                 </aside>
                 <main class="col-md-6 border-left">
                     <article class="content-body">
 
-                        <h2 class="title">MICRO INTEL CORE I3 10100</h2>
+                        <h2 class="title"><%= producto.marca + " " +producto.modelo %> </h2>
 
                         <div class="rating-wrap mb-3">
                             <span class="badge badge-warning"> <i class="fa fa-star"></i> 3.8</span>
@@ -30,11 +30,10 @@
                         </div>
 
                         <div class="mb-3">
-                            <var class="price h4">$10,000</var>
+                            <var class="price h4">$<%= producto.precio %> </var>
                         </div> <!-- price-detail-wrap .// -->
 
-                        <p>Diseñá, jugá y trabajá cómodamente con la potencia de Intel Core de 10ma Gen. Lista para todo
-                            tipo de usuario a un precio económico.</p>
+                        <p><%= producto.descripcion %> </p>
 
 
 
@@ -60,8 +59,8 @@
                             </div> <!-- col.// -->
                         </div>
 
-                        <a href="#" class="btn  btn-primary"> Comprar </a>
-                        <a href="#" class="btn  btn-outline-primary"> <span class="text">Añadir</span> <i
+                        <a href="/product/cart" class="btn  btn-primary"> Comprar </a>
+                        <a href="/product/cart" class="btn  btn-outline-primary"> <span class="text">Añadir</span> <i
                                 class="fas fa-shopping-cart"></i> </a>
                     </article> <!-- product-info-aside .// -->
                 </main> <!-- col.// -->
@@ -78,34 +77,9 @@
                     <div class="row">
                         <aside class="col-md-6">
                             <h5>Caracteristicas</h5>
-                            <dl class="row">
-                                <dt class="col-sm-4">Modelo</dt>
-                                <dd class="col-sm-8">Core i3 10100</dd>
 
-                                <dt class="col-sm-4">Familia</dt>
-                                <dd class="col-sm-8">Intel Core i3</dd>
-
-                                <dt class="col-sm-4">Nucleos</dt>
-                                <dd class="col-sm-8">4</dd>
-
-                                <dt class="col-sm-4">Hilos</dt>
-                                <dd class="col-sm-8">8</dd>
-
-                                <dt class="col-sm-4">Frecuencia</dt>
-                                <dd class="col-sm-8">3600 Mhz</dd>
-
-                                <dt class="col-sm-4">Frecuencia Turbo</dt>
-                                <dd class="col-sm-8">4300 Mhz</dd>
-
-                                <dt class="col-sm-4">Proceso de Fabricacion</dt>
-                                <dd class="col-sm-8">14 nm</dd>
-
-                                <dt class="col-sm-4">Chipset GPU</dt>
-                                <dd class="col-sm-8">Intel HD Graphics 630</dd>
-
-                                <dt class="col-sm-4">Socket</dt>
-                                <dd class="col-sm-8">1200 Comet Lake</dd>
-                            </dl>
+                            <h6 class="caract"><%= producto.descripcion %> </h6>
+                            
                         </aside>
                         <aside class="col-md-6">
                             <h5>Tener en cuenta</h5>
@@ -117,10 +91,8 @@
                             </ul>
                         </aside>
                     </div> <!-- row.// -->
-                    <hr>
-                    <p>
-                        Para mas informacion visitar la pagina del fabricante <a href="https://www.intel.la/content/www/xl/es/products/processors/core/i3-processors/i3-10100.html">Procesador Intel® Core™ i3-10100</a> 
-                    </p>
+                    
+                    
                 </div> <!-- card-body.// -->
             </article> <!-- card.// -->
             <!-- ============================ COMPONENT DETAIL 4 .//END ================================= -->

@@ -5,7 +5,7 @@
     <%- include('partials/header') %> 
     <section class="section-intro">
         <div class="intro-banner-wrap">
-            <img src="images/None_DZFWBOTTD3.webp" class="w-100 img-fluid">
+            <img src="images/None_DZFWBOTTD3.webp" class="w-100 img-fluid img-banner">
         </div>
     </section>
 
@@ -15,83 +15,49 @@
                 <a href="#" class="btn btn-outline-primary float-right">Ver todo</a>
                 <h3 class="section-title">Destacados</h3>
             </header><!-- sect-heading -->
+            
+            
+            
             <div class="row">
-                <div class="col-lg-3 col-sm-4">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="images/micro-intel-core-i9-9900k-36-ghz-0.jpg"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">MICRO INTEL CORE I9 9900K 3.6 GHZ</a>
-                            <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-lg-3 col-sm-4">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img
-                                src="images/video-geforce-rtx-2070-super-8gb-evga-xc-gaming-0.jpg"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">VIDEO GEFORCE RTX 2070 SUPER 8GB EVGA XC GAMING</a>
-                            <div class="price mt-1">$280.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-lg-3 col-sm-4">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="images/mother-gigabyte-z390m-gaming-0.jpg"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">MOTHER GIGABYTE Z390 GAMING X</a>
-                            <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-lg-3 col-sm-4">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img
-                                src="images/memoria-ram-8gb-ddr4-3200-kingston-predator-rgb-0.jpg"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">MEMORIA RAM 8GB DDR4 3200 KINGSTON RGB</a>
-                            <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-lg-3 col-sm-4">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="images/micro-intel-core-i3-10100-0.jpg"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">MICRO INTEL CORE I3 10100 3.60 GHz</a>
-                            <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-lg-3 col-sm-4">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="images/monitor-27-samsung-led-ls27f350fhlx-0.jpg"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">MONITOR 22" SAMSUNG LED LS22F350FHLX</a>
-                            <div class="price mt-1">$280.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-lg-3 col-sm-4">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="images/teclado-hyperx-alloy-fps-pro-cherry-red-0.jpg">
-                        </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">TECLADO HYPERX ALLOY FPS PRO CHERRY BLUE</a>
-                            <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-lg-3 col-sm-4">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="images/mouse-logitech-g203-0.jpg"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">MOUSE LOGITECH G203 RGB ULTIMATE</a>
-                            <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
+ 
+                <% destacados.forEach(producto => { %>
+             
+            
+            
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div href="# " class="card card-product-grid">
+                            <a href="/product/detail/<%= producto.id %> " class="img-wrap"> <img src="images/products/<%= producto.imagen %> "> </a>
+                            <figcaption class="info-wrap">
+                                <a href="product/detail/<%= producto.id %>" class="title"><%= producto.marca+ ' ' + producto.modelo  %> </a>
+                                <div class="price mt-1">$<%= producto.precio %></div> 
+                            </figcaption>
+                        </div>
+                    </div> 
+                <% }) %>
+                
             </div> <!-- row.// -->
+            <header class="section-heading">
+                <a href="#" class="btn btn-outline-primary float-right">Ver todo</a>
+                <h3 class="section-title">En Oferta</h3>
+            </header>
+                <div class="row">
+ 
+                    <% oferta.forEach(producto => { %>
+             
+            
+            
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div href="/product/detail/<%= producto.id %> " class="card card-product-grid">
+                                <a href="/product/detail/<%= producto.id %> " class="img-wrap"> <img src="images/products/<%= producto.imagen %> "> </a>
+                                <figcaption class="info-wrap">
+                                    <a href="#" class="title"><%= producto.marca+ ' ' + producto.modelo  %> </a>
+                                    <div class="price mt-1">$<%= producto.precio %></div> 
+                                </figcaption>
+                            </div>
+                        </div> 
+                    <% }) %>
+                </div><!--row-->
+            </header><!-- sect-heading -->
         </div><!-- container // -->
     </section>
     <%- include('partials/footer') %> 
