@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const dbProducts = require(path.join(__dirname, "..", "data", "dbProducts"));
 const dbCategorias = require(path.join(__dirname, "..", "data", "dbCategorias"));
 
@@ -8,7 +9,7 @@ module.exports ={
     
 
     res.render("products", {
-      title: "BPLE Gaming-Productos",
+      title: "Productos",
       productos: productos,
       
     });
@@ -22,13 +23,12 @@ module.exports ={
             
         
         res.render('productDetail',{
-            title:'BPLE Gaming - Detalle',
+            title:'Detalle de Producto',
             producto: producto[0]
             
         })
     },
     category:function(req,res){
-        
         let categorias= dbCategorias;
         
         res.render('category',{
@@ -36,24 +36,40 @@ module.exports ={
             categorias:categorias
         })
     },
-    productAdd:function(req,res) {
-        let categoria;
-        if(req.query.categoria){
-            categoria=req.query.categoria
-        };
-        
-        
-        
+    productAdd:function(req,res) { 
         res.render('productAdd',{
-            title:'BPLE Gaming - Registro Producto'
+            title:'Carga de Producto',
         })
     },
-    publicar: function(req,res){
-        res.send('Post')
+    proccessAdd: function(req,res ){
+        
+         let ultimoId = 1;
+         dbProducts.forEach( product =>{
+            if(product.id > ultimoId){
+                ultimoId = product.id;
+            }
+         })
+
+        let newProduct= {
+            id : ultimoId + 1,
+            marca : req.body.marca,
+            modelo : req.body.modelo,
+            precio : req.body.precio,
+            categoria : req.body.categoria,
+            descripcion : req.body.descripcion,
+            imagen : req.files[0].filename,
+        }
+        dbProducts.push(newProduct);
+        fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'), JSON.stringify(dbProducts),'utf-8');
+        res.redirect('/product');
+        
+
+
+
     },
     cart:function(req,res) {
         res.render('productCart',{
-            title:'BPLE Gaming - Carrito'
+            title:'Carrito'
         })
     },
     search: function(req,res){
@@ -70,9 +86,51 @@ module.exports ={
         })
     },
     edit: function(req,res){
-        res.send('editar');
+        let selectedProduct = dbProducts.filter((product) => {
+            return product.id == req.params.id;
+          });
+      
+          let categories = [];
+          dbProducts.forEach((product) => {
+            if (categories.indexOf(product.categoria) == -1) {
+              categories.push(product.categoria);
+            }
+          });
+          
+      
+          res.render("productEdit", {
+            title: "Editar producto",
+            product: dbProducts,
+            selectedProduct: selectedProduct[0],
+            categories: categories,
+          });
+    },
+    proccessEdit: function(req,res){
+        dbProducts.forEach(producto => {
+            if (producto.id == req.body.id) {
+                producto.id = req.body.id;
+                producto.marca = req.body.marca.trim();
+                producto.modelo = req.body.modelo.trim();
+                producto.precio = req.body.precio;
+                producto.categoria = req.body.categoria;
+                producto.descripcion = req.body.descripcion.trim();
+                producto.imagen = req.files[0].filename;
+            }
+          });
+      
+          fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'), JSON.stringify(dbProducts),'utf-8');
+          res.redirect('/product');
     },
     delete: function(req,res){
-        res.send('Borrar');
+        let idProducto = req.params.id;
+        dbProducts.forEach((product) => {
+            if (product.id == idProducto) {
+                var borrar = dbProducts.indexOf(product);
+                dbProducts.splice(borrar, 1);
+            };
+    });
+        fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'), JSON.stringify(dbProducts),'utf-8');
+        res.redirect('/product');
+
     },
 }

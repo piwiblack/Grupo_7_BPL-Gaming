@@ -89,4 +89,4 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-console.log(`Server running on port ${port}!!`)
+console.log(` Server running on port ${port}!!\n Link --> http://localhost:3333`)

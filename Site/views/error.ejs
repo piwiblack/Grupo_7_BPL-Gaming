@@ -12,12 +12,10 @@
     <title>Error 404!</title>
 </head>
 <body>
-    <%- include('partials/header') %>
+    
+    <h1><%= message %></h1>
+<h2><%= error.status %></h2>
+<pre><%= error.stack %></pre>
 
-    <main class="container">
-        <a href="/"><img class="error" src="/images/error404.png" alt="Error 404"></a>
-    </main>
-
-    <%- include('partials/footer') %> 
 </body>
 </html>

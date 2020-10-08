@@ -16,6 +16,31 @@
       display: none; } }
   @media all and (max-width: 768px) {
     /* mobile devices */
+    table{
+      width: 100%;
+    }
+    table tr{
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    table td[data-titulo]{
+      display: flex;
+    }
+    table td[data-titulo]::before{
+      content: attr(data-titulo);
+      width: 17rem;
+      font-weight: bold;
+      line-height: 1.2;
+      align-items: center;
+    }
+    table thead{
+      display: none;
+    }
+    .form-control{
+      display: inline-block;
+      width: 100%;
+    }
     .info-wrap .title{
       height: 80px;
     }
