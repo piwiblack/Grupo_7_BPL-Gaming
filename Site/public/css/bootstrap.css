@@ -3488,7 +3488,7 @@ Bootstrap with custom variables
       width: 1rem;
       height: 1rem;
       margin-top: -0.25rem;
-      background-color: #3167eb;
+      background-color: orange;
       border: 0;
       border-radius: 1rem;
       -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -4235,12 +4235,12 @@ Bootstrap with custom variables
     padding: 0.5rem 0.75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #3167eb;
+    color: orange;
     background-color: #fff;
     border: 1px solid #dee2e6; }
     .page-link:hover {
       z-index: 2;
-      color: #1244bd;
+      color: orange;
       text-decoration: none;
       background-color: #e4e4e4;
       border-color: #dee2e6; }
@@ -4260,8 +4260,8 @@ Bootstrap with custom variables
   .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: #3167eb;
-    border-color: #3167eb; }
+    background-color: orange;
+    border-color: orange; }
   .page-item.disabled .page-link {
     color: #545454;
     pointer-events: none;

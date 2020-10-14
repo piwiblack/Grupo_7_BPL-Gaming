@@ -1,63 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-    <%- include('partials/head') %> 
+<html lang="es">
+    <%- include('partials/head.ejs') %> 
+
 <body>
     <%- include('partials/header') %> 
     <section class="section-intro">
         <div class="intro-banner-wrap">
-            <img src="images/None_DZFWBOTTD3.webp" class="w-100 img-fluid img-banner">
+            <img src="images/None_DZFWBOTTD3.webp" class="w-100 img-fluid">
         </div>
     </section>
 
     <section class="section-name  padding-y-sm">
         <div class="container">
             <header class="section-heading">
-                <a href="/product" class="btn btn-outline-primary float-right">Ver todo</a>
+                <a href="#" class="btn btn-outline-primary float-right">Ver todo</a>
                 <h3 class="section-title">Destacados</h3>
             </header><!-- sect-heading -->
-            
-            
-            
             <div class="row">
- 
                 <% destacados.forEach(producto => { %>
-             
-            
-            
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div href="# " class="card card-product-grid">
-                            <a href="/product/detail/<%= producto.id %> " class="img-wrap"> <img src="images/products/<%= producto.imagen %> "> </a>
+                    <div class="col-lg-3 col-sm-4">
+                        <div href="#" class="card card-product-grid">
+                            <a href="/product/detail/<%= producto.id %>" class="img-wrap"> <img src="/images/productImages/<%= producto.image %> "> </a>
                             <figcaption class="info-wrap">
-                                <a href="product/detail/<%= producto.id %>" class="title"><%= producto.marca+ ' ' + producto.modelo  %> </a>
-                                <div class="price mt-1">$<%= producto.precio %></div> 
+                                <a href="/product/detail/<%= producto.id %>" class="title"><%= producto.name %> </a>
+                                <div class="price mt-1">$<%= producto.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");  %> </div> <!-- price-wrap.// -->
                             </figcaption>
                         </div>
-                    </div> 
+                    </div> <!-- col.// -->
                 <% }) %>
-                
             </div> <!-- row.// -->
-            <header class="section-heading">
-                <a href="/product" class="btn btn-outline-primary float-right">Ver todo</a>
-                <h3 class="section-title">En Oferta</h3>
-            </header>
-                <div class="row">
- 
-                    <% oferta.forEach(producto => { %>
-             
-            
-            
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div href="/product/detail/<%= producto.id %> " class="card card-product-grid">
-                                <a href="/product/detail/<%= producto.id %> " class="img-wrap"> <img src="images/products/<%= producto.imagen %> "> </a>
-                                <figcaption class="info-wrap">
-                                    <a href="#" class="title"><%= producto.marca+ ' ' + producto.modelo  %> </a>
-                                    <div class="price mt-1">$<%= producto.precio %></div> 
-                                </figcaption>
-                            </div>
-                        </div> 
-                    <% }) %>
-                </div><!--row-->
-            </header><!-- sect-heading -->
         </div><!-- container // -->
     </section>
     <%- include('partials/footer') %> 

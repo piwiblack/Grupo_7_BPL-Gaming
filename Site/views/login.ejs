@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-    <%- include('partials/head') %> 
+<html lang="es">
+  <%- include(`./partials/head.ejs`) %>
 <body>
     <%- include('partials/header') %> 
     <section class="section-conten padding-y" style="min-height:84vh">
@@ -8,20 +8,29 @@
         <!-- ============================ COMPONENT LOGIN   ================================= -->
             <div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
               <div class="card-body">
-              <h4 class="card-title mb-4">Ingresar</h4>
-              <form action="/users/login" method="POST">
-                    <a href="#" class="btn btn-facebook btn-block mb-2"> <i class="fab fa-facebook-f"></i> &nbsp  Ingresar con Facebook</a>
-                    <a href="#" class="btn btn-google btn-block mb-4"> <i class="fab fa-google"></i> &nbsp  Ingresar con Google</a>
-                  <div class="form-group">
-                     <input name="email" class="form-control" placeholder="Email" type="email">
-                  </div> <!-- form-group// -->
-                  <div class="form-group">
-                    <input name="password" class="form-control" placeholder="Contraseña" type="password">
-                  </div> <!-- form-group// -->
-                  
-                  <div class="form-group">
+                <h4 class="card-title mb-4">Ingresar</h4>
+                <ul class="list-error mb-4">
+                  <% if (typeof errors != 'undefined') {%>
+                      <% errors.forEach(error =>{ %>
+                       <li><%= error.msg %></li>
+                      <% }) %>
+                  <% } %>
+              </ul>
+                <form action="/users/login" method="POST" >
+                    <div class="form-group">
+                       <label>Usuario</label>
+                       <input class="form-control" type="email" name="email">
+                    </div> <!-- form-group// -->
+                    <div class="form-group">
+                      <label>Contraseña</label>
+                      <input class="form-control" type="password" name="password">
+                    </div> <!-- form-group// --> 
+                    <div class="form-group">
                       <a href="#" class="float-right">Olvidaste tu contraseña?</a> 
-                    <label class="float-left custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked=""> <div class="custom-control-label"> Recordarme </div> </label>
+                    <label class="float-left custom-control custom-checkbox"> 
+                      <input type="checkbox" class="custom-control-input" name="remember"> 
+                      <div class="custom-control-label">Recordarme</div> 
+                    </label>
                   </div> <!-- form-group form-check .// -->
                   <div class="form-group">
                       <button type="submit" class="btn btn-primary btn-block"> Ingresar  </button>
@@ -32,11 +41,13 @@
         
              <p class="text-center mt-4">No tienes una cuenta? <a href="/users/register">Registrarse</a></p>
              <br><br>
+                  
+
         <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
         
         
         </section>
 
-      <%- include('partials/footer') %> 
+      <%- include('./partials/footer') %> 
 </body>
 </html>

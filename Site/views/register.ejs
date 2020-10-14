@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+<body>
+    <%- include('./partials/header') %>
+    <section class="section-content padding-y">
+        <!-- ============================ COMPONENT REGISTER   ================================= -->
+        <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+                    <article class="card-body">
+                    <header class="mb-4">
+                        <h4 class="card-title">Registrarse</h4>
+                    </header>
+                    <ul class="list-error mb-4">
+                        <% if (typeof errors != 'undefined') {%>
+                            <% errors.forEach(error =>{ %>
+                             <li><%= error.msg %></li>
+                            <% }) %>
+                        <% } %>
+                    </ul>
+                    <form action="/users/register" method="POST">
+                      <div class="form-group form-row">
+                        <label class="col-md-3 col-form-label">Nombre</label>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Nombre" name="first_name">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Apellido" name="last_name">
+                        </div>
+                      </div>
+                    
+                    
+                      <div class="form-group form-row">
+                        <label class="col-md-3 col-form-label">Telefono</label>
+                        <div class="col">
+                          <div class="input-group">
+                            <input name="phone" class="form-control" placeholder="Telefono" type="text">
+                        </div>
+                        </div>
+                      </div>
+                    
+                       <div class="form-group form-row">
+                        <label class="col-md-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" placeholder="nombre@gmail.com" name="email">
+                        </div>
+                      </div>
+                    
+                    
+                      <div class="form-group form-row">
+                        <label class="col-md-3 col-form-label">Residencia</label>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Provincia" name="state">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Localidad" name="city">
+                        </div>
+                      </div>
+                
+                      <div class="form-group form-row">
+                        <label class="col-md-3 col-form-label">Contraseña</label>
+                        <div class="col">
+                          <input type="password" class="form-control mb-3" placeholder="Contraseña" name="password">
+                          <input type="password" class="form-control" placeholder="Confirmar contraseña" name="password2">
+                        </div>
+                      </div>
+                    
+                      <div class="form-group form-row">
+                        <div class="col-sm-9 offset-sm-3">
+                            <label class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="customCheck1" name="bases">
+                              <div class="custom-control-label" for="customCheck1">Estoy de acuerdo con los <a href="#" target="_blank">terminos y condiciones</a></div>
+                            </label>
+                    
+                         </div>
+                      </div>
+                    
+                      <div class="form-row mb-2">
+                        <div class="col-sm-9 offset-sm-3">
+                          <button type="submit" class="btn btn-primary">Registrarse</button>
+                         </div>
+                      </div>
+                    
+                    </form>
+                    </article> <!-- card-body end .// -->
+                    <div class="card-footer text-center">Tienes una cuenta? <a href="/users/login">Ingresar</a></div>
+                    </div>
+                    <br><br>
+        <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+
+
+    </section>
+
+    <%- include('partials/footer') %>
+</body>
+
+</html>

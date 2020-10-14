@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+
+<body>
+    <%- include('partials/header') %>
+    <section class="section-pagetop bg">
+        <div class="container">
+            <h2 class="title-page">Producto</h2>
+            
+            <nav>
+                <ol class="breadcrumb text-white">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="/users/productlist ">Productos</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><%= producto.name %> </li>
+                </ol>
+            </nav>
+             
+
+        </div> <!-- container //  -->
+    </section>
+    <div class="container padding-y">
+        <div class="card">
+            <div class="row no-gutters">
+                <aside class="col-md-6">
+                    <article class="gallery-wrap">
+                        <div class="img-big-wrap">
+                            <div> <a href="#"><img src="/images/productImages/<%= producto.image %>"></a></div>
+                        </div> <!-- slider-product.// -->
+                        <div class="thumbs-wrap">
+                            <a href="" class="item-thumb"> <img src="/images/productImages/<%= producto.image %>"></a>
+                            <a href="" class="item-thumb"> <img src="/images/productImages/<%= producto.image %>"></a>
+                            <a href="" class="item-thumb"> <img src="/images/productImages/<%= producto.image %>"></a>
+                        </div> <!-- slider-nav.// -->
+                    </article> <!-- gallery-wrap .end// -->
+                </aside>
+                <main class="col-md-6 border-left">
+                    <article class="content-body">
+                        <h2 class="title mb-4"> <%= producto.name %> </h2>
+                        <hr>
+                        <aside>
+                            <dl class="row">
+                                <dt class="col-sm-3">Descripcion:</dt>
+                                <dd class="col-md-9"> <p><%= producto.description %></p></dd>
+
+                                <dt class="col-sm-3">Garantia:</dt>
+                                <dd class="col-sm-7"><%= producto.warranty %> meses </dd>
+
+                                <dt class="col-sm-3">Categoria:</dt>
+                                <dd class="col-sm-7"><%= producto.category  %> </dd>
+
+                            </dl>
+                        </aside>
+                        <hr>
+
+                        <div class="row mt-3 align-items-center">
+                            <div class="col">
+                                <span class="price h4">$<%= producto.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."); %></span> 
+                            </div> <!-- col.// -->
+                            <div class="col text-right">
+                                <a href="/product/edit/<%= producto.id %>" class="btn  btn-primary">
+                                    <span class="text">Editar</span>
+                                </a>
+                                <form action="/product/delete/<%= producto.id %>?_method=DELETE" class="inline" method="POST">
+                                    <button class="btn btn-light " type="submit">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </form>
+                                <a href="#" class="btn btn-light"> <i class="fa fa-folder"></i> </a>
+                            </div> <!-- col.// -->
+                        </div> <!-- row.// -->
+                    </article> <!-- product-info-aside .// -->
+                </main> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div>
+
+        <section class="padding-y">
+            <hr class="divider">
+        </section>
+
+      </output>
+        <div class="row">
+            <% destacados.forEach(producto => { %>
+                <div class="col-lg-3 col-sm-4">
+                    <div href="#" class="card card-product-grid">
+                        <a href="/users/profile/product/<%= producto.id %>" class="img-wrap"> <img src="/images/productImages/<%= producto.image %> "> </a>
+                        <figcaption class="info-wrap">
+                            <a href="/users/profile/product/<%= producto.id %>" class="title"><%= producto.name %> </a>
+                            <div class="col text-center">
+                                <a href="/product/edit/<%= producto.id %>" class="btn  btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form action="/product/delete/<%= producto.id %>?_method=DELETE" class="inline" method="POST">
+                                    <button class="btn btn-light " type="submit">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </form>
+                                <a href="#" class="btn btn-light"> <i class="fa fa-folder"></i> </a>
+                            </div> <!-- col.// -->
+                        </figcaption>
+                    </div>
+                </div> <!-- col.// -->
+            <% }) %>
+        </div> <!-- row.// -->
+       <!--  
+
+            <!-- ============================ COMPONENT DETAIL 4  ================================= 
+            <article class="card">
+                <div class="card-body"> 
+                    <div class="row">
+                        <aside class="col-md-6">
+                            <h5>Caracteristicas</h5>
+                            <dl class="row">
+                                <dt class="col-sm-4">Modelo</dt>
+                                <dd class="col-sm-8">Core i3 10100</dd>
+
+                                <dt class="col-sm-4">Familia</dt>
+                                <dd class="col-sm-8">Intel Core i3</dd>
+
+                                <dt class="col-sm-4">Nucleos</dt>
+                                <dd class="col-sm-8">4</dd>
+
+                                <dt class="col-sm-4">Hilos</dt>
+                                <dd class="col-sm-8">8</dd>
+
+                                <dt class="col-sm-4">Frecuencia</dt>
+                                <dd class="col-sm-8">3600 Mhz</dd>
+
+                                <dt class="col-sm-4">Frecuencia Turbo</dt>
+                                <dd class="col-sm-8">4300 Mhz</dd>
+
+                                <dt class="col-sm-4">Proceso de Fabricacion</dt>
+                                <dd class="col-sm-8">14 nm</dd>
+
+                                <dt class="col-sm-4">Chipset GPU</dt>
+                                <dd class="col-sm-8">Intel HD Graphics 630</dd>
+
+                                <dt class="col-sm-4">Socket</dt>
+                                <dd class="col-sm-8">1200 Comet Lake</dd>
+                            </dl>
+                        </aside>
+                        <aside class="col-md-6">
+                            <h5>Tener en cuenta</h5>
+                            <ul class="list-check">
+                                <li>Hacemos factura A y B.</li>
+                                <li>Todos los precios son finales IVA incluido.</li>
+                                <li>No aceptamos ningún producto en parte de pago.</li>
+                                <li>Todos nuestro artículos son nuevos y se entregan en su empaque original.</li>
+                            </ul>
+                        </aside>
+                    </div> 
+                    <hr>
+                    <p>
+                        Para mas informacion visitar la pagina del fabricante <a
+                            href="https://www.intel.la/content/www/xl/es/products/processors/core/i3-processors/i3-10100.html">Procesador
+                            Intel® Core™ i3-10100</a>
+                    </p>
+                </div> 
+            </article> -->
+            <!-- ============================ COMPONENT DETAIL 4 .//END ================================= -->
+       <!-- </output> -->
+    </div>
+    <%- include('partials/footer') %>
+</body>
+
+</html>
