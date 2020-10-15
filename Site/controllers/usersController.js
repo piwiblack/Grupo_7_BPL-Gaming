@@ -27,6 +27,7 @@ const usersController = {
                 id: lastID + 1,
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
+                phone: req.body.phone,
                 email: req.body.email,
                 city: req.body.city,
                 state: req.body.state,
@@ -62,10 +63,8 @@ const usersController = {
                     req.session.user = {
                         id: user.id,
                         email: user.email,
-                        name: user.first_name + " " + user.last_name, 
-
-
-                        
+                        name: user.first_name + " " + user.last_name,
+                        phone: user.phone              
                     };                
 
                     if(req.body.remember == 'on'){
