@@ -29,8 +29,6 @@ const usersController = {
                 last_name: req.body.last_name,
                 phone: req.body.phone,
                 email: req.body.email,
-                city: req.body.city,
-                state: req.body.state,
                 password: bcrypt.hashSync(req.body.password, 10)
             }
 

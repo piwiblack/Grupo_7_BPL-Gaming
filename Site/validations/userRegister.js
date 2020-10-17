@@ -15,8 +15,6 @@ const register = [
         }
         return true
     }).withMessage('El email ingresado ya esta registrado'),
-    check('state'),
-    check('city'),
     check('password').isLength({min:8}).withMessage('La contraseña debe tener mas de 8 digitos'),
     body('password2')
     .custom((value,{req}) => {
