@@ -58,12 +58,7 @@ const usersController = {
         } else {
             dbUsers.forEach(user => {
                 if (user.email == req.body.email && bcrypt.compareSync(req.body.password, user.password)) {
-                    req.session.user = {
-                        id: user.id,
-                        email: user.email,
-                        name: user.first_name + " " + user.last_name,
-                        phone: user.phone              
-                    };                
+                    req.session.user = user   
 
                     if(req.body.remember == 'on'){
                         res.cookie('userLogin', req.session.user,{maxAge:1000*60*60})
