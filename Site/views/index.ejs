@@ -17,13 +17,13 @@
                 <h3 class="section-title">Destacados</h3>
             </header><!-- sect-heading -->
             <div class="row">
-                <% destacados.forEach(producto => { %>
+                <% products.forEach(product => { %>
                     <div class="col-lg-3 col-sm-4">
                         <div href="#" class="card card-product-grid">
-                            <a href="/product/detail/<%= producto.id %>" class="img-wrap"> <img src="/images/productImages/<%= producto.image %> "> </a>
+                            <a href="/product/detail/<%= product.id %>" class="img-wrap"> <img src="/images/productImages/<%= product.images %> "> </a>
                             <figcaption class="info-wrap">
-                                <a href="/product/detail/<%= producto.id %>" class="title"><%= producto.name %> </a>
-                                <div class="price mt-1">$<%= producto.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");  %> </div> <!-- price-wrap.// -->
+                                <a href="/product/detail/<%= product.id %>" class="title"><%= product.name %> </a>
+                                <div class="price mt-1">$<%= product.price/*.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");*/  %> </div> <!-- price-wrap.// -->
                             </figcaption>
                         </div>
                     </div> <!-- col.// -->

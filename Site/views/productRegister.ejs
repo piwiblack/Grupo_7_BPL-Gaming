@@ -35,7 +35,9 @@
     
                             <select id="inputState" class="form-control mb-3" name="category">
                                 <% categories.forEach(category => { %>
-                                        <option value=" <%= category.nombre %>"> <%= category.nombre %></option>
+                                        <option value=" <%= category.id %>"> 
+                                            <%= category.name %>
+                                        </option>
                                 <% }) %>
                                 </select>
     
@@ -45,20 +47,9 @@
                                 <small class="form-text text-muted"> El carácter máximo es de 250 letras </small>
                             </div>
     
-                        <!--    <ul class="list-check mb-4">
-                                <div class="custom-control custom-switch mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" name="stock">
-                                    <label class="custom-control-label" for="customSwitch1">Stock</label>
-                                </div>
-                                <div class="custom-control custom-switch mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch2" name="envios">
-                                    <label class="custom-control-label" for="customSwitch2">Envios a toda la
-                                        Argentina</label>
-                                </div>
-                            </ul>-->
                             <div class="mb-3">
                                 <div class="form-group">
-                                    <input type="file" class="form-control" name="image">
+                                    <input type="file" class="form-control" name="images">
                                 </div>
                             </div> 
                             <div class="form">
@@ -81,7 +72,7 @@
                                     <span class="text">Cancelar</span>
                                 </button>
                             </a>
-                            <button class="btn  btn-primary" type="submit">
+                            <button class="btn btn-primary" type="submit">
                                 <span class="text">Añadir</span>
                             </button>
                             

@@ -12,7 +12,7 @@
                 <ol class="breadcrumb text-white">
                     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
                     <li class="breadcrumb-item"><a href="/product/search ">Categorias</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Productos</li>
+                    <li class="breadcrumb-item active" aria-current="page">products</li>
                 </ol>
             </nav>
              -->
@@ -38,10 +38,9 @@
                             <div class="filter-content collapse show" id="collapse_1">
                                 <div class="card-body">
                                     <ul class="list-menu">
-                                        <% for(let z = 0; z < categories.length; z++){ %>
-                                            <li><a href="#"><%= categories[z].nombre  %>  </a></li>
-                                       <% } %> 
-                                    
+                                        <% categories.forEach(category => { %>                                           
+                                                <li><a href="#"><%= category.name  %>  </a></li>                                           
+                                        <% }) %>    
                                     </ul>
                                 </div> <!-- card-body.// -->
                             </div>
@@ -133,31 +132,31 @@
                         </div>
                     </header><!-- sect-heading -->
 
-                    <% productos.forEach(producto => { %>
+                    <% products.forEach(product => { %>
                     <article class="card card-product-list">
                         <div class="row no-gutters">
                             <aside class="col-md-3">
-                                <a href="/users/productlist/<%= producto.id %>" class="img-wrap">
-                                    <img src="/images/productImages/<%= producto.image %>">
+                                <a href="/users/productlist/<%= product.id %>" class="img-wrap">
+                                    <img src="/images/productImages/<%= product.images %>">
                                 </a>
                             </aside> <!-- col.// -->
                             <div class="col-md-6">
                                 <div class="info-main">
-                                    <a href="/users/productlist/<%= producto.id %>" class="h5 title mb-4">
-                                        <%= producto.name %> </a>
-                                    <p> <%= producto.description %> </p>
+                                    <a href="/users/productlist/<%= product.id %>" class="h5 title mb-4">
+                                        <%= product.name %> </a>
+                                    <p> <%= product.description %> </p>
                                 </div> <!-- info-main.// -->
                             </div> <!-- col.// -->
                             <aside class="col-sm-3">
                                 <div class="info-aside">
                                     <br>
                                     <p>
-                                        <a href="/users/productlist/<%= producto.id %>" class="btn btn-primary btn-block">
+                                        <a href="/users/productlist/<%= product.id %>" class="btn btn-primary btn-block">
                                             Detalles </a>
-                                        <a href="/product/edit/<%= producto.id %>" class="btn btn-light btn-block">
+                                        <a href="/product/edit/<%= product.id %>" class="btn btn-light btn-block">
                                             <span class="text">Editar</span>
                                         </a>
-                                        <form action="/product/delete/<%= producto.id %>?_method=DELETE" method="POST">
+                                        <form action="/product/delete/<%= product.id %>?_method=DELETE" method="POST">
                                             <button class="btn btn-light btn-block mt-2" type="submit">
                                                 <span class="text">Eliminar</span>
                                             </button>

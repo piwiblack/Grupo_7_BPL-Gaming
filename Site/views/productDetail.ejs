@@ -10,12 +10,12 @@
                 <aside class="col-md-6">
                     <article class="gallery-wrap">
                         <div class="img-big-wrap">
-                            <div> <a href="#"><img src="/images/productImages/<%= producto.image %>"></a></div>
+                            <div> <a href="#"><img src="/images/productImages/<%= producto.images %>"></a></div>
                         </div> <!-- slider-product.// -->
                         <div class="thumbs-wrap">
-                            <a href="" class="item-thumb"> <img src="/images/productImages/<%= producto.image %>"></a>
-                            <a href="" class="item-thumb"> <img src="/images/productImages/<%= producto.image %>"></a>
-                            <a href="" class="item-thumb"> <img src="/images/productImages/<%= producto.image %>"></a>
+                            <a href="" class="item-thumb"> <img src="/images/productImages/<%= producto.images %>"></a>
+                            <a href="" class="item-thumb"> <img src="/images/productImages/<%= producto.images %>"></a>
+                            <a href="" class="item-thumb"> <img src="/images/productImages/<%= producto.images %>"></a>
                         </div> <!-- slider-nav.// -->
                     </article> <!-- gallery-wrap .end// -->
                 </aside>
@@ -26,7 +26,7 @@
 
                         <div class="mb-3">
                             <var
-                                class="price h4">$<%= producto.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."); %></var>
+                                class="price h4">$<%= producto.price/*.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");*/ %></var>
                         </div> <!-- price-detail-wrap .// -->
 
                         <p><%= producto.description %>.</p>

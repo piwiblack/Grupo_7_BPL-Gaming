@@ -1,17 +1,14 @@
-const path = require('path')
-const dbProducts = require(path.join(__dirname, '..', 'data', 'dbProducts.js'), 'utf-8')
+const db = require('../database/models')
 
 const indexController = { 
     index:function(req,res) {
-
-        let destacados = dbProducts.filter(producto =>{
-            return producto.category == "destacado"
-        })
-
-        res.render('index',{
-            title:'BPLE Gaming',
-            destacados: destacados
-        })
+        db.Products.findAll()
+            .then(products =>{
+                res.render('index',{
+                    title:'BPLE Gaming',
+                    products: products
+                })
+            })
     }
 }
 module.exports = indexController;

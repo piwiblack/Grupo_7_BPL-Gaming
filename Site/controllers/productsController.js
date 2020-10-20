@@ -1,77 +1,64 @@
-const path = require('path');
-const fs = require('fs');
-const { debugPort } = require('process');
-
-const dbProducts = require('../data/dbProducts')
-const dbCategories = require('../data/dbCategories');
-
+const db = require('../database/models');
 
 const productsController = {
 
-    products: function (req, res) {
-        let productos = [];
+    listProducts: function (req, res) {
+        let categoriesList = db.Categories.findAll()
 
-        dbProducts.forEach(producto => {
-            productos.push(producto)
-        })
+        let productsList = db.Products.findAll()
 
-
-        res.render('products', {
-            title: 'BPLE - Productos',
-            productos: productos,
-            categories: dbCategories,
-            total: productos.length
-
-        })
+        Promise.all([categoriesList, productsList])
+            .then(function ([categories, products]) {
+                res.render('products', {
+                    title: 'BPLE - Productos',
+                    products: products,
+                    categories: categories,
+                    total: productos.length
+                })
+            })
     },
-
 
     detail: function (req, res) {
-
-        let productoElegido;
-
-        dbProducts.forEach(product => {
-            if (product.id == req.params.id) {
-                productoElegido = product
-            }
-        });
-
-        res.render('productDetail', {
-            title: 'BPLE - ' + productoElegido.name,
-            producto: productoElegido
-        })
-
+        db.Products.findByPk(req.params.id)
+            .then(product => {
+                res.render('productDetail', {
+                    title: 'BPLE - ' + product.name,
+                    producto: product
+                })
+            })
     },
 
-    add: function (req, res, next) {
 
-        let lastID = 1;
+    addForm: (req, res) => {
+        db.Categories.findAll()
+            .then(categories => {
+                res.render('productRegister', {
+                    title: 'BPLE Gaming - Registro Producto',
+                    categories: categories
+                })
+            })
+    },
 
-        dbProducts.forEach(producto =>{
-            if(producto.id > lastID){
-                lastID = producto.id 
-            }
-        })
-
-        let productoNuevo = {
-            id: lastID + 1,
+    addProduct: function (req, res, next) {
+        db.Products.create({
             name: req.body.name,
             price: Number(req.body.price),
-            category: req.body.category,
+            id_category: req.body.category,
             description: req.body.description,
             warranty: Number(req.body.warranty),
-            image: req.files[0].filename
-        }
+            images: req.files[0].filename,
+            status: req.body.status,
+            id_manager: 1
+        })
+            .then(product => {
 
-        
+                return res.redirect('/users/productlist/' + product.id)
+            })
+            .catch(err => {
+                res.send(err)
+            })
 
-        dbProducts.push(productoNuevo);
 
-        let productosJson = JSON.stringify(dbProducts)
-
-        fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'), productosJson)
-
-        res.redirect('/users/productlist/' + productoNuevo.id)
     },
 
     cart: function (req, res) {
@@ -101,60 +88,55 @@ const productsController = {
     },
 
     editForm: function (req, res) {
+        let requiredProduct = db.Products.findByPk(req.params.id)
 
-        let productoAEditar;
+        let categoriesList = db.Categories.findAll()
 
-        dbProducts.forEach(product => {
-            if (product.id == req.params.id) {
-                productoAEditar = product
-            }
-        });
-
-        res.render('productEdit', {
-            producto: productoAEditar,
-            title: 'BPLE - Editar Producto',
-            categories: dbCategories
-        })
+        Promise.all([requiredProduct, categoriesList])
+            .then(function ([product, categories]) {
+                res.render('productEdit', {
+                    title: 'BPLE - Editar Producto',
+                    product: product,
+                    categories: categories
+                })
+            })
+            .catch(err => {
+                res.send(err)
+            })
     },
 
-    edit: function (req, res) {
+    editProduct: function (req, res) {
+        db.Products.update({
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            id_category: req.body.category,
+            warranty: req.body.warranty,
+            images: (req.files[0]) ? req.files[0].filename : req.body.images,
+            status: req.body.status
+        },
+            {
+                where: {
+                    id: req.params.id
+                }
+            })
 
-        dbProducts.forEach(product => {
-            if (product.id == req.params.id) {
-                product.name = req.body.name
-                product.price = req.body.price
-                product.category = req.body.category
-                product.description = req.body.description
-                product.warranty = req.body.warranty
-                product.image = req.files[0].filename
-            }
-        });
-
-        let productosJson = JSON.stringify(dbProducts)
-
-        fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'), productosJson)
-
-        res.redirect('/users/productList/' + req.params.id)
+        res.redirect("/users/productlist/" + req.params.id)
     },
 
-    delete:function(req,res){
-        let inidiceDelproducto;
-
-        dbProducts.forEach(producto =>{
-            if(producto.id == req.params.id){
-                inidiceDelproducto = dbProducts.indexOf(producto);
+    delete: function (req, res) {
+        db.Products.destroy({
+            where: {
+                id: req.params.id
             }
         })
-
-        dbProducts.splice(inidiceDelproducto, 1)
-
-        let productosJson = JSON.stringify(dbProducts)
-
-        fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'), productosJson)
-
-
-        res.redirect('/users/productList')
+            .then(product => {
+                return res.redirect('/users/productList')
+            })
+            .catch(err => {
+                res.send(err)
+            })
     }
-
 }
+
 module.exports = productsController;

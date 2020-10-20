@@ -1,103 +1,96 @@
-const path = require('path');
-const express = require(`express`);
 const bcrypt = require('bcrypt');
-const fs = require(`fs`);
 const { validationResult } = require('express-validator');
-
-const dbProducts = require('../data/dbProducts');
-const dbCategories = require('../data/dbCategories');
-const dbUsers = require('../data/dbUsers');
+const db = require('../database/models');
 
 
 const usersController = {
     register: function (req, res, next) {
-
         let errors = validationResult(req)
 
         if (errors.isEmpty()) {
-            let lastID = 1;
-
-            dbUsers.forEach(usuario => {
-                if (usuario.id > lastID) {
-                    lastID = usuario.id
-                }
-            })
-
-            let usuarioNuevo = {
-                id: lastID + 1,
+            db.Users.create({
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 phone: req.body.phone,
                 email: req.body.email,
-                password: bcrypt.hashSync(req.body.password, 10)
-            }
+                password: bcrypt.hashSync(req.body.password, 10),
+                category: "user"
+            })
+                .then(user => {
+                    return res.redirect('/users/login/')
+                })
+                .catch(err => {
+                    res.send(err)
+                })
 
-
-
-            dbUsers.push(usuarioNuevo);
-
-            let usuariosJson = JSON.stringify(dbUsers)
-
-            fs.writeFileSync(path.join(__dirname, '..', 'data', 'users.json'), usuariosJson)
-
-            res.redirect('/users/login/')
         } else {
-            res.render('register', { errors: errors.errors, title: 'BPLE Gaming - Registro' })
+            res.render('register', {
+                errors: errors.errors,
+                title: 'BPLE Gaming - Registro'
+            })
         }
-
-
-
-
     },
-    login: function (req, res, next) {
 
+    login: function (req, res, next) {
         let errors = validationResult(req)
 
-        if (!errors.isEmpty()) {
-            res.render('login', { errors: errors.errors, title: 'BPLE Gaming - Login' })
-        } else {
-            dbUsers.forEach(user => {
-                if (user.email == req.body.email && bcrypt.compareSync(req.body.password, user.password)) {
-                    req.session.user = user   
-
-                    if(req.body.remember == 'on'){
-                        res.cookie('userLogin', req.session.user,{maxAge:1000*60*60})
-                    }
-
-                    res.redirect('/')
+        if (errors.isEmpty()) {
+            db.Users.findOne({
+                where: {
+                    email: req.body.email
                 }
-            })  
+            })
+                .then(user => {
+                    req.session.user = user
 
-            res.render('login', { errors: [{ msg: 'El usuario y la contraseña no coinciden' }], title: 'BPLE Gaming - Login' })
+                    if (req.body.remember == 'on') {
+                        res.cookie('userLogin', req.session.user, { maxAge: 1000 * 60 * 60 })
+                    }
+                    
+                    return res.redirect('/')
+                })
+                .catch(err => {
+                    res.send(err)
+                })
+
+        } else {
+            res.render('login', { errors: errors.errors, title: 'BPLE Gaming - Login' })
         }
 
     },
 
     productList: function (req, res) {
-        res.render('adminProductList', {
-            title: "BPLE Gaming - Perfil",
-            productos: dbProducts.filter(producto => {
-                return producto.category != "visited" && producto.category != "in-sale"
-            }),
-            total: dbProducts.length,
-            categories: dbCategories
-        })
+        let categoriesList = db.Categories.findAll();
+
+        let productsList = db.Products.findAll()
+
+        Promise.all([categoriesList, productsList])
+            .then(function ([categories, products]) {
+                res.render('adminProductList', {
+                    title: "BPLE Gaming - Perfil",
+                    total: products.length,
+                    products: products,
+                    categories: categories
+                })
+            })
     },
 
     productAdmin: function (req, res) {
-        let productoElegido;
+        let productList = db.Products.findAll()
 
-        dbProducts.forEach(product => {
-            if (product.id == req.params.id) {
-                productoElegido = product
-            }
-        });
 
-        res.render('adminProduct', {
-            title: 'BPLE - ' + productoElegido.name,
-            producto: productoElegido,
-            destacados: dbProducts
+        let requiredProduct = db.Products.findByPk(req.params.id, {
+            include: [{ association: "categories" }]
         })
+
+        Promise.all([productList, requiredProduct])
+            .then(function ([productList, product]) {
+                res.render('adminProduct', {
+                    title: 'BPLE - ' + product.name,
+                    product: product,
+                    productList: productList
+                })
+            })
     },
 
     profile: function (req, res) {
@@ -107,16 +100,14 @@ const usersController = {
         })
     },
 
-    logout: function(req,res){
+    logout: function (req, res) {
         req.session.destroy()
         res.redirect('/users/login')
-        if(req.cookies.userLogin){
-            res.cookie('userLogin',' ',{maxAge:-1});
+        if (req.cookies.userLogin) {
+            res.cookie('userLogin', ' ', { maxAge: -1 });
         }
         res.redirect('/')
     }
-
-
 }
 
 module.exports = usersController;
