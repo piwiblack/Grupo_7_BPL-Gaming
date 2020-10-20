@@ -5,7 +5,11 @@ const {Op, Sequelize} = require('sequelize');
 const productsController = {
 
     listProducts: function (req, res) {
-        let categoriesList = db.Categories.findAll()
+        let categoriesList = db.Categories.findAll({
+            order: [
+                ['name', 'ASC']
+            ]
+        })
 
         let productsList = db.Products.findAll()
 
@@ -70,9 +74,12 @@ const productsController = {
     },
 
     search: function (req, res) {
+        let categoriesList = db.Categories.findAll({
+            order: [
+                ['name', 'ASC']
+            ]
+        })
 
-
-        let categoriesList = db.Categories.findAll();
         let productSearch = db.Products.findAll({
             where: {
                 name: {
@@ -90,17 +97,17 @@ const productsController = {
                 categories: categories
             })
         })
-
-
-
        
     },
 
     editForm: function (req, res) {
         let requiredProduct = db.Products.findByPk(req.params.id)
 
-        let categoriesList = db.Categories.findAll()
-
+        let categoriesList =db.Categories.findAll({
+            order: [
+                ['name', 'ASC']
+            ]
+        })
         Promise.all([requiredProduct, categoriesList])
             .then(function ([product, categories]) {
                 res.render('productEdit', {

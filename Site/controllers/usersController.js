@@ -60,8 +60,11 @@ const usersController = {
     },
 
     productList: function (req, res) {
-        let categoriesList = db.Categories.findAll();
-
+        let categoriesList = db.Categories.findAll({
+            order: [
+                ['name', 'ASC']
+            ]
+        })
         let productsList = db.Products.findAll()
 
         Promise.all([categoriesList, productsList])

@@ -10,6 +10,7 @@ router.get('/detail/:id', productsController.detail);
 router.get('/cart', productsController.cart);
 router.get('/search', productsController.search);
 
+
 router.get('/add',logMiddleware , productsController.addForm);
 router.post('/add', uploadImageProduct.any(), productsController.addProduct)
 
