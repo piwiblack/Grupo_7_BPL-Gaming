@@ -1,4 +1,6 @@
 const db = require('../database/models');
+const {Op, Sequelize} = require('sequelize');
+
 
 const productsController = {
 
@@ -68,23 +70,30 @@ const productsController = {
     },
 
     search: function (req, res) {
-        let busqueda = (req.query.search);
 
-        let productos = [];
 
-        dbProducts.forEach(producto => {
-            if (producto.name.toLowerCase().includes(busqueda.toLowerCase())) {
-                productos.push(producto)
+        let categoriesList = db.Categories.findAll();
+        let productSearch = db.Products.findAll({
+            where: {
+                name: {
+                    [Op.substring] : req.query.search
+                }
             }
         })
 
-
-        res.render('products', {
-            title: 'BPLE - ' + busqueda,
-            productos: productos,
-            total: productos.length,
-            categories: dbCategories
+        Promise.all([categoriesList, productSearch])
+        .then(function([categories, products]){
+            res.render('products', {
+                title: 'BPLE - ' + req.query.search,
+                products: products,
+                total: products.length,
+                categories: categories
+            })
         })
+
+
+
+       
     },
 
     editForm: function (req, res) {
