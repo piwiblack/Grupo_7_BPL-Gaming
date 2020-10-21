@@ -1,79 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('partials/head') %>
-
 <body>
     <%- include('partials/header') %>
+    <section class="section-pagetop bg">
+        <div class="container">
+            <h2 class="title-page">Perfil</h2>
+            <nav>
+                <ol class="breadcrumb text-white">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Mi cuenta</li>
+                </ol>
+            </nav>
+        </div> 
+    </section>
     <div class="container padding-y">
-            <div class="row mb-5">
-                <aside class="col-md-3">
-                    <!--   SIDEBAR   -->
-                    <ul class="list-group">
-                        <a class="profile list-group-item" href="/users/productlist">Modificar Productos</a>
-                        <a class="profile list-group-item" href="#">Categoria</a>
-                        <a class="profile list-group-item" href="/users/productlist">Categoria</a>
-                        <a class="profile list-group-item" href="#">Categoria</a>
-                        <a class="profile list-group-item" href="#">Categoria</a>
-                        <a class="profile list-group-item" href="#">Categoria</a>
-                    </ul>
-                    <br>
-                    <a class="btn btn-light btn-block" href="/users/logout"> <i class="fa fa-power-off"></i> <span class="text">Salir</span> </a> 
-                    <!--   SIDEBAR .//END   -->
-                </aside>
-                <main class="col-md-9">
-                    <article class="card">
+
+        <div class="row mb-5">
+            <aside class="col-md-3">
+                <ul class="list-group">
+                    <a class="profile list-group-item" href="/users/productlist">Modificar Productos</a>
+                    <a class="profile list-group-item" href="#">Configuraciones</a>
+                    <a class="profile list-group-item" href="#">Mis Ordenes</a>
+                    <a class="profile list-group-item" href="#">Categoria</a>
+                    <a class="profile list-group-item" href="#">Categoria</a>
+                    <a class="profile list-group-item" href="#">Categoria</a>
+                </ul>
+                <br>
+                <a class="btn btn-light btn-block" href="/users/logout">
+                    <i class="fa fa-power-off"></i>
+                    <span class="text">Salir</span>
+                </a>
+            </aside>
+            <main class="col-md-9">
+                <article class="card">
                     <header class="card-header">
                         <h4 class="d-inline-block mr-3">Bienvenido</h4>
                     </header>
                     <div class="card-body">
                         <div class="row">
-                            <aside class="col-md-6">
-                                <h5>Datos Personales</h5>
-                                <dl class="row">     
-                                      <dt class="col-sm-3">Nombre</dt>
-                                      <dd class="col-sm-9"><%=  user.first_name + " " + user.last_name %> </dd>
-                
-                                      <dt class="col-sm-3">Email</dt>
-                                      <dd class="col-sm-9"><%= user.email %> </dd>
-                
-                                      <dt class="col-sm-3">Telefono</dt>
-                                      <dd class="col-sm-9"><%= user.phone %> </dd>
-                
-                                      <dt class="col-sm-3">DNI</dt>
-                                      <dd class="col-sm-9">42435829</dd>
-                                      
-                                </dl>
+                            <aside class="col-md-9">
+                                <h5>Datos personales</h5>
+                                <form action="/users/profile/<%=user.id%>?_method=PUT" method="POST">
+                                    <div class="form-group form-row">
+                                        <label class="col-md-3 col-form-label">Nombre</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Nombre"
+                                                name="first_name" value="<%=user.first_name%>" disabled>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Apellido"
+                                                name="last_name" value="<%=user.last_name%>" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-row">
+                                        <label class="col-md-3 col-form-label">Telefono</label>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <input name="phone" class="form-control" placeholder="Telefono"
+                                                    type="text" name="phone" value="<%=user.phone%>">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-row">
+                                        <label class="col-md-3 col-form-label">Email</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" class="form-control" placeholder="nombre@gmail.com"
+                                                name="email" value="<%=user.email%>" disabled>
+                                        </div>
+                                    </div>
+
                             </aside>
-                            <aside class="col-md-6">
+                            <aside class="col-md-9">
                                 <h5>Datos de envio</h5>
-                                <dl class="row">     
-                                      <dt class="col-sm-3">Provincia</dt>
-                                      <dd class="col-sm-9"></dd>
-                
-                                      <dt class="col-sm-3">Ciudad</dt>
-                                      <dd class="col-sm-9"></dd>
-                
-                                      <dt class="col-sm-5">Codigo Postal</dt>
-                                      <dd class="col-sm-7"></dd>
-                
-                                      <dt class="col-sm-3">Calle</dt>
-                                      <dd class="col-sm-9"></dd>
+                                <form action="/users/register" method="POST">
+                                    <div class="form-group form-row">
+                                        <label class="col-md-3 col-form-label">Provincia</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Provincia" name="state"
+                                                value="<%=user.state%>">
+                                        </div>
+                                    </div>
 
-                                      <dt class="col-sm-3">Numero</dt>
-                                      <dd class="col-sm-9"></dd>
+                                    <div class="form-group form-row">
+                                        <label class="col-md-3 col-form-label">Localidad</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Localidad" name="city"
+                                                value="<%=user.city%>">
+                                        </div>
+                                    </div>
 
-                                      <dt class="col-sm-3">Piso</dt>
-                                      <dd class="col-sm-9"></dd>
+                                    <div class="form-group form-row">
+                                        <label class="col-md-3 col-form-label">Codigo Postal</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Codigo Postal"
+                                                name="cp" value="<%=user.cp%>">
+                                        </div>
+                                    </div>
 
-                                      <dt class="col-sm-3">Dpto</dt>
-                                      <dd class="col-sm-9"></dd>
-                                      
-                                </dl>
+                                    <div class="form-group form-row">
+                                        <label class="col-md-3 col-form-label">Calle</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Calle" name="street"
+                                                value="<%=user.street%>">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-row">
+                                        <label class="col-md-3 col-form-label">Numero</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Numero"
+                                                name="house_number" value="<%=user.house_number%>">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-row">
+                                        <label class="col-md-3 col-form-label">Dpto</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Dpto" name="apartment"
+                                                value="<%=user.apartment%>">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-row">
+                                        <label class="col-md-3 col-form-label">Piso</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Piso" name="floor"
+                                                value="<%=user.floor%>">
+                                        </div>
+                                    </div>
+
+                                    <div class="form mb-2">
+                                        <div class="offset-sm-3">
+                                            <a href="/users/productlist">
+                                                <button class="btn btn-outline-primary" type="button">
+                                                    <span class="text">Cancelar</span>
+                                                </button>
+                                            </a>
+                                            <button class="btn btn-primary" type="submit">
+                                                <span class="text">Aplicar</span>
+                                            </button>
+                                        </div>
+                                    </div>
                             </aside>
-                        </div> <!-- row.// -->
+                        </div> 
                     </div>
         </div>
-    <%- include('partials/footer') %>
+        <%- include('partials/footer') %>
 </body>
 
 </html>

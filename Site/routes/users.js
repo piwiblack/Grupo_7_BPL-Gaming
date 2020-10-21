@@ -20,10 +20,12 @@ router.get('/register',(req,res) =>{
 });
 router.post('/register' ,registerValidator ,usersController.register);
 
-router.get('/profile', logMiddleware, usersController.profile);
 
 router.get('/logout' ,usersController.logout)
 
+router.get('/profile',logMiddleware ,usersController.profile)
+
+router.put('/profile/:id', usersController.editUser)
 
 router.get('/productlist', logMiddleware ,usersController.productList);
 router.get('/productlist/:id',logMiddleware ,usersController.productAdmin)

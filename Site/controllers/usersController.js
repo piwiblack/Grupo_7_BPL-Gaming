@@ -46,7 +46,7 @@ const usersController = {
                     if (req.body.remember == 'on') {
                         res.cookie('userLogin', req.session.user, { maxAge: 1000 * 60 * 60 })
                     }
-                    
+
                     return res.redirect('/')
                 })
                 .catch(err => {
@@ -97,10 +97,15 @@ const usersController = {
     },
 
     profile: function (req, res) {
-        res.render('profile', {
-            title: 'BPLE - Perfil',
-            user: req.session.user
-        })
+
+        db.Users.findByPk(req.session.user.id)
+            .then(user =>{
+                res.render('profile', {
+                    title: 'BPLE - Perfil',
+                    user: user
+                })
+            })
+        
     },
 
     logout: function (req, res) {
@@ -110,6 +115,31 @@ const usersController = {
             res.cookie('userLogin', ' ', { maxAge: -1 });
         }
         res.redirect('/')
+    },
+
+
+    editUser: function (req, res) {
+        db.Users.update({
+            phone: req.body.phone,
+            street: req.body.street,
+            city: req.body.city,
+            state: req.body.state,
+            cp: req.body.cp,
+            house_number: req.body.house_number,
+            apartment: req.body.apartment,
+            floor: req.body.floor
+        },
+            {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(user => {
+                return res.redirect('/users/profile')
+
+            })
+
+
     }
 }
 

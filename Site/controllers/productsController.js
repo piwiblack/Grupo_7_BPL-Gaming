@@ -91,7 +91,7 @@ const productsController = {
         Promise.all([categoriesList, productSearch])
         .then(function([categories, products]){
             res.render('products', {
-                title: 'BPLE - ' + req.query.search,
+                title: 'BPLE - Lista' + req.query.search,
                 products: products,
                 total: products.length,
                 categories: categories

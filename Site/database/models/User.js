@@ -29,7 +29,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(100),
             allowNull: false
         },
-        address:{
+        street:{
             type: dataTypes.STRING(45),
         },
         city:{
@@ -41,8 +41,17 @@ module.exports = (sequelize, dataTypes) => {
         phone:{
             type: dataTypes.INTEGER(10),  
         },
-        date:{
-            type: dataTypes.DATEONLY,
+        cp:{
+            type: dataTypes.STRING(45),
+        },
+        house_number:{
+            type: dataTypes.STRING(45),
+        },
+        apartment:{
+            type: dataTypes.STRING(45),
+        },
+        floor:{
+            type: dataTypes.STRING(45),
         }
     }
 
