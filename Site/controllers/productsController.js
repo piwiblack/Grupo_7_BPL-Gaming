@@ -4,6 +4,17 @@ const {Op, Sequelize} = require('sequelize');
 
 const productsController = {
 
+    listCategories: function(req, res){
+        db.Products.findAll( {
+            include: [{ association: "products" }]
+        })
+            .then(categorie =>{
+                res.render()
+            })
+
+
+    },
+
     listProducts: function (req, res) {
         let categoriesList = db.Categories.findAll({
             order: [
@@ -91,7 +102,7 @@ const productsController = {
         Promise.all([categoriesList, productSearch])
         .then(function([categories, products]){
             res.render('products', {
-                title: 'BPLE - Lista' + req.query.search,
+                title: 'BPLE - Productos ' + req.query.search,
                 products: products,
                 total: products.length,
                 categories: categories
