@@ -10,8 +10,8 @@
             <nav>
                 <ol class="breadcrumb text-white">
                     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-                    <li class="breadcrumb-item"><a href="/">Mi cuenta</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
+                    <li class="breadcrumb-item"><a href="/users/userslist">Usuarios</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><%= user.first_name  %> <%= user.last_name  %>  </li>
                 </ol>
             </nav>
         </div>
@@ -23,7 +23,7 @@
             <main class="col-md-9">
                 <article class="card">
                     <header class="card-header">
-                        <h4 class="d-inline-block mr-3">Bienvenido</h4>
+                        <h4 class="d-inline-block mr-3">Datos</h4>
                     </header>
                     <div class="card-body">
                         <div class="row">

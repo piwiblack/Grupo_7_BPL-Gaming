@@ -9,6 +9,9 @@ html {
 INCLUDE STYLES AND COMPONENTS
 ===================== */
 /* ================== HELPERS  =================== */
+.disnone {
+  display: none;
+}
 
 .profile{
   color: black !important;

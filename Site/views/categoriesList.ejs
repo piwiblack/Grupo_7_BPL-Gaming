@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('partials/head.ejs') %>
+<script src="/js/gridAndList.js"></script>
 
 <body>
     <%- include('partials/header') %>
@@ -21,6 +22,9 @@
 
     <section class="section-content padding-y">
         <div class="container">
+
+
+
 
             <div class="row">
                 <aside class="col-md-3">
@@ -47,55 +51,90 @@
                     </a>
                 </aside>
                 <main class="col-md-9">
-
                     <header class="border-bottom mb-4 pb-3">
                         <div class="form-inline">
                             <span class="mr-md-auto"><%= total %> categorias</span>
                             <div class="btn-group">
-                                <a href="/categories/add" class="btn  btn-outline-secondary" data-toggle="tooltip" title=""
-                                    data-original-title="Grid view">
+                                <a href="/categories/add" class="btn  btn-outline-secondary" data-toggle="tooltip"
+                                    title="" data-original-title="Grid view">
                                     <i class="fas fa-plus"></i></a>
-                                <a href="#" class="btn btn-outline-secondary active" data-toggle="tooltip" title=""
-                                    data-original-title="List view">
+                                <a id="filasBoton" href="#" class="btn btn-outline-secondary active"
+                                    data-toggle="tooltip" title="" data-original-title="List view">
                                     <i class="fa fa-bars"></i></a>
-                                <a href="#" class="btn  btn-outline-secondary" data-toggle="tooltip" title=""
-                                    data-original-title="Grid view">
+                                <a id="gridBoton" href="#" class="btn  btn-outline-secondary" data-toggle="tooltip"
+                                    title="" data-original-title="Grid view">
                                     <i class="fa fa-th"></i></a>
-
                             </div>
                         </div>
-                    </header><!-- sect-heading -->
+                    </header>
 
-                    <% categories.forEach(category => { %>
-                    <article class="card card-product-list">
-                        <div class="row no-gutters">
-                            <aside class="col-md-3">
-                                <a href="/categories/categorieslist/<%= category.id %>" class="img-wrap">
+
+                    <div id="grid" class="row disnone">
+                        <% categories.forEach(category => { %>
+                        <div class="col-md-4">
+                            <figure class="card card-product-grid ">
+                                <div class="img-wrap">
                                     <img src="/images/imagenproducto.jpg">
-                                </a>
-                            </aside> <!-- col.// -->
-                            <div class="col-md-6">
-                                <div class="info-main">
-                                    <a href="/users/userslist/<%= user.id %>" class="h5 title mb-4">
-                                        <%= category.name %></a>
-                                </div> <!-- info-main.// -->
-                            </div> <!-- col.// -->
-                            <aside class="col-sm-3">
-                                <div class="info-aside">
-                                    <br>
-                                    <p>
-                                        <a href="/users/userslist/<%= category.id %>" class="btn btn-primary btn-block">
-                                            Productos </a>
-                                        <a href="/categories/categorieslist/<%= category.id %>"
-                                            class="btn btn-light btn-block">
-                                            <span class="text">Editar</span>
-                                        </a>
-                                    </p>
-                                </div> <!-- info-aside.// -->
-                            </aside> <!-- col.// -->
-                        </div> <!-- row.// -->
-                    </article> <!-- card-product .// -->
-                    <% }) %>
+                                </div>
+                                <figcaption class="info-wrap">
+                                    <div class="info-main">
+                                        <a href="/categories/categorieslist/<%= category.id %>" class="h6 title">
+                                            <%= category.name %> </a>
+                                    </div>
+                                    <div class="info-aside">
+                                        <br>
+                                        <p>
+                                            <a href="/users/userslist/<%= category.id %>"
+                                                class="btn btn-primary btn-block">
+                                                Productos </a>
+                                            <a href="/categories/categorieslist/<%= category.id %>"
+                                                class="btn btn-light btn-block">
+                                                <span class="text">Editar</span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <% }) %>
+                    </div>
+
+
+
+                    <div id="filas">
+                        <% categories.forEach(category => { %>
+                        <article class="card card-product-list">
+                            <div class="row no-gutters">
+                                <aside class="col-md-3">
+                                    <a href="/categories/categorieslist/<%= category.id %>" class="img-wrap">
+                                        <img src="/images/imagenproducto.jpg">
+                                    </a>
+                                </aside> <!-- col.// -->
+                                <div class="col-md-6">
+                                    <div class="info-main">
+                                        <a href="/users/userslist/<%= user.id %>" class="h5 title mb-4">
+                                            <%= category.name %></a>
+                                    </div> <!-- info-main.// -->
+                                </div> <!-- col.// -->
+                                <aside class="col-sm-3">
+                                    <div class="info-aside">
+                                        <br>
+                                        <p>
+                                            <a href="/users/userslist/<%= category.id %>"
+                                                class="btn btn-primary btn-block">
+                                                Productos </a>
+                                            <a href="/categories/categorieslist/<%= category.id %>"
+                                                class="btn btn-light btn-block">
+                                                <span class="text">Editar</span>
+                                            </a>
+                                        </p>
+                                    </div> <!-- info-aside.// -->
+                                </aside> <!-- col.// -->
+                            </div> <!-- row.// -->
+                        </article> <!-- card-product .// -->
+                        <% }) %>
+                    </div>
+
 
                     <nav aria-label="Page navigation sample">
                         <ul class="pagination">

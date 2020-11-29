@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('partials/head.ejs') %>
+<script src="/js/gridAndList.js"></script>
 
 <body>
     <%- include('partials/header') %>
@@ -52,52 +53,92 @@
                         <div class="form-inline">
                             <span class="mr-md-auto"><%= total %> usuarios</span>
                             <div class="btn-group">
-                                <a href="#" class="btn btn-outline-secondary active" data-toggle="tooltip" title=""
-                                    data-original-title="List view">
+                                <a href="/categories/add" class="btn  btn-outline-secondary" data-toggle="tooltip"
+                                    title="" data-original-title="Grid view">
+                                    <i class="fas fa-plus"></i></a>
+                                <a id="filasBoton" href="#" class="btn btn-outline-secondary active"
+                                    data-toggle="tooltip" title="" data-original-title="List view">
                                     <i class="fa fa-bars"></i></a>
-                                <a href="#" class="btn  btn-outline-secondary" data-toggle="tooltip" title=""
-                                    data-original-title="Grid view">
+                                <a id="gridBoton" href="#" class="btn  btn-outline-secondary" data-toggle="tooltip"
+                                    title="" data-original-title="Grid view">
                                     <i class="fa fa-th"></i></a>
-
                             </div>
                         </div>
-                    </header><!-- sect-heading -->
+                    </header>
 
-                    <% users.forEach(user => { %>
-                    <article class="card card-product-list">
-                        <div class="row no-gutters">
-                            <aside class="col-md-3">
-                                <a href="/users/userslist/<%= user.id %>" class="img-wrap">
+                    <div id="grid" class="row disnone">
+                        <% users.forEach(user => { %>
+                        <div class="col-md-4">
+                            <figure class="card card-product-grid ">
+                                <div class="img-wrap">
                                     <img src="/images/imagenproducto.jpg">
-                                </a>
-                            </aside> <!-- col.// -->
-                            <div class="col-md-6">
-                                <div class="info-main">
-                                    <a href="/users/userslist/<%= user.id %>" class="h5 title mb-4">
-                                        <%= user.first_name %> <%= user.last_name %></a>
+                                </div>
+                                <figcaption class="info-wrap">
+                                    <div class="info-main">
+                                        <a href="/users/userslist/<%= user.id %>" class="h6 title">
+                                            <%= user.first_name %> <%= user.last_name %> </a>
+                                            <ul>
+                                                <li><%= user.email %></li>
+                                                <li><%= user.phone %></li>
+                                                <li><%= user.category %></li>
+                                            </ul>
+                                    </div>
+                                    <div class="info-aside">
+                                        <br>
+                                        <p>
+                                            <a href="/users/userslist/<%= user.id %>" class="btn btn-primary btn-block">
+                                                Detalles </a>
+                                            <a href="/users/userslist/addadmin/<%= user.id %>"
+                                                class="btn btn-light btn-block">
+                                                <span class="text">Editar</span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <% }) %>
+                    </div>
+
+
+                    <div id="filas">
+                        <% users.forEach(user => { %>
+                        <article class="card card-product-list">
+                            <div class="row no-gutters">
+                                <aside class="col-md-3">
+                                    <a href="/users/userslist/<%= user.id %>" class="img-wrap">
+                                        <img src="/images/imagenproducto.jpg">
+                                    </a>
+                                </aside> <!-- col.// -->
+                                <div class="col-md-6">
+                                    <div class="info-main">
+                                        <a href="/users/userslist/<%= user.id %>" class="h5 title mb-4">
+                                            <%= user.first_name %> <%= user.last_name %></a>
                                         <ul>
                                             <li><%= user.email %></li>
                                             <li><%= user.phone %></li>
                                             <li><%= user.category %></li>
                                         </ul>
-                                </div> <!-- info-main.// -->
-                            </div> <!-- col.// -->
-                            <aside class="col-sm-3">
-                                <div class="info-aside">
-                                    <br>
-                                    <p>
-                                        <a href="/users/userslist/<%= user.id %>" class="btn btn-primary btn-block">
-                                            Detalles </a>
-                                        <a href="/users/userslist/addadmin/<%= user.id %>"
-                                            class="btn btn-light btn-block">
-                                            <span class="text">Editar</span>
-                                        </a>
-                                    </p>
-                                </div> <!-- info-aside.// -->
-                            </aside> <!-- col.// -->
-                        </div> <!-- row.// -->
-                    </article> <!-- card-product .// -->
-                    <% }) %>
+                                    </div> <!-- info-main.// -->
+                                </div> <!-- col.// -->
+                                <aside class="col-sm-3">
+                                    <div class="info-aside">
+                                        <br>
+                                        <p>
+                                            <a href="/users/userslist/<%= user.id %>" class="btn btn-primary btn-block">
+                                                Detalles </a>
+                                            <a href="/users/userslist/addadmin/<%= user.id %>"
+                                                class="btn btn-light btn-block">
+                                                <span class="text">Editar</span>
+                                            </a>
+                                        </p>
+                                    </div> <!-- info-aside.// -->
+                                </aside> <!-- col.// -->
+                            </div> <!-- row.// -->
+                        </article> <!-- card-product .// -->
+                        <% }) %>
+                    </div>
+
 
                     <nav aria-label="Page navigation sample">
                         <ul class="pagination">

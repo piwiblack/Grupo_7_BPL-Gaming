@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('partials/head.ejs') %>
-
+<script src="/js/gridAndList.js"></script>
 <body>
     <%- include('partials/header') %>
     <section class="section-pagetop bg">
@@ -111,57 +111,97 @@
                 </aside> <!-- col.// -->
                 <main class="col-md-9">
 
+
+
                     <header class="border-bottom mb-4 pb-3">
                         <div class="form-inline">
                             <span class="mr-md-auto"><%= total %> productos</span>
                             <div class="btn-group">
-                                <a href="#" class="btn btn-outline-secondary active" data-toggle="tooltip" title=""
-                                    data-original-title="List view">
+                                <a id="filasBoton" href="#" class="btn btn-outline-secondary active"
+                                    data-toggle="tooltip" title="" data-original-title="List view">
                                     <i class="fa fa-bars"></i></a>
-                                <a href="#" class="btn  btn-outline-secondary" data-toggle="tooltip" title=""
-                                    data-original-title="Grid view">
+                                <a id="gridBoton" href="#" class="btn  btn-outline-secondary" data-toggle="tooltip"
+                                    title="" data-original-title="Grid view">
                                     <i class="fa fa-th"></i></a>
+
                             </div>
                         </div>
-                    </header><!-- sect-heading -->
+                    </header>
 
-                    <% products.forEach(product => { %>
-                    <article class="card card-product-list">
-                        <div class="row no-gutters">
-                            <aside class="col-md-3">
-                                <a href="/product/detail/<%= product.id %>" class="img-wrap">
-                                    <img src="/images/productImages/<%= product.images %>">
-                                </a>
-                            </aside> <!-- col.// -->
-                            <div class="col-md-6">
-                                <div class="info-main">
-                                    <a href="/product/detail/<%= product.id %>" class="h5 title mb-4">
-                                        <%= product.name %> </a>
-                                    <p> <%= product.description %> </p>
-                                </div> <!-- info-main.// -->
-                            </div> <!-- col.// -->
-                            <aside class="col-sm-3">
-                                <div class="info-aside">
-                                    <div class="price-wrap">
-                                        <span
-                                            class="price h5">$<%= product.price/*.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");*/  %>
-                                        </span>
-                                    </div> <!-- info-price-detail // -->
-                                    <br>
-                                    <p>
-                                        <a href="/product/detail/<%= product.id %>"
-                                            class="btn btn-primary btn-block">Detalles</a>
-                                        <a href="#" class="btn btn-light btn-block">
-                                            <span class="text">Añadir</span>
-                                            <i class="fas fa-shopping-cart"></i>
+
+
+                    <div id="grid" class="row disnone">
+                        <% products.forEach(product => { %>
+                                <div class="col-md-4">
+                                    <figure class="card card-product-grid ">
+                                        <div class="img-wrap">
+                                            <img src="/images/productImages/<%= product.images %>">
+                                        </div> 
+                                        <figcaption class="info-wrap">
+                                            <div class="info-main">
+                                                <a href="/product/detail/<%= product.id %>" class="h6 title">
+                                                    <%= product.name %> </a>
+                                                    <p> <%= product.description %> </p>
+                                            </div> 
+                                            <div class="info-aside">
+                                                <br>
+                                                <p>
+                                                    <a href="/product/detail/<%= product.id %>"
+                                                        class="btn btn-primary btn-block">Detalles</a>
+                                                    <a href="#" class="btn btn-light btn-block">
+                                                        <span class="text">Añadir</span>
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </a>
+                                                </p>
+                                            </div> 
+        
+                                        </figcaption>
+                                    </figure>
+                                </div> 
+                                <% }) %>
+                            </div>
+
+
+                    <div id=filas>
+                        <% products.forEach(product => { %>
+                            <article class="card card-product-list">
+                                <div class="row no-gutters">
+                                    <aside class="col-md-3">
+                                        <a href="/product/detail/<%= product.id %>" class="img-wrap">
+                                            <img src="/images/productImages/<%= product.images %>">
                                         </a>
-
-                                    </p>
-                                </div> <!-- info-aside.// -->
-                            </aside> <!-- col.// -->
-                        </div> <!-- row.// -->
-                    </article> <!-- card-product .// -->
-                    <% }) %>
+                                    </aside> <!-- col.// -->
+                                    <div class="col-md-6">
+                                        <div class="info-main">
+                                            <a href="/product/detail/<%= product.id %>" class="h5 title mb-4">
+                                                <%= product.name %> </a>
+                                            <p> <%= product.description %> </p>
+                                        </div> <!-- info-main.// -->
+                                    </div> <!-- col.// -->
+                                    <aside class="col-sm-3">
+                                        <div class="info-aside">
+                                            <div class="price-wrap">
+                                                <span
+                                                    class="price h5">$<%= product.price/*.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");*/  %>
+                                                </span>
+                                            </div> <!-- info-price-detail // -->
+                                            <br>
+                                            <p>
+                                                <a href="/product/detail/<%= product.id %>"
+                                                    class="btn btn-primary btn-block">Detalles</a>
+                                                <a href="#" class="btn btn-light btn-block">
+                                                    <span class="text">Añadir</span>
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                </a>
+        
+                                            </p>
+                                        </div> <!-- info-aside.// -->
+                                    </aside> <!-- col.// -->
+                                </div> <!-- row.// -->
+                            </article> <!-- card-product .// -->
+                            <% }) %>
+                    </div>
+                    
 
                     <nav aria-label="Page navigation sample">
                         <ul class="pagination">
