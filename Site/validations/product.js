@@ -3,9 +3,9 @@ var router = express.Router();
 const { check, validationResult, body } = require('express-validator')
 let db = require('../database/models')
 
-const register = [
-    check('name').isLength({min:2}).withMessage('El nombre debe tener mas de 2 caracteres'),
-    check('last_name').isLength({min:2}).withMessage('El nombre debe tener mas de 2 caracteres'),
+const product = [
+    check('name').isLength({min:5}).withMessage('El nombre del producto debe tener al menos 5 caracteres'),
+    check('description').isLength({min:20}).withMessage('La descripcion del producto debe tener al menos 20 caracteres'),
     check('email').isEmail().withMessage('El email ingresado no es valido'),
     body('email').custom((value) =>{
         return db.Users.findOne({

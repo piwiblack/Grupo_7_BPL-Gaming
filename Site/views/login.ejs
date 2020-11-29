@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <%- include(`./partials/head.ejs`) %>
+  <script src="/js/loginValidator.js"></script>
 <body>
     <%- include('partials/header') %> 
     <section class="section-conten padding-y" style="min-height:84vh">
@@ -9,14 +10,14 @@
             <div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
               <div class="card-body">
                 <h4 class="card-title mb-4">Ingresar</h4>
-                <ul class="list-error mb-4">
+                <ul id="errors" class="list-error mb-4">
                   <% if (typeof errors != 'undefined') {%>
                       <% errors.forEach(error =>{ %>
                        <li><%= error.msg %></li>
                       <% }) %>
                   <% } %>
               </ul>
-                <form action="/users/login" method="POST" >
+                <form id="login" action="/users/login" method="POST" >
                     <div class="form-group">
                        <label>Usuario</label>
                        <input class="form-control" type="email" name="email">

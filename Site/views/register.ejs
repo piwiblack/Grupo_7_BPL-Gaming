@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head') %>
-
+<script src="/js/registerValidator.js"></script>
 <body>
     <%- include('./partials/header') %>
     <section class="section-content padding-y">
@@ -15,11 +15,21 @@
                     <ul class="list-error mb-4">
                         <% if (typeof errors != 'undefined') {%>
                             <% errors.forEach(error =>{ %>
-                             <li><%= error.msg %></li>
+                             <li ><%= error.msg %></li>
                             <% }) %>
                         <% } %>
                     </ul>
-                    <form action="/users/register" method="POST">
+                    <ul class="list-error mb-4">
+                      <span class="list-error mb-4" id="emptyError"></span>
+                      <span class="list-error mb-4" id="nameError"></span>
+                      <span class="list-error mb-4" id="lastNameError"></span>
+                      <span class="list-error mb-4" id="phoneError"></span>
+                      <span class="list-error mb-4" id="emailError"></span>
+                      <span class="list-error mb-4" id="passwordError"></span>
+                      <span class="list-error mb-4" id="confirmPassError"></span>
+
+                  </ul>
+                    <form id="register" action="/users/register" method="POST">
                       <div class="form-group form-row">
                         <label class="col-md-3 col-form-label">Nombre</label>
                         <div class="col">

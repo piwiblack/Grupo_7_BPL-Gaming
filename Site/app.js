@@ -11,6 +11,7 @@ var localsUserCheck = require('./middlewares/localsUserCheck')
 var indexRouter = require('./routes/index');
 var productsRouter = require('./routes/products');
 var usersRouter = require('./routes/users')
+var categoriesRouter = require('./routes/categories')
 var app = express();
 
 
@@ -30,6 +31,7 @@ app.use(localsUserCheck)
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/product', productsRouter);
+app.use('/categories', categoriesRouter);
 
 
 app.use((req, res, next) => {

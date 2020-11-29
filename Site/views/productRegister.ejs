@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('partials/head') %>
-
+<script src="/js/product.js"></script>
 <body>
     <%- include('partials/header') %>
     <div class="container padding-y">
@@ -21,7 +21,14 @@
                 </aside>
                 <main class="col-md-6 border-left">
                     <article class="content-body">
-                        <form action="/product/add" method="POST" enctype="multipart/form-data">
+                        <ul id="errors" class="list-error mb-4">
+                            <% if (typeof errors != 'undefined') {%>
+                                <% errors.forEach(error =>{ %>
+                                 <li><%= error.msg %></li>
+                                <% }) %>
+                            <% } %>
+                        </ul>
+                        <form id="register" action="/product/add" method="POST" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <input type="text" placeholder="Nombre" class="form-control" name="name" >
@@ -35,7 +42,7 @@
     
                             <select id="inputState" class="form-control mb-3" name="category">
                                 <% categories.forEach(category => { %>
-                                        <option value=" <%= category.id %>"> 
+                                        <option value="<%= category.id %>"> 
                                             <%= category.name %>
                                         </option>
                                 <% }) %>
@@ -52,13 +59,6 @@
                                     <input type="file" class="form-control" name="images">
                                 </div>
                             </div> 
-
-                            <div class="form-group">
-                                <label class="float-left custom-control custom-checkbox"> 
-                                    <input type="checkbox" class="custom-control-input" name="status" value="on"> 
-                                    <div class="custom-control-label">Destacado</div> 
-                                </label>
-                            </div>
 
                             <div class="form">
                                 <label>Garantia</label>

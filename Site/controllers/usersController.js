@@ -59,6 +59,36 @@ const usersController = {
 
     },
 
+    usersList: function (req, res) {
+
+        let usersList = db.Users.findAll()
+
+        Promise.all([usersList])
+            .then(function ([users]) {
+                res.render('adminUserList', {
+                    title: 'BPLE - Usuarios',
+                    users: users,
+                    total: users.length
+                })
+            })
+    },
+
+    userProfile: function (req, res) {
+        let usersList = db.Users.findAll()
+
+
+        let requiredUser = db.Users.findByPk(req.params.id)
+
+        Promise.all([usersList, requiredUser])
+            .then(function ([usersList, user]) {
+                res.render('adminUser', {
+                    title: 'BPLE - ' + user.name,
+                    user: user,
+                    usersList: usersList
+                })
+            })
+    },
+
     productList: function (req, res) {
         let categoriesList = db.Categories.findAll({
             order: [
@@ -110,11 +140,10 @@ const usersController = {
 
     logout: function (req, res) {
         req.session.destroy()
-        res.redirect('/users/login')
+        res.redirect('/')
         if (req.cookies.userLogin) {
             res.cookie('userLogin', ' ', { maxAge: -1 });
         }
-        res.redirect('/')
     },
 
 
@@ -138,9 +167,41 @@ const usersController = {
                 return res.redirect('/users/profile')
 
             })
+    },
+
+    
+    addAdmin: function (req, res) {
+        let usersList = db.Users.findAll()
 
 
-    }
+        let requiredUser = db.Users.findByPk(req.params.id)
+
+        Promise.all([usersList, requiredUser])
+            .then(function ([usersList, user]) {
+                res.render('addAdmin', {
+                    title: 'BPLE - ' + user.name,
+                    user: user,
+                    usersList: usersList
+                })
+            })
+    },
+
+    saveAddAdmin: function (req, res) {
+        db.Users.update({
+            category: req.body.category
+        },
+            {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(user => {
+                return res.redirect('/users/profile')
+
+            })
+
+    },
+
 }
 
 module.exports = usersController;

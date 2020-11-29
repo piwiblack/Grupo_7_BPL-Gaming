@@ -36,11 +36,12 @@ const productsController = {
     },
 
     detail: function (req, res) {
+
         db.Products.findByPk(req.params.id)
             .then(product => {
                 res.render('productDetail', {
                     title: 'BPLE - ' + product.name,
-                    producto: product
+                    producto: product,
                 })
             })
     },
@@ -64,8 +65,7 @@ const productsController = {
             description: req.body.description,
             warranty: Number(req.body.warranty),
             images: req.files[0].filename,
-            status: req.body.status,
-            id_manager: 1
+            status: req.body.status
         })
             .then(product => {
 

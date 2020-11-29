@@ -6,13 +6,13 @@
     <%- include('partials/header') %>
     <section class="section-pagetop bg">
         <div class="container">
-            <h2 class="title-page">Productos</h2>
+            <h2 class="title-page">Usuarios</h2>
 
             <nav>
                 <ol class="breadcrumb text-white">
                     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
                     <li class="breadcrumb-item"><a href="/users/profile">Mi cuenta</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Productos</li>
+                    <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
                 </ol>
             </nav>
 
@@ -27,12 +27,12 @@
                     <ul class="list-group">
                         <form class="pb-3">
                             <div class="input-group">
-                              <input type="text" class="form-control" placeholder="Buscar">
-                              <div class="input-group-append">
-                                <button class="btn btn-light" type="button"><i class="fa fa-search"></i></button>
-                              </div>
+                                <input type="text" class="form-control" placeholder="Buscar">
+                                <div class="input-group-append">
+                                    <button class="btn btn-light" type="button"><i class="fa fa-search"></i></button>
+                                </div>
                             </div>
-                            </form>
+                        </form>
                         <a class="profile list-group-item" href="/users/profile">Perfil</a>
                         <a class="profile list-group-item" href="/users/productlist">Productos</a>
                         <a class="profile list-group-item" href="/categories/categorieslist">Categorias</a>
@@ -50,11 +50,8 @@
 
                     <header class="border-bottom mb-4 pb-3">
                         <div class="form-inline">
-                            <span class="mr-md-auto"><%= total %>   productos</span>
+                            <span class="mr-md-auto"><%= total %> usuarios</span>
                             <div class="btn-group">
-                                <a href="/product/add" class="btn  btn-outline-secondary" data-toggle="tooltip" title=""
-                                data-original-title="Grid view">
-                                <i class="fas fa-plus"></i></a>
                                 <a href="#" class="btn btn-outline-secondary active" data-toggle="tooltip" title=""
                                     data-original-title="List view">
                                     <i class="fa fa-bars"></i></a>
@@ -66,35 +63,35 @@
                         </div>
                     </header><!-- sect-heading -->
 
-                    <% products.forEach(product => { %>
+                    <% users.forEach(user => { %>
                     <article class="card card-product-list">
                         <div class="row no-gutters">
                             <aside class="col-md-3">
-                                <a href="/users/productlist/<%= product.id %>" class="img-wrap">
-                                    <img src="/images/productImages/<%= product.images %>">
+                                <a href="/users/userslist/<%= user.id %>" class="img-wrap">
+                                    <img src="/images/imagenproducto.jpg">
                                 </a>
                             </aside> <!-- col.// -->
                             <div class="col-md-6">
                                 <div class="info-main">
-                                    <a href="/users/productlist/<%= product.id %>" class="h5 title mb-4">
-                                        <%= product.name %> </a>
-                                    <p> <%= product.description %> </p>
+                                    <a href="/users/userslist/<%= user.id %>" class="h5 title mb-4">
+                                        <%= user.first_name %> <%= user.last_name %></a>
+                                        <ul>
+                                            <li><%= user.email %></li>
+                                            <li><%= user.phone %></li>
+                                            <li><%= user.category %></li>
+                                        </ul>
                                 </div> <!-- info-main.// -->
                             </div> <!-- col.// -->
                             <aside class="col-sm-3">
                                 <div class="info-aside">
                                     <br>
                                     <p>
-                                        <a href="/users/productlist/<%= product.id %>" class="btn btn-primary btn-block">
+                                        <a href="/users/userslist/<%= user.id %>" class="btn btn-primary btn-block">
                                             Detalles </a>
-                                        <a href="/product/edit/<%= product.id %>" class="btn btn-light btn-block">
+                                        <a href="/users/userslist/addadmin/<%= user.id %>"
+                                            class="btn btn-light btn-block">
                                             <span class="text">Editar</span>
                                         </a>
-                                        <form action="/product/delete/<%= product.id %>?_method=DELETE" method="POST">
-                                            <button class="btn btn-light btn-block mt-2" type="submit">
-                                                <span class="text">Eliminar</span>
-                                            </button>
-                                        </form>
                                     </p>
                                 </div> <!-- info-aside.// -->
                             </aside> <!-- col.// -->
