@@ -4,8 +4,10 @@ const { check, validationResult, body } = require('express-validator')
 let db = require('../database/models')
 
 const register = [
-    check('name').isLength({min:2}).withMessage('El nombre debe tener mas de 2 caracteres'),
+    check('first_name').isLength({min:2}).withMessage('El nombre debe tener mas de 2 caracteres'),
     check('last_name').isLength({min:2}).withMessage('El nombre debe tener mas de 2 caracteres'),
+    check('phone').isLength({min:10}).withMessage('El telefono es invalido'),
+    check('phone').isNumeric().withMessage('El telefono es invalido'),
     check('email').isEmail().withMessage('El email ingresado no es valido'),
     body('email').custom((value) =>{
         return db.Users.findOne({

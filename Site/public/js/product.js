@@ -2,6 +2,13 @@ let qs = function (elemento) {
     return document.querySelector(elemento)
 }
 
+function increment() {
+    document.getElementById('demoInput').stepUp();
+}
+function decrement() {
+    document.getElementById('demoInput').stepDown();
+}
+
 window.addEventListener('load', function () {
 
     let form = qs('form#register')
@@ -11,56 +18,61 @@ window.addEventListener('load', function () {
     let inputCategory = form.elements[2]
     let inputDescription = form.elements[3]
     let inputPhoto = form.elements[4]
-    let inputWarranty = form.elements[5]
+    let inputWarranty = form.elements[6]
 
-    let errores = {}
-    let regExExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
 console.log(form.elements)
 
 
-    inputName.addEventListener('blur', function () {
+    let errores = {}
+    let regExExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
+    let regExNumber = /^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/;
+
+
+    inputName.addEventListener('change', function () {
         switch (true) {
             case this.value.length === 0:
-                errores.nombre = "El campo nombre es obligatorio";
-                errors.innerHTML = '<li>' + errores.nombre + '</li>';
+                errores.nombre = "El nombre es obligatorio";
+                nameError.innerHTML = errores.nombre;
                 this.classList.add('is-invalid')
-                break
-            case this.value.trim().length <= 3:
+                break;
+            case this.value.trim().length < 3:
                 errores.nombre = "El nombre tienen que tener al menos 3 caracteres"
-                errors.innerHTML = '<li>' + errores.nombre + '</li>';
+                nameError.innerHTML = errores.nombre ;
                 this.classList.add('is-invalid')
+                break;
             default:
                 this.classList.remove('is-invalid')
                 this.classList.add('is-valid')
-                errors.innerHTML = ""
+                nameError.innerHTML = ""
+                break;
         }
     })
 
-    inputPrice.addEventListener('blur', function () {
+    inputPrice.addEventListener('change', function () {
         switch (true) {
             case this.value.length === 0:
                 errores.precio = "El campo precio es obligatorio";
-                errors.innerHTML = '<li>' + errores.precio + '</li>';
+                priceError.innerHTML = errores.precio;
                 this.classList.add('is-invalid')
                 break;
-            case this.value.isInteger:
+            case !regExNumber.test(this.value):
                 errores.precio = "El precio tiene que ser un numero"
-                errors.innerHTML = '<li>' + errores.precio + '</li>';
+                priceError.innerHTML = errores.precio;
                 this.classList.add('is-invalid')
                 break;
             default:
                 this.classList.remove('is-invalid')
                 this.classList.add('is-valid')
-                errors.innerHTML = ""
+                priceError.innerHTML = ""
                 break;
         }
     })
 
-    inputCategory.addEventListener('blur', function () {
+    inputCategory.addEventListener('change', function () {
         switch (true) {
             case this.value.length == undefined:
                 errores.categoria = "El campo categoria es obligatorio";
-                errors.innerHTML = '<li>' + errores.categoria + '</li>';
+                categoryError.innerHTML = errores.categoria;
                 this.classList.add('is-invalid')
                 break;
             default:
@@ -71,22 +83,22 @@ console.log(form.elements)
     })
 
 
-    inputDescription.addEventListener('blur', function () {
+    inputDescription.addEventListener('change', function () {
         switch (true) {
             case this.value == "":
                 errores.descripcion = "El campo descripcion es obligatorio"
-                errors.innerHTML = '<li>' + errores.descripcion + '</li>';
+                descriptionError.innerHTML = errores.descripcion ;
                 this.classList.add('is-invalid')
                 break;
-            case this.value <= 20:
+            case this.value.length < 20:
                 errores.descripcion = "La descripcion debe tener mas de 20 caracteres"
-                errors.innerHTML = '<li>' + errores.descripcion + '</li>';
+                descriptionError.innerHTML =  errores.descripcion ;
                 this.classList.add('is-invalid')
                 break;
             default:
                 this.classList.remove('is-invalid')
                 this.classList.add('is-valid')
-                errors.innerHTML = ""
+                descriptionError.innerHTML = ""
                 break;
         }
     })
@@ -94,41 +106,45 @@ console.log(form.elements)
 
     inputPhoto.addEventListener('change', function (e) {
         switch (true) {
-            case !regExExtensions.test(this.value):
+            case !regExExtensions.exec(this.value):
                 errores.photo = "Solo imagenes con extension jpg, jpeg, png o gif"
-                erorrs.innerHTML = errores.photo
-                this, classList.add('is-invalid')
+                photoError.innerHTML = errores.photo
+                this.classList.add('is-invalid')
                 this.value = "";
-                vistaPrevia.src = ""
+                vistaPrevia.src = "";
                 break;
             default:
                 this.classList.remove('is-invalid')
                 this.classList.add('is-valid')
-                errors.innerHTML = ""
-                let reader = new FileReader();
-                reader.readAsDataURL(e.target.file[0]);
+                photoError.innerHTML = ""
+                let reader = new FileReader()
+                reader.readAsDataURL(e.target.files[0])
 
-                reader.onload = function () {
+                reader.onload = function(){
                     vistaPrevia.src = reader.result
                 }
+
+
+                this.classList.remove('is-invalid')
+                this.classList.add('is-valid')
+                photoError.innerHTML = ""
+        }
+    })
+
+    inputWarranty.addEventListener('change', function () {
+        switch (true) {
+            case this.value == "":
+                errores.garantia = "La garantia es obligatoria"
+                break;
+            case !regExNumber.test(this.value):
+                errores.garantia = "El garantia tiene que ser un numero positivo"
+                warrantyError.innerHTML = errores.garantia;
                 break;
         }
     })
 
-    inputWarranty.addEventListener('blur', function () {
-        switch (true) {
-            case this.value.isInteger:
-                errores.garantia = "El garantia tiene que ser un numero"
-                errors.innerHTML = '<li>' + errores.garantia + '</li>';
-                this.classList.add('is-invalid')
-                break;
-            default:
-                this.classList.remove('is-invalid')
-                this.classList.add('is-valid')
-                errors.innerHTML = ""
-                break;
-        }
-    })
+
+
 
     form.addEventListener('submit', function (event) {
         event.preventDefault()

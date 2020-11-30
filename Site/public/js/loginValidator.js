@@ -11,12 +11,11 @@ window.addEventListener('load', function(){
 
 
     let errores = {}
-    let regPhone = /^[0-9]{10}$/;
     let regExEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     let regExPass = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
     
 
-    inputEmail.addEventListener('blur', function(){
+    inputEmail.addEventListener('change', function(){
         switch(true){
             case this.value == "":
                 errores.email = "El campo usuario es obligatorio"
@@ -36,7 +35,7 @@ window.addEventListener('load', function(){
         }
     })
 
-    inputPassword.addEventListener('blur', function(){
+    inputPassword.addEventListener('change', function(){
         switch(true){
             case this.value == "":
                 errores.password = "La contraseña es obligatoria"
@@ -44,7 +43,7 @@ window.addEventListener('load', function(){
                 this.classList.add('is-invalid')
                 break;
             case !regExPass.test(this.value):
-                errores.password = "La contraseña es incorrecta"
+                errores.password = "La contraseña es invalida"
                 errors.innerHTML = '<li>' + errores.password + '</li>';
                 this.classList.add('is-invalid')
                 break;

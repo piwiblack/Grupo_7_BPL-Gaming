@@ -2,78 +2,111 @@
 <html lang="en">
 <%- include('partials/head') %>
 <script src="/js/product.js"></script>
+
 <body>
     <%- include('partials/header') %>
+
+    <section class="section-pagetop bg">
+        <div class="container">
+            <h2 class="title-page">Producto</h2>
+            
+            <nav>
+                <ol class="breadcrumb text-white">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="/users/productlist ">Productos</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Agregar Producto</li>
+                </ol>
+            </nav>
+             
+
+        </div> <!-- container //  -->
+    </section>
+
     <div class="container padding-y">
         <div class="card">
             <div class="row no-gutters">
                 <aside class="col-md-6">
                     <article class="gallery-wrap">
                         <div class="img-big-wrap">
-                            <div> <a href="#"><img src="/images/imagenproducto.jpg"></a></div>
-                        </div> <!-- slider-product.// -->
+                            <div> <img id="vistaPrevia" src=""></div>
+                        </div>
                         <div class="thumbs-wrap">
-                            <a href="" class="item-thumb"> <img src="/images/imagenproducto.jpg"></a>
-                            <a href="" class="item-thumb"> <img src="/images/imagenproducto.jpg"></a>
-                            <a href="" class="item-thumb"> <img src="/images/imagenproducto.jpg"></a>
-                        </div> <!-- slider-nav.// -->
-                    </article> <!-- gallery-wrap .end// -->
+                            <img class="item-thumb" id="vistaPrevia" src="">
+                            <img class="item-thumb" id="vistaPrevia" src="">
+                            <img class="item-thumb" id="vistaPrevia" src="">
+                        </div>
+                    </article>
                 </aside>
                 <main class="col-md-6 border-left">
                     <article class="content-body">
                         <ul id="errors" class="list-error mb-4">
                             <% if (typeof errors != 'undefined') {%>
-                                <% errors.forEach(error =>{ %>
-                                 <li><%= error.msg %></li>
-                                <% }) %>
+                            <% errors.forEach(error =>{ %>
+                            <li><%= error.msg %></li>
+                            <% }) %>
                             <% } %>
                         </ul>
                         <form id="register" action="/product/add" method="POST" enctype="multipart/form-data">
 
-                            <div class="form-group">
-                                <input type="text" placeholder="Nombre" class="form-control" name="name" >
-                            </div>
-    
-                            <div class="mb-3">
-                                <div class="form-group">
-                                    <input type="number" placeholder="Precio" class="form-control" name="price" >
+                            <div class="form-group form-row">
+                                <div class="col">
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Nombre" class="form-control" name="name">
+                                    </div>
+                                    <span class="text-danger" id="nameError"></span>
                                 </div>
-                            </div> <!-- price-detail-wrap .// -->
-    
+                            </div>
+
+                            <div class="form-group form-row">
+                                <div class="col">
+                                    <div class="input-group">
+                                        <input type="number" placeholder="Precio" class="form-control" name="price">
+                                    </div>
+                                    <span class="text-danger" id="priceError"></span>
+                                </div>
+                            </div>
+
                             <select id="inputState" class="form-control mb-3" name="category">
                                 <% categories.forEach(category => { %>
-                                        <option value="<%= category.id %>"> 
-                                            <%= category.name %>
-                                        </option>
+                                <option value="<%= category.id %>">
+                                    <%= category.name %>
+                                </option>
                                 <% }) %>
-                                </select>
-    
-                            <div class="form-group">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Descripcion"
-                                    rows="3" name="description"></textarea>
-                                <small class="form-text text-muted"> El carácter máximo es de 250 letras </small>
-                            </div>
-    
-                            <div class="mb-3">
-                                <div class="form-group">
-                                    <input type="file" class="form-control" name="images">
-                                </div>
-                            </div> 
+                            </select>
 
-                            <div class="form">
-                                <label>Garantia</label>
-                                <div class="form-group flex-grow-0">
-                                    <div class="input-group mb-3 input-spinner">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-light" type="button" id="button-minus"> − </button>
-                                        </div>
-                                        <input type="text" class="form-control" value="1" name="warranty">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-light" type="button" id="button-plus"> + </button>
-                                        </div>
-                                    </div>
-                                </div> <!-- col.// -->
+
+                            <div class="form-group form-row">
+                                <div class="col">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"
+                                        placeholder="Descripcion" rows="3" name="description"></textarea>
+                                    <small class="form-text text-muted"> El carácter máximo es de 250 letras
+                                    </small>
+                                    <span class="text-danger" id="descriptionError"></span>
+                                </div>
                             </div>
+                            <div class="form-group form-row">
+                                <div class="col">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" name="images" accept="image/*">
+                                    </div>
+                                    <span class="text-danger" id="photoError"></span>
+                                </div>
+                            </div>
+
+                            <label>Garantia</label>
+                            <div class="form-group flex-grow-0">
+                                <div class="input-group mb-3 input-spinner">
+                                    <div class="input-group-prepend">
+                                        <button onclick="decrement()" class="btn btn-light" type="button" id="button-minus"> − </button>
+                                    </div>
+                                    <input id=demoInput type=number min=0 class="form-control" value="0" name="warranty">
+                                    <div class="input-group-append">
+                                        <button onclick="increment()" class="btn btn-light" type="button" id="button-plus"> + </button>
+                                    </div>
+                                </div>
+                                <span class="text-danger" id="warrantyError"></span>
+
+                            </div> 
                             <hr>
                             <a href="/users/productlist">
                                 <button class="btn btn-outline-primary" type="button">
@@ -83,9 +116,9 @@
                             <button class="btn btn-primary" type="submit">
                                 <span class="text">Añadir</span>
                             </button>
-                            
+
                         </form>
-                        
+
                     </article> <!-- product-info-aside .// -->
                 </main> <!-- col.// -->
             </div> <!-- row.// -->

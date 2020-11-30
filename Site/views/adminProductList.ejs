@@ -2,7 +2,6 @@
 <html lang="es">
 <%- include('partials/head.ejs') %>
 <script src="/js/gridAndList.js"></script>
-
 <body>
     <%- include('partials/header') %>
     <section class="section-pagetop bg">
@@ -101,8 +100,8 @@
                                                     <a href="/product/edit/<%= product.id %>" class="btn btn-light btn-block">
                                                         <span class="text">Editar</span>
                                                     </a>
-                                                <form action="/product/delete/<%= product.id %>?_method=DELETE" method="POST">
-                                                    <button class="btn btn-light btn-block mt-2" type="submit">
+                                                <form id="borrarForm" action="/product/delete/<%= product.id %>?_method=DELETE" method="POST">
+                                                    <button id="borrar" class="btn btn-light btn-block mt-2" type="submit">
                                                         <span class="text">Eliminar</span>
                                                     </button>
                                                 </form>
