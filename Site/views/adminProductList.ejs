@@ -25,16 +25,16 @@
             <div class="row">
                 <aside class="col-md-3">
                     <ul class="list-group">
-                        <form class="pb-3">
+                        <form action="/product/productlist/search" class="pb-3" method="GET">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Buscar">
+                                <input type="text" class="form-control" name="search" placeholder="Buscar">
                                 <div class="input-group-append">
-                                    <button class="btn btn-light" type="button"><i class="fa fa-search"></i></button>
+                                    <button class="btn btn-light" type="submit"><i class="fa fa-search"></i></button>
                                 </div>
                             </div>
                         </form>
                         <a class="profile list-group-item" href="/users/profile">Perfil</a>
-                        <a class="profile list-group-item" href="/users/productlist">Productos</a>
+                        <a class="profile list-group-item" href="/product/productlist">Productos</a>
                         <a class="profile list-group-item" href="/categories/categorieslist">Categorias</a>
                         <a class="profile list-group-item" href="/users/userslist">Usuarios</a>
                         <a class="profile list-group-item" href="#">Configuraciones</a>

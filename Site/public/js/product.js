@@ -9,6 +9,7 @@ function decrement() {
     document.getElementById('demoInput').stepDown();
 }
 
+
 window.addEventListener('load', function () {
 
     let form = qs('form#register')
@@ -22,10 +23,10 @@ window.addEventListener('load', function () {
 
 console.log(form.elements)
 
-
     let errores = {}
     let regExExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
     let regExNumber = /^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/;
+
 
 
     inputName.addEventListener('change', function () {
@@ -106,35 +107,40 @@ console.log(form.elements)
 
     inputPhoto.addEventListener('change', function (e) {
         switch (true) {
-            case !regExExtensions.exec(this.value):
-                errores.photo = "Solo imagenes con extension jpg, jpeg, png o gif"
-                photoError.innerHTML = errores.photo
+            case !regExExtensions.exec(this.value) :
+                errores.foto = "Solo imagenes con extension jpg, jpeg, png, o gif"
+                photoError.innerHTML = errores.foto;
                 this.classList.add('is-invalid')
-                this.value = "";
+                this.value = '';
                 vistaPrevia.src = "";
-                break;
+            break
+        
             default:
-                this.classList.remove('is-invalid')
-                this.classList.add('is-valid')
-                photoError.innerHTML = ""
-                let reader = new FileReader()
-                reader.readAsDataURL(e.target.files[0])
-
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+                photoError.innerHTML = "";
+                // Creamos el objeto de la clase FileReader
+                let reader = new FileReader();
+                // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+                reader.readAsDataURL(e.target.files[0]);
+                // Le decimos que cuando este listo ejecute el código interno
                 reader.onload = function(){
-                    vistaPrevia.src = reader.result
-                }
+                vistaPrevia.src = reader.result;
+                };
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+                photoError.innerHTML = "";
 
-
-                this.classList.remove('is-invalid')
-                this.classList.add('is-valid')
-                photoError.innerHTML = ""
         }
     })
+
+    
 
     inputWarranty.addEventListener('change', function () {
         switch (true) {
             case this.value == "":
                 errores.garantia = "La garantia es obligatoria"
+                warrantyError.innerHTML = errores.garantia;
                 break;
             case !regExNumber.test(this.value):
                 errores.garantia = "El garantia tiene que ser un numero positivo"

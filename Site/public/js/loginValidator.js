@@ -45,11 +45,9 @@ window.addEventListener('load', function(){
             case !regExPass.test(this.value):
                 errores.password = "La contraseña es invalida"
                 errors.innerHTML = '<li>' + errores.password + '</li>';
-                this.classList.add('is-invalid')
                 break;
             default:
                 this.classList.remove('is-invalid')
-                this.classList.add('is-valid')
                 errors.innerHTML = ""
                 break;
         }

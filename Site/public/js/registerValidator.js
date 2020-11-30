@@ -1,3 +1,5 @@
+
+
 let qs = function (elemento) {
     return document.querySelector(elemento)
 }

@@ -5,6 +5,8 @@ const registerValidator = require('../validations/userRegister');
 const loginValidator = require('../validations/userLogin');
 const logMiddleware = require('../middlewares/logMiddleware');
 const adminMiddleware = require('../middlewares/adminMiddleware');
+const uploadImageUser = require('../middlewares/uploadImageUser')
+
 
 router.get('/login',(req,res) =>{
     res.render('login',{
@@ -12,6 +14,8 @@ router.get('/login',(req,res) =>{
     })
 });
 router.post('/login', loginValidator ,usersController.login);
+
+router.get('/userslist/search', usersController.search);
 
 router.get('/register',(req,res) =>{
     res.render('register',{
@@ -25,16 +29,15 @@ router.get('/logout', usersController.logout)
 
 router.get('/profile', logMiddleware,usersController.profile)
 
-router.put('/profile/:id', usersController.editUser)
+router.put('/profile/:id',uploadImageUser.any(), usersController.editUser)
 
 router.get('/userslist/addadmin/:id', logMiddleware, adminMiddleware ,usersController.addAdmin);
 
 router.put('/userslist/addadmin/:id', usersController.saveAddAdmin)
 
 router.get('/userslist', logMiddleware, adminMiddleware, usersController.usersList);
-router.get('/userslist/:id',logMiddleware, adminMiddleware, usersController.userProfile)
+router.get('/userslist/:id',logMiddleware, adminMiddleware,  usersController.userProfile)
 
-router.get('/productlist', logMiddleware, adminMiddleware, usersController.productList);
-router.get('/productlist/:id',logMiddleware, adminMiddleware ,usersController.productAdmin)
+
 
 module.exports = router;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('partials/head') %>
-
+<script src="/js/quantityInput.js"></script>
 <body>
     <%- include('partials/header') %>
     <div class="container padding-y">
@@ -40,26 +40,30 @@
                         </ul>
 
                         <hr>
+                        <form action="">
                         <div class="form-row">
-                            <div class="form-group col-md flex-grow-0">
-                                <label>Cantidad</label>
-                                <div class="input-group mb-3 input-spinner">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-light" type="button" id="button-minus"> − </button>
+                                <div class="form-group col-md flex-grow-0">
+                                    <label>Cantidad</label>
+                                    <div class="input-group mb-3 input-spinner">
+                                        <div class="input-group-prepend">
+                                            <button onclick="decrement()" class="btn btn-light" type="button" id="button-minus"> − </button>
+                                        </div>
+                                        <input id=demoInput type=number min=1 class="form-control" value="1" name="warranty">
+                                        <div class="input-group-append">
+                                            <button onclick="increment()" class="btn btn-light" type="button" id="button-plus"> + </button>
+                                        </div>
                                     </div>
-                                    <input type="text" class="form-control" value="1">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-light" type="button" id="button-plus"> + </button>
-                                    </div>
-                                </div>
-                            </div> <!-- col.// -->
-                        </div>
+                                </div> <!-- col.// -->
+                            </div>
+    
+                            <a href="/users/login" class="btn  btn-primary"> Comprar </a>
+                            <a href="/users/login" class="btn  btn-outline-primary">
+                                <span class="text">Añadir</span>
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
 
-                        <a href="#" class="btn  btn-primary"> Comprar </a>
-                        <a href="#" class="btn  btn-outline-primary">
-                            <span class="text">Añadir</span>
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
+                            </form>
+
                     </article> <!-- product-info-aside .// -->
                 </main> <!-- col.// -->
             </div> <!-- row.// -->

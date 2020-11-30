@@ -52,6 +52,9 @@ module.exports = (sequelize, dataTypes) => {
         },
         floor:{
             type: dataTypes.STRING(45),
+        },
+        image:{
+            type: dataTypes.STRING(100)
         }
     }
 

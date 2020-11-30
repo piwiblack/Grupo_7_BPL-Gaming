@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const db = require('../database/models');
-
+const {Op, Sequelize} = require('sequelize');
 
 const usersController = {
     register: function (req, res, next) {
@@ -14,7 +14,7 @@ const usersController = {
                 phone: req.body.phone,
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10),
-                category: "user"
+                category: "user",
             })
                 .then(user => {
                     return res.redirect('/users/login/')
@@ -89,42 +89,6 @@ const usersController = {
             })
     },
 
-    productList: function (req, res) {
-        let categoriesList = db.Categories.findAll({
-            order: [
-                ['name', 'ASC']
-            ]
-        })
-        let productsList = db.Products.findAll()
-
-        Promise.all([categoriesList, productsList])
-            .then(function ([categories, products]) {
-                res.render('adminProductList', {
-                    title: "BPLE Gaming - Perfil",
-                    total: products.length,
-                    products: products,
-                    categories: categories
-                })
-            })
-    },
-
-    productAdmin: function (req, res) {
-        let productList = db.Products.findAll()
-
-
-        let requiredProduct = db.Products.findByPk(req.params.id, {
-            include: [{ association: "categories" }]
-        })
-
-        Promise.all([productList, requiredProduct])
-            .then(function ([productList, product]) {
-                res.render('adminProduct', {
-                    title: 'BPLE - ' + product.name,
-                    product: product,
-                    productList: productList
-                })
-            })
-    },
 
     profile: function (req, res) {
 
@@ -156,7 +120,8 @@ const usersController = {
             cp: req.body.cp,
             house_number: req.body.house_number,
             apartment: req.body.apartment,
-            floor: req.body.floor
+            floor: req.body.floor,
+           // image: (req.files[0]) ? req.files[0].filename : req.body.images
         },
             {
                 where: {
@@ -201,6 +166,28 @@ const usersController = {
             })
 
     },
+
+    search: function (req, res) {
+
+        let usersSearch = db.Users.findAll({
+            where: {
+                email: {
+                    [Op.substring] : req.query.search
+                }
+            }
+        })
+
+        Promise.all([usersSearch])
+        .then(function([users]){
+            res.render('adminUserList', {
+                title: 'BPLE - Usuarios ' + req.query.search,
+                users: users,
+                total: users.length,
+            })
+        })
+       
+    },
+
 
 }
 

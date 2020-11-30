@@ -71,8 +71,6 @@ const categoriesController = {
     },
 
     categorieAdmin: function (req, res) {
-
-
         let requiredCategorie = db.Categories.findByPk(req.params.id)
 
         Promise.all([requiredCategorie])
@@ -83,6 +81,28 @@ const categoriesController = {
                 })
             })
     },
+
+    
+    search: function (req, res) {
+
+        let categoriesSearch = db.Categories.findAll({
+            where: {
+                name: {
+                    [Op.substring] : req.query.search
+                }
+            }
+        })
+
+        Promise.all([categoriesSearch])
+        .then(function([categories]){
+            res.render('categoriesList', {
+                title: 'BPLE - Categorias ' + req.query.search,
+                categories: categories,
+                total: categories.length,
+            })
+        })
+       
+    }
 }
 
 module.exports = categoriesController;

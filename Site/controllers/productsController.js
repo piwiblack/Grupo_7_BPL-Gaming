@@ -111,6 +111,12 @@ const productsController = {
        
     },
 
+
+
+
+
+    
+
     editForm: function (req, res) {
         let requiredProduct = db.Products.findByPk(req.params.id)
 
@@ -163,7 +169,83 @@ const productsController = {
             .catch(err => {
                 res.send(err)
             })
+    },
+
+
+
+
+
+
+
+
+
+    productList: function (req, res) {
+        let categoriesList = db.Categories.findAll({
+            order: [
+                ['name', 'ASC']
+            ]
+        })
+        let productsList = db.Products.findAll()
+
+        Promise.all([categoriesList, productsList])
+            .then(function ([categories, products]) {
+                res.render('adminProductList', {
+                    title: "BPLE Gaming - Perfil",
+                    total: products.length,
+                    products: products,
+                    categories: categories
+                })
+            })
+    },
+
+    productAdmin: function (req, res) {
+        let productList = db.Products.findAll()
+
+
+        let requiredProduct = db.Products.findByPk(req.params.id, {
+            include: [{ association: "categories" }]
+        })
+
+        Promise.all([productList, requiredProduct])
+            .then(function ([productList, product]) {
+                res.render('adminProduct', {
+                    title: 'BPLE - ' + product.name,
+                    product: product,
+                    productList: productList
+                })
+            })
+    },
+
+    searchAdmin: function (req, res) {
+        let productSearch = db.Products.findAll({
+            where: {
+                name: {
+                    [Op.substring] : req.query.search
+                }
+            }
+        })
+
+        Promise.all([productSearch])
+        .then(function([products]){
+            res.render('adminProductList', {
+                title: 'BPLE - Busqueda: ' + req.query.search,
+                products: products,
+                total: products.length,
+            })
+        })
+       
     }
+
+
+
+
+
+
+
+
+
+
+    
 }
 
 module.exports = productsController;
