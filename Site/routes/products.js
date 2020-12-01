@@ -12,8 +12,9 @@ router.get('/detail/:id', productsController.detail);
 router.get('/cart', productsController.cart);
 router.get('/search', productsController.search);
 
-router.get('/productlist/search', productsController.searchAdmin);
 
+router.get('/productlist/search', productsController.searchAdmin);
+router.get('/productlist/category/:id' ,productsController.listProductsAdmin)
 
 router.get('/add', logMiddleware ,adminMiddleware, productsController.addForm);
 router.post('/add', uploadImageProduct.any(),productValidator, productsController.addProduct)

@@ -83,9 +83,9 @@
             <% productList.forEach(product => { %>
                 <div class="col-lg-3 col-sm-4">
                     <div href="#" class="card card-product-grid">
-                        <a href="/users/productlist/<%= product.id %>" class="img-wrap"> <img src="/images/productImages/<%= product.images %> "> </a>
+                        <a href="/product/productlist/<%= product.id %>" class="img-wrap"> <img src="/images/productImages/<%= product.images %> "> </a>
                         <figcaption class="info-wrap">
-                            <a href="/users/productlist/<%= product.id %>" class="title"><%= product.name %> </a>
+                            <a href="/product/productlist/<%= product.id %>" class="title"><%= product.name %> </a>
                             <div class="col text-center">
                                 <a href="/product/edit/<%= product.id %>" class="btn  btn-primary">
                                     <i class="fas fa-edit"></i>

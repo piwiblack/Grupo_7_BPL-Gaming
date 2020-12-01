@@ -1,14 +1,14 @@
 const db = require('../database/models');
-const {Op, Sequelize} = require('sequelize');
+const { Op, Sequelize } = require('sequelize');
 
 
 const productsController = {
 
-    listCategories: function(req, res){
-        db.Products.findAll( {
+    listCategories: function (req, res) {
+        db.Products.findAll({
             include: [{ association: "products" }]
         })
-            .then(categorie =>{
+            .then(categorie => {
                 res.render()
             })
 
@@ -37,11 +37,17 @@ const productsController = {
 
     detail: function (req, res) {
 
-        db.Products.findByPk(req.params.id)
-            .then(product => {
+        let categoriesList = db.Categories.findAll();
+        let productDetail = db.Products.findByPk(req.params.id)
+
+
+            Promise.all([categoriesList, productDetail])
+            .then(function ([categories, products]) {
                 res.render('productDetail', {
-                    title: 'BPLE - ' + product.name,
-                    producto: product,
+                    title: 'BPLE - ' + products.name,
+                    producto: products,
+                    categories: categories,
+                    total: products.length
                 })
             })
     },
@@ -69,7 +75,7 @@ const productsController = {
         })
             .then(product => {
 
-                return res.redirect('/users/productlist/' + product.id)
+                return res.redirect('/product/productlist/' + product.id)
             })
             .catch(err => {
                 res.send(err)
@@ -94,33 +100,33 @@ const productsController = {
         let productSearch = db.Products.findAll({
             where: {
                 name: {
-                    [Op.substring] : req.query.search
+                    [Op.substring]: req.query.search
                 }
             }
         })
 
         Promise.all([categoriesList, productSearch])
-        .then(function([categories, products]){
-            res.render('products', {
-                title: 'BPLE - Productos ' + req.query.search,
-                products: products,
-                total: products.length,
-                categories: categories
+            .then(function ([categories, products]) {
+                res.render('products', {
+                    title: 'BPLE - Productos ' + req.query.search,
+                    products: products,
+                    total: products.length,
+                    categories: categories
+                })
             })
-        })
-       
+
     },
 
 
 
 
 
-    
+
 
     editForm: function (req, res) {
         let requiredProduct = db.Products.findByPk(req.params.id)
 
-        let categoriesList =db.Categories.findAll({
+        let categoriesList = db.Categories.findAll({
             order: [
                 ['name', 'ASC']
             ]
@@ -154,7 +160,7 @@ const productsController = {
                 }
             })
 
-        res.redirect("/users/productlist/" + req.params.id)
+        res.redirect("/product/productlist/" + req.params.id)
     },
 
     delete: function (req, res) {
@@ -164,7 +170,7 @@ const productsController = {
             }
         })
             .then(product => {
-                return res.redirect('/users/productList')
+                return res.redirect('/product/productList')
             })
             .catch(err => {
                 res.send(err)
@@ -220,32 +226,35 @@ const productsController = {
         let productSearch = db.Products.findAll({
             where: {
                 name: {
-                    [Op.substring] : req.query.search
+                    [Op.substring]: req.query.search
                 }
             }
         })
 
         Promise.all([productSearch])
-        .then(function([products]){
-            res.render('adminProductList', {
-                title: 'BPLE - Busqueda: ' + req.query.search,
-                products: products,
-                total: products.length,
+            .then(function ([products]) {
+                res.render('adminProductList', {
+                    title: 'BPLE - Busqueda: ' + req.query.search,
+                    products: products,
+                    total: products.length,
+                })
             })
-        })
-       
-    }
+    },
+
+    listProductsAdmin: function (req, res) {
+        let productsCategorie = db.Products.findAll({ where: { id_category: req.params.id } })
+
+        Promise.all([productsCategorie])
+            .then(function ([products]) {
+                res.render('adminProductList', {
+                    title: 'BPLE - Productos',
+                    products: products,
+                    total: products.length,
+                })
+            })
+    },
 
 
-
-
-
-
-
-
-
-
-    
 }
 
 module.exports = productsController;

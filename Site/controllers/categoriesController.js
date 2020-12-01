@@ -39,21 +39,6 @@ const categoriesController = {
 
     },
 
-
-    delete: function (req, res) {
-        db.Products.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-            .then(product => {
-                return res.redirect('/users/productList')
-            })
-            .catch(err => {
-                res.send(err)
-            })
-    },
-
     saveCategorie: function (req, res) {
         db.Categories.update({
             name: req.body.name
@@ -82,27 +67,52 @@ const categoriesController = {
             })
     },
 
-    
+
     search: function (req, res) {
 
         let categoriesSearch = db.Categories.findAll({
             where: {
                 name: {
-                    [Op.substring] : req.query.search
+                    [Op.substring]: req.query.search
                 }
             }
         })
 
         Promise.all([categoriesSearch])
-        .then(function([categories]){
-            res.render('categoriesList', {
-                title: 'BPLE - Categorias ' + req.query.search,
-                categories: categories,
-                total: categories.length,
+            .then(function ([categories]) {
+                res.render('categoriesList', {
+                    title: 'BPLE - Categorias ' + req.query.search,
+                    categories: categories,
+                    total: categories.length,
+                })
             })
+    },
+
+    listProducts: function (req, res) {
+        let categoriesList = db.Categories.findAll({
+            order: [
+                ['name', 'ASC']
+            ]
         })
-       
-    }
+
+        let productsCategorie = db.Products.findAll({ where: { id_category: req.params.id } })
+
+        Promise.all([categoriesList, productsCategorie])
+            .then(function ([categories, products]) {
+                res.render('products', {
+                    title: 'BPLE - Productos',
+                    products: products,
+                    total: products.length,
+                    categories: categories
+                })
+            })
+
+
+            .catch(error => {
+                console.log(error)
+            })
+    },
+
 }
 
 module.exports = categoriesController;

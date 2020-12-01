@@ -171,8 +171,9 @@ const usersController = {
 
         let usersSearch = db.Users.findAll({
             where: {
-                email: {
-                    [Op.substring] : req.query.search
+                [db.Sequelize.Op.or]: {
+                    email: { [db.Sequelize.Op.like]: `%${req.query.search}%` }, 
+                    first_name: { [db.Sequelize.Op.like]: `%${req.query.search}%` } 
                 }
             }
         })

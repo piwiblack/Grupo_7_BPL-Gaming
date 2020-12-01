@@ -10,6 +10,10 @@ router.get('/categorieslist/search', categoriesController.search);
 router.get('/categorieslist', logMiddleware, adminMiddleware, categoriesController.listCategories);
 router.get('/categorieslist/:id',logMiddleware, adminMiddleware ,categoriesController.categorieAdmin)
 
+
+
+router.get('/search/:id', categoriesController.listProducts);
+
 router.put('/categorieslist/:id', categoriesController.saveCategorie)
 
 router.get('/add',logMiddleware ,adminMiddleware, categoriesController.addForm);

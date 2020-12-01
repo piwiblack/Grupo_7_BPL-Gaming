@@ -2,8 +2,29 @@
 <html lang="en">
 <%- include('partials/head') %>
 <script src="/js/quantityInput.js"></script>
+
 <body>
     <%- include('partials/header') %>
+    <section class="section-pagetop bg">
+        <div class="container">
+            <h2 class="title-page">Producto</h2>
+
+            <nav>
+                <ol class="breadcrumb text-white">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <% categories.forEach(category => { %>
+                        <% if (category.id == producto.id_category) { %>
+                            <li class="breadcrumb-item"><a href="/categories/search/<%=category.id%>"> <%= category.name %> </a>
+                        <%} %>
+                    <% }) %>
+                        </a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><%= producto.name %> </li>
+                </ol>
+            </nav>
+
+
+        </div> <!-- container //  -->
+    </section>
     <div class="container padding-y">
         <div class="card">
             <div class="row no-gutters">
@@ -35,34 +56,37 @@
 
                         <ul class="list-check mb-4">
                             <li>En stock</li>
-                            <li>Garantia <%= producto.warranty %>  meses</li>
+                            <li>Garantia <%= producto.warranty %> meses</li>
                             <li>Envios a toda la Argentina</li>
                         </ul>
 
                         <hr>
                         <form action="">
-                        <div class="form-row">
+                            <div class="form-row">
                                 <div class="form-group col-md flex-grow-0">
                                     <label>Cantidad</label>
                                     <div class="input-group mb-3 input-spinner">
                                         <div class="input-group-prepend">
-                                            <button onclick="decrement()" class="btn btn-light" type="button" id="button-minus"> − </button>
+                                            <button onclick="decrement()" class="btn btn-light" type="button"
+                                                id="button-minus"> − </button>
                                         </div>
-                                        <input id=demoInput type=number min=1 class="form-control" value="1" name="warranty">
+                                        <input id=demoInput type=number min=1 class="form-control" value="1"
+                                            name="warranty">
                                         <div class="input-group-append">
-                                            <button onclick="increment()" class="btn btn-light" type="button" id="button-plus"> + </button>
+                                            <button onclick="increment()" class="btn btn-light" type="button"
+                                                id="button-plus"> + </button>
                                         </div>
                                     </div>
                                 </div> <!-- col.// -->
                             </div>
-    
+
                             <a href="/users/login" class="btn  btn-primary"> Comprar </a>
                             <a href="/users/login" class="btn  btn-outline-primary">
                                 <span class="text">Añadir</span>
                                 <i class="fas fa-shopping-cart"></i>
                             </a>
 
-                            </form>
+                        </form>
 
                     </article> <!-- product-info-aside .// -->
                 </main> <!-- col.// -->
