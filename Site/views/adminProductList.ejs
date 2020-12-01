@@ -2,12 +2,12 @@
 <html lang="es">
 <%- include('partials/head.ejs') %>
 <script src="/js/gridAndList.js"></script>
+
 <body>
     <%- include('partials/header') %>
     <section class="section-pagetop bg">
         <div class="container">
             <h2 class="title-page">Productos</h2>
-
             <nav>
                 <ol class="breadcrumb text-white">
                     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
@@ -15,10 +15,8 @@
                     <li class="breadcrumb-item active" aria-current="page">Productos</li>
                 </ol>
             </nav>
-
-        </div> <!-- container //  -->
+        </div>
     </section>
-
     <section class="section-content padding-y">
         <div class="container">
 
@@ -46,19 +44,7 @@
                         <span class="text">Salir</span>
                     </a>
                 </aside>
-
-
-
-
-
-
-
-
-
-
-
                 <main class="col-md-9">
-
                     <header class="border-bottom mb-4 pb-3">
                         <div class="form-inline">
                             <span class="mr-md-auto"><%= total %> productos</span>
@@ -72,7 +58,6 @@
                                 <a id="gridBoton" href="#" class="btn  btn-outline-secondary" data-toggle="tooltip"
                                     title="" data-original-title="Grid view">
                                     <i class="fa fa-th"></i></a>
-
                             </div>
                         </div>
                     </header>
@@ -81,39 +66,40 @@
 
                     <div id="grid" class="row disnone">
                         <% products.forEach(product => { %>
-                                <div class="col-md-4">
-                                    <figure class="card card-product-grid ">
-                                        <div class="img-wrap">
-                                            <img src="/images/productImages/<%= product.images %>">
-                                        </div> 
-                                        <figcaption class="info-wrap">
-                                            <div class="info-main">
-                                                <a href="/product/productlist/<%= product.id %>" class="h6 title">
-                                                    <%= product.name %> </a>
-                                            </div> 
-                                            <div class="info-aside">
-                                                <br>
-                                                <p>
-                                                    <a href="/product/productlist/<%= product.id %>"
-                                                        class="btn btn-primary btn-block">
-                                                        Detalles </a>
-                                                    <a href="/product/edit/<%= product.id %>" class="btn btn-light btn-block">
-                                                        <span class="text">Editar</span>
-                                                    </a>
-                                                <form id="borrarForm" action="/product/delete/<%= product.id %>?_method=DELETE" method="POST">
-                                                    <button id="borrar" class="btn btn-light btn-block mt-2" type="submit">
-                                                        <span class="text">Eliminar</span>
-                                                    </button>
-                                                </form>
-                                                </p>
-                                            </div> 
-        
-                                        </figcaption>
-                                    </figure>
-                                </div> 
-                                <% }) %>
-                            </div>
-                       
+                        <div class="col-md-4">
+                            <figure class="card card-product-grid ">
+                                <div class="img-wrap">
+                                    <img src="/images/productImages/<%= product.images %>">
+                                </div>
+                                <figcaption class="info-wrap">
+                                    <div class="info-main">
+                                        <a href="/product/productlist/<%= product.id %>" class="h6 title">
+                                            <%= product.name %> </a>
+                                    </div>
+                                    <div class="info-aside">
+                                        <br>
+                                        <p>
+                                            <a href="/product/productlist/<%= product.id %>"
+                                                class="btn btn-primary btn-block">
+                                                Detalles </a>
+                                            <a href="/product/edit/<%= product.id %>" class="btn btn-light btn-block">
+                                                <span class="text">Editar</span>
+                                            </a>
+                                        <form action="/product/delete/<%= product.id %>?_method=DELETE"
+                                            class="borrarForm" method="POST">
+                                            <button id="borrar" class="btn btn-light btn-block mt-2" onclick="return ConfirmDelate()" type="submit">
+                                                <span class="text">Eliminar</span>
+                                            </button>
+                                        </form>
+                                        </p>
+                                    </div>
+
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <% }) %>
+                    </div>
+
 
                     <!-- LISTA CON FILAS-->
 
@@ -144,7 +130,7 @@
                                                 <span class="text">Editar</span>
                                             </a>
                                         <form action="/product/delete/<%= product.id %>?_method=DELETE" method="POST">
-                                            <button class="btn btn-light btn-block mt-2" type="submit">
+                                            <button class="btn btn-light btn-block mt-2" type="submit" onclick="return ConfirmDelate()">
                                                 <span class="text">Eliminar</span>
                                             </button>
                                         </form>

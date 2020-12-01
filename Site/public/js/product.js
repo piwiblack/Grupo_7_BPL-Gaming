@@ -9,6 +9,18 @@ function decrement() {
     document.getElementById('demoInput').stepDown();
 }
 
+function ConfirmCancelEdit(){
+    var respuesta = confirm("¿Esta seguro que desea descartar los cambios?")
+
+    if(respuesta == true){
+        return true
+    }else{
+        return false
+    }
+}
+
+
+
 
 window.addEventListener('load', function () {
 
@@ -20,8 +32,10 @@ window.addEventListener('load', function () {
     let inputDescription = form.elements[3]
     let inputPhoto = form.elements[4]
     let inputWarranty = form.elements[6]
+    let botonCancelar = form.elements[8]
+    let botonAplicar = form.elements[9]
 
-console.log(form.elements)
+    console.log(form.elements)
 
     let errores = {}
     let regExExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
@@ -38,7 +52,7 @@ console.log(form.elements)
                 break;
             case this.value.trim().length < 3:
                 errores.nombre = "El nombre tienen que tener al menos 3 caracteres"
-                nameError.innerHTML = errores.nombre ;
+                nameError.innerHTML = errores.nombre;
                 this.classList.add('is-invalid')
                 break;
             default:
@@ -88,12 +102,12 @@ console.log(form.elements)
         switch (true) {
             case this.value == "":
                 errores.descripcion = "El campo descripcion es obligatorio"
-                descriptionError.innerHTML = errores.descripcion ;
+                descriptionError.innerHTML = errores.descripcion;
                 this.classList.add('is-invalid')
                 break;
             case this.value.length < 20:
                 errores.descripcion = "La descripcion debe tener mas de 20 caracteres"
-                descriptionError.innerHTML =  errores.descripcion ;
+                descriptionError.innerHTML = errores.descripcion;
                 this.classList.add('is-invalid')
                 break;
             default:
@@ -107,14 +121,14 @@ console.log(form.elements)
 
     inputPhoto.addEventListener('change', function (e) {
         switch (true) {
-            case !regExExtensions.exec(this.value) :
+            case !regExExtensions.exec(this.value):
                 errores.foto = "Solo imagenes con extension jpg, jpeg, png, o gif"
                 photoError.innerHTML = errores.foto;
                 this.classList.add('is-invalid')
                 this.value = '';
                 vistaPrevia.src = "";
-            break
-        
+                break
+
             default:
                 this.classList.remove('is-invalid');
                 this.classList.add('is-valid');
@@ -124,8 +138,8 @@ console.log(form.elements)
                 // Leemos el archivo subido y se lo pasamos a nuestro fileReader
                 reader.readAsDataURL(e.target.files[0]);
                 // Le decimos que cuando este listo ejecute el código interno
-                reader.onload = function(){
-                vistaPrevia.src = reader.result;
+                reader.onload = function () {
+                    vistaPrevia.src = reader.result;
                 };
                 this.classList.remove('is-invalid');
                 this.classList.add('is-valid');
@@ -134,7 +148,7 @@ console.log(form.elements)
         }
     })
 
-    
+
 
     inputWarranty.addEventListener('change', function () {
         switch (true) {
@@ -148,6 +162,8 @@ console.log(form.elements)
                 break;
         }
     })
+
+
 
 
 

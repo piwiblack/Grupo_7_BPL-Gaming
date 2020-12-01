@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include('partials/head') %>
 <script src="/js/product.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <body>
     <%- include('partials/header') %>
 
@@ -109,7 +109,7 @@
                             </div> 
                             <hr>
                             <a href="/product/productlist">
-                                <button class="btn btn-outline-primary" type="button">
+                                <button class="btn btn-outline-primary" type="button" onclick="return ConfirmDelate()">
                                     <span class="text">Cancelar</span>
                                 </button>
                             </a>
