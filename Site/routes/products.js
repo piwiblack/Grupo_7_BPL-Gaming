@@ -9,7 +9,7 @@ const adminMiddleware = require('../middlewares/adminMiddleware');
 
 router.get('/', productsController.listProducts);
 router.get('/detail/:id', productsController.detail);
-router.get('/cart', productsController.cart);
+router.get('/cart', logMiddleware,productsController.cart);
 router.get('/search', productsController.search);
 
 

@@ -6,9 +6,9 @@ const loginValidator = require('../validations/userLogin');
 const logMiddleware = require('../middlewares/logMiddleware');
 const adminMiddleware = require('../middlewares/adminMiddleware');
 const uploadImageUser = require('../middlewares/uploadImageUser')
+const authMiddleware = require ('../middlewares/authmiddleware');
 
-
-router.get('/login',(req,res) =>{
+router.get('/login',authMiddleware,(req,res) =>{
     res.render('login',{
         title:'BPLE Gaming - Login'
     })
@@ -17,7 +17,7 @@ router.post('/login', loginValidator ,usersController.login);
 
 router.get('/userslist/search', usersController.search);
 
-router.get('/register',(req,res) =>{
+router.get('/register',authMiddleware,(req,res) =>{
     res.render('register',{
         title:'BPLE Gaming - Registro'
     })
