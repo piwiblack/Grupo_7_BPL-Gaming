@@ -1,5 +1,6 @@
 const db = require('../database/models');
 const {Op, Sequelize} = require('sequelize');
+const fs= require('fs')
 
 
 const productsController = {
@@ -68,7 +69,7 @@ const productsController = {
             id_manager: 1
         })
             .then(product => {
-
+                
                 return res.redirect('/users/productlist/' + product.id)
             })
             .catch(err => {

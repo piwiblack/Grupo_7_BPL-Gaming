@@ -4,16 +4,17 @@ const usersController =require('../controllers/usersController');
 const registerValidator = require('../validations/userRegister');
 const loginValidator = require('../validations/userLogin');
 const logMiddleware = require('../middlewares/logMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 
-router.get('/login',(req,res) =>{
+router.get('/login',authMiddleware,(req,res) =>{
     res.render('login',{
         title:'BPLE Gaming - Login'
     })
 });
 router.post('/login', loginValidator ,usersController.login);
 
-router.get('/register',(req,res) =>{
+router.get('/register',authMiddleware,(req,res) =>{
     res.render('register',{
         title:'BPLE Gaming - Registro'
     })
