@@ -3,6 +3,7 @@
 <%- include('partials/head') %>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="/js/product.js"></script>
+
 <body>
     <%- include('partials/header') %>
     <div class="container padding-y">
@@ -22,7 +23,8 @@
                 </aside>
                 <main class="col-md-6 border-left">
                     <article class="content-body">
-                        <form action="/product/edit/<%=product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                        <form action="/product/edit/<%=product.id %>?_method=PUT" method="POST"
+                            enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <input type="text" placeholder="Nombre" class="form-control" name="name"
@@ -37,17 +39,17 @@
                             </div> <!-- price-detail-wrap .// -->
 
                             <select id="inputState" class="form-control mb-3" name="category">
-                            <% categories.forEach(category => { %>
+                                <% categories.forEach(category => { %>
                                 <% if (category.id == product.id_category) { %>
-                                    <option value=" <%= category.id %>" selected> 
-                                        <%= category.name %>
-                                    </option>
+                                <option value=" <%= category.id %>" selected>
+                                    <%= category.name %>
+                                </option>
                                 <% }else{%>
-                                    <option value=" <%= category.id %>"> 
-                                        <%= category.name %>
-                                    </option>
+                                <option value=" <%= category.id %>">
+                                    <%= category.name %>
+                                </option>
                                 <%} %>
-                            <% }) %>
+                                <% }) %>
                             </select>
 
 
@@ -63,11 +65,10 @@
                                 <div class="form-group">
                                     <input type="file" class="form-control" name="image" value="<%= product.image %>">
                                 </div>
-                            </div> 
-
+                            </div>
 
                             <div class="form">
-                                <label >Garantia</label>
+                                <label>Garantia</label>
                                 <div class="form-group flex-grow-0">
                                     <div class="input-group mb-3 input-spinner">
                                         <div class="input-group-prepend">
@@ -79,12 +80,25 @@
                                             <button class="btn btn-light" type="button" id="button-plus"> + </button>
                                         </div>
                                     </div>
-                                    
-                                </div> <!-- col.// -->
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="custom-control custom-checkbox">
+                                        <% if(product.status == "on"){%>
+                                        <input type="checkbox" class="custom-control-input" name="status" checked>
+                                        <%}else{%>
+                                            <input type="checkbox" class="custom-control-input" name="status">
+                                            <% } %>
+
+                                        <div class="custom-control-label" for="customCheck1">Destacado</div>
+                                    </label>
+                                </div>
                             </div>
+
                             <hr>
                             <a href="/product/productlist">
-                                <button class="btn btn-outline-primary" type="button" onclick="return ConfirmCancelEdit()">
+                                <button class="btn btn-outline-primary" type="button"
+                                    onclick="return ConfirmCancelEdit()">
                                     <span class="text">Cancelar</span>
                                 </button>
                             </a>
@@ -94,7 +108,7 @@
                             </button>
 
                         </form>
-                        
+
 
                     </article> <!-- product-info-aside .// -->
                 </main> <!-- col.// -->

@@ -3,13 +3,14 @@
 <%- include('partials/head') %>
 <script src="/js/product.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <body>
     <%- include('partials/header') %>
 
     <section class="section-pagetop bg">
         <div class="container">
             <h2 class="title-page">Producto</h2>
-            
+
             <nav>
                 <ol class="breadcrumb text-white">
                     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
@@ -17,7 +18,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Agregar Producto</li>
                 </ol>
             </nav>
-             
+
 
         </div> <!-- container //  -->
     </section>
@@ -97,16 +98,25 @@
                             <div class="form-group flex-grow-0">
                                 <div class="input-group mb-3 input-spinner">
                                     <div class="input-group-prepend">
-                                        <button onclick="decrement()" class="btn btn-light" type="button" id="button-minus"> − </button>
+                                        <button onclick="decrement()" class="btn btn-light" type="button"
+                                            id="button-minus"> − </button>
                                     </div>
-                                    <input id=demoInput type=number min=0 class="form-control" value="0" name="warranty">
+                                    <input id=demoInput type=number min=0 class="form-control" value="0"
+                                        name="warranty">
                                     <div class="input-group-append">
-                                        <button onclick="increment()" class="btn btn-light" type="button" id="button-plus"> + </button>
+                                        <button onclick="increment()" class="btn btn-light" type="button"
+                                            id="button-plus"> + </button>
                                     </div>
                                 </div>
                                 <span class="text-danger" id="warrantyError"></span>
+                            </div>
 
-                            </div> 
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="status">
+                                    <div class="custom-control-label" for="customCheck1">Destacado</div>
+                                </label>
+                            </div>
                             <hr>
                             <a href="/product/productlist">
                                 <button class="btn btn-outline-primary" type="button" onclick="return ConfirmDelate()">

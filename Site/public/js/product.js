@@ -42,8 +42,6 @@ window.addEventListener('load', function () {
     let inputDescription = form.elements[3]
     let inputPhoto = form.elements[4]
     let inputWarranty = form.elements[6]
-    let botonCancelar = form.elements[8]
-    let botonAplicar = form.elements[9]
 
     console.log(form.elements)
 
@@ -183,7 +181,7 @@ window.addEventListener('load', function () {
         let error = false
         let elementoForm = this.elements;
 
-        for (let i = 0; i < elementoForm.length - 5; i++) {
+        for (let i = 0; i < elementoForm.length - 6; i++) {
             if (elementoForm[i].value == "") {
                 elementoForm[i].classList.add('is-invalid');
                 errors.innerHTML = '<li>' + "Los campos señalados son obligatorios" + '</li>'
