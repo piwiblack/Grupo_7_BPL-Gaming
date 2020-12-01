@@ -19,7 +19,21 @@
     <div class="container padding-y">
 
         <div class="row mb-5">
-            <%- include('partials/menuPerfil') %>
+            <aside class="col-md-3">
+                <ul class="list-group">
+                    <a class="profile list-group-item" href="/users/profile">Perfil</a>
+                    <a class="profile list-group-item" href="/product/productlist">Productos</a>
+                    <a class="profile list-group-item" href="/categories/categorieslist">Categorias</a>
+                    <a class="profile list-group-item" href="/users/userslist">Usuarios</a>
+                    <a class="profile list-group-item" href="#">Configuraciones</a>
+                    <a class="profile list-group-item" href="#">Mis Ordenes</a>
+                </ul>
+                <br>
+                <a class="btn btn-light btn-block" href="/users/logout">
+                    <i class="fa fa-power-off"></i>
+                    <span class="text">Salir</span>
+                </a>
+            </aside>
             <main class="col-md-9">
                 <article class="card">
                     <header class="card-header">
@@ -29,7 +43,7 @@
                         <div class="row">
                             <aside class="col-md-9">
                                 <h5>Datos personales</h5>
-                                <form action="/users/profile/<%=user.id%>?_method=PUT" method="POST">
+                                <form>
                                     <div class="form-group form-row">
                                         <label class="col-md-3 col-form-label">Nombre</label>
                                         <div class="col">

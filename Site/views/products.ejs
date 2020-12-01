@@ -36,7 +36,8 @@
                                 <div class="card-body">
                                     <ul class="list-menu">
                                         <% for(let i = 0; i < categories.length; i++){ %>
-                                        <li><a href="/categories/search/<%=categories[i].id %> "><%= categories[i].name  %> </a></li>
+                                        <li><a href="/categories/search/<%=categories[i].id %> "><%= categories[i].name  %>
+                                            </a></li>
                                         <% } %>
 
                                     </ul>
@@ -136,8 +137,9 @@
                         <div class="col-md-4">
                             <figure class="card card-product-grid ">
                                 <div class="img-wrap">
-                                    <a href="/product/detail/<%= product.id %>"><img src="/images/productImages/<%= product.images %>"></a>
-                                    
+                                    <a href="/product/detail/<%= product.id %>"><img
+                                            src="/images/productImages/<%= product.images %>"></a>
+
                                 </div>
                                 <figcaption class="info-wrap">
                                     <div class="info-main">

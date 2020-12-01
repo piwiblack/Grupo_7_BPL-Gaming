@@ -91,12 +91,14 @@ const usersController = {
 
 
     profile: function (req, res) {
+        let userAdmin = req.session.user
 
         db.Users.findByPk(req.session.user.id)
             .then(user =>{
                 res.render('profile', {
                     title: 'BPLE - Perfil',
-                    user: user
+                    user: user,
+                    admin: user
                 })
             })
         
