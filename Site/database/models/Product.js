@@ -37,9 +37,6 @@ module.exports = (sequelize, dataTypes) => {
         },
         id_category: {
             type: dataTypes.INTEGER
-        },
-        id_manager: {
-            type: dataTypes.INTEGER
         }
     }
 
@@ -60,3 +57,4 @@ module.exports = (sequelize, dataTypes) => {
 
     return Product;
 }
+

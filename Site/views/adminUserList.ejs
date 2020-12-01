@@ -2,17 +2,18 @@
 <html lang="es">
 <%- include('partials/head.ejs') %>
 <script src="/js/gridAndList.js"></script>
+
 <body>
     <%- include('partials/header') %>
     <section class="section-pagetop bg">
         <div class="container">
-            <h2 class="title-page">Productos</h2>
+            <h2 class="title-page">Usuarios</h2>
 
             <nav>
                 <ol class="breadcrumb text-white">
                     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
                     <li class="breadcrumb-item"><a href="/users/profile">Mi cuenta</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Productos</li>
+                    <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
                 </ol>
             </nav>
 
@@ -25,9 +26,9 @@
             <div class="row">
                 <aside class="col-md-3">
                     <ul class="list-group">
-                        <form action="/product/productlist/search" class="pb-3" method="GET">
+                        <form action="/users/userslist/search" class="pb-3" method="GET">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Buscar">
+                                <input type="text" name="search" class="form-control" placeholder="Buscar">
                                 <div class="input-group-append">
                                     <button class="btn btn-light" type="submit"><i class="fa fa-search"></i></button>
                                 </div>
@@ -46,25 +47,14 @@
                         <span class="text">Salir</span>
                     </a>
                 </aside>
-
-
-
-
-
-
-
-
-
-
-
                 <main class="col-md-9">
 
                     <header class="border-bottom mb-4 pb-3">
                         <div class="form-inline">
-                            <span class="mr-md-auto"><%= total %> productos</span>
+                            <span class="mr-md-auto"><%= total %> usuarios</span>
                             <div class="btn-group">
-                                <a href="/product/add" class="btn  btn-outline-secondary" data-toggle="tooltip" title=""
-                                    data-original-title="Grid view">
+                                <a href="/categories/add" class="btn  btn-outline-secondary" data-toggle="tooltip"
+                                    title="" data-original-title="Grid view">
                                     <i class="fas fa-plus"></i></a>
                                 <a id="filasBoton" href="#" class="btn btn-outline-secondary active"
                                     data-toggle="tooltip" title="" data-original-title="List view">
@@ -72,82 +62,83 @@
                                 <a id="gridBoton" href="#" class="btn  btn-outline-secondary" data-toggle="tooltip"
                                     title="" data-original-title="Grid view">
                                     <i class="fa fa-th"></i></a>
-
                             </div>
                         </div>
                     </header>
 
-                    <!-- LISTA CON GRID-->
-
                     <div id="grid" class="row disnone">
-                        <% products.forEach(product => { %>
-                                <div class="col-md-4">
-                                    <figure class="card card-product-grid ">
-                                        <div class="img-wrap">
-                                            <img src="/images/productImages/<%= product.images %>">
-                                        </div> 
-                                        <figcaption class="info-wrap">
-                                            <div class="info-main">
-                                                <a href="/product/productlist/<%= product.id %>" class="h6 title">
-                                                    <%= product.name %> </a>
-                                            </div> 
-                                            <div class="info-aside">
-                                                <br>
-                                                <p>
-                                                    <a href="/product/productlist/<%= product.id %>"
-                                                        class="btn btn-primary btn-block">
-                                                        Detalles </a>
-                                                    <a href="/product/edit/<%= product.id %>" class="btn btn-light btn-block">
-                                                        <span class="text">Editar</span>
-                                                    </a>
-                                                <form id="borrarForm" action="/product/delete/<%= product.id %>?_method=DELETE" method="POST">
-                                                    <button id="borrar" class="btn btn-light btn-block mt-2" type="submit">
-                                                        <span class="text">Eliminar</span>
-                                                    </button>
-                                                </form>
-                                                </p>
-                                            </div> 
-        
-                                        </figcaption>
-                                    </figure>
-                                </div> 
-                                <% }) %>
-                            </div>
-                       
+                        <% users.forEach(user => { %>
+                        <div class="col-md-4">
+                            <figure class="card card-product-grid ">
+                                <div class="img-wrap">
+                                    <img src="/images/imagenproducto.jpg">
+                                </div>
+                                <figcaption class="info-wrap">
+                                    <div class="info-main">
+                                        <a href="/users/userslist/<%= user.id %>" class="h6 title">
+                                            <%= user.first_name %> <%= user.last_name %> </a>
+                                            <aside class="">
+                                                <dl class="">
+                                                      <dt class="">Email</dt>
+                                                      <dd class=""><%= user.email %></dd>
 
-                    <!-- LISTA CON FILAS-->
+                                                      <dt class="">Telefono</dt>
+                                                      <dd class=""><%= user.phone %></dd>
+                                                </dl>
+                                            </aside>
+                                    </div>
+                                    <div class="info-aside">
+                                        <br>
+                                        <p>
+                                            <a href="/users/userslist/<%= user.id %>" class="btn btn-primary btn-block">
+                                                Detalles </a>
+                                            <a href="/users/userslist/addadmin/<%= user.id %>"
+                                                class="btn btn-light btn-block">
+                                                <span class="text">Editar</span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <% }) %>
+                    </div>
+
 
                     <div id="filas">
-                        <% products.forEach(product => { %>
+                        <% users.forEach(user => { %>
                         <article class="card card-product-list">
                             <div class="row no-gutters">
                                 <aside class="col-md-3">
-                                    <a href="/product/productlist/<%= product.id %>" class="img-wrap">
-                                        <img src="/images/productImages/<%= product.images %>">
+                                    <a href="/users/userslist/<%= user.id %>" class="img-wrap">
+                                        <img src="/images/imagenproducto.jpg">
                                     </a>
                                 </aside> <!-- col.// -->
                                 <div class="col-md-6">
                                     <div class="info-main">
-                                        <a href="/product/productlist/<%= product.id %>" class="h5 title mb-4">
-                                            <%= product.name %> </a>
-                                        <p> <%= product.description %> </p>
+                                        <a href="/users/userslist/<%= user.id %>" class="h5 title mb-4">
+                                            <%= user.first_name %> <%= user.last_name %></a>
+                                            <aside class="">
+                                                <dl class="">
+                                                      <dt class="">Email</dt>
+                                                      <dd class=""><%= user.email %></dd>
+
+                                                      <dt class="">Telefono</dt>
+                                                      <dd class=""><%= user.phone %></dd>
+                                                </dl>
+                                            </aside>
                                     </div> <!-- info-main.// -->
                                 </div> <!-- col.// -->
                                 <aside class="col-sm-3">
                                     <div class="info-aside">
                                         <br>
                                         <p>
-                                            <a href="/product/productlist/<%= product.id %>"
-                                                class="btn btn-primary btn-block">
+                                            <a href="/users/userslist/<%= user.id %>" class="btn btn-primary btn-block">
                                                 Detalles </a>
-                                            <a href="/product/edit/<%= product.id %>" class="btn btn-light btn-block">
+                                            <a href="/users/userslist/addadmin/<%= user.id %>"
+                                                class="btn btn-light btn-block">
                                                 <span class="text">Editar</span>
                                             </a>
-                                        <form action="/product/delete/<%= product.id %>?_method=DELETE" method="POST">
-                                            <button class="btn btn-light btn-block mt-2" type="submit">
-                                                <span class="text">Eliminar</span>
-                                            </button>
-                                        </form>
                                         </p>
                                     </div> <!-- info-aside.// -->
                                 </aside> <!-- col.// -->

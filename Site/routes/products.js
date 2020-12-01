@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 const productsController = require('../controllers/productsController')
 const uploadImageProduct = require('../middlewares/uploadImageProduct')
+const productValidator = require('../validations/productValidator')
 const logMiddleware = require('../middlewares/logMiddleware');
+const adminMiddleware = require('../middlewares/adminMiddleware');
 
 
 router.get('/', productsController.listProducts);
@@ -11,11 +13,17 @@ router.get('/cart', logMiddleware,productsController.cart);
 router.get('/search', productsController.search);
 
 
-router.get('/add',logMiddleware , productsController.addForm);
-router.post('/add', uploadImageProduct.any(), productsController.addProduct)
+router.get('/productlist/search', productsController.searchAdmin);
+router.get('/productlist/category/:id' ,productsController.listProductsAdmin)
 
-router.get('/edit/:id', logMiddleware, productsController.editForm);
-router.put('/edit/:id', uploadImageProduct.any(), productsController.editProduct);
+router.get('/add', logMiddleware ,adminMiddleware, productsController.addForm);
+router.post('/add', uploadImageProduct.any(),productValidator, productsController.addProduct)
+
+router.get('/edit/:id', adminMiddleware, productsController.editForm);
+router.put('/edit/:id', uploadImageProduct.any(),productValidator, productsController.editProduct);
+
+router.get('/productlist', logMiddleware, adminMiddleware, productsController.productList);
+router.get('/productlist/:id',logMiddleware, adminMiddleware ,productsController.productAdmin)
 
 router.delete('/delete/:id', logMiddleware, productsController.delete)
 

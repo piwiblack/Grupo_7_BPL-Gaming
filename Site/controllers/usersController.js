@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const db = require('../database/models');
-
+const {Op, Sequelize} = require('sequelize');
 
 const usersController = {
     register: function (req, res, next) {
@@ -14,7 +14,7 @@ const usersController = {
                 phone: req.body.phone,
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10),
-                category: "user"
+                category: "user",
             })
                 .then(user => {
                     return res.redirect('/users/login/')
@@ -59,42 +59,36 @@ const usersController = {
 
     },
 
-    productList: function (req, res) {
-        let categoriesList = db.Categories.findAll({
-            order: [
-                ['name', 'ASC']
-            ]
-        })
-        let productsList = db.Products.findAll()
+    usersList: function (req, res) {
 
-        Promise.all([categoriesList, productsList])
-            .then(function ([categories, products]) {
-                res.render('adminProductList', {
-                    title: "BPLE Gaming - Perfil",
-                    total: products.length,
-                    products: products,
-                    categories: categories
+        let usersList = db.Users.findAll()
+
+        Promise.all([usersList])
+            .then(function ([users]) {
+                res.render('adminUserList', {
+                    title: 'BPLE - Usuarios',
+                    users: users,
+                    total: users.length
                 })
             })
     },
 
-    productAdmin: function (req, res) {
-        let productList = db.Products.findAll()
+    userProfile: function (req, res) {
+        let usersList = db.Users.findAll()
 
 
-        let requiredProduct = db.Products.findByPk(req.params.id, {
-            include: [{ association: "categories" }]
-        })
+        let requiredUser = db.Users.findByPk(req.params.id)
 
-        Promise.all([productList, requiredProduct])
-            .then(function ([productList, product]) {
-                res.render('adminProduct', {
-                    title: 'BPLE - ' + product.name,
-                    product: product,
-                    productList: productList
+        Promise.all([usersList, requiredUser])
+            .then(function ([usersList, user]) {
+                res.render('adminUser', {
+                    title: 'BPLE - ' + user.name,
+                    user: user,
+                    usersList: usersList
                 })
             })
     },
+
 
     profile: function (req, res) {
 
@@ -110,11 +104,10 @@ const usersController = {
 
     logout: function (req, res) {
         req.session.destroy()
-        res.redirect('/users/login')
+        res.redirect('/')
         if (req.cookies.userLogin) {
             res.cookie('userLogin', ' ', { maxAge: -1 });
         }
-        res.redirect('/')
     },
 
 
@@ -127,7 +120,40 @@ const usersController = {
             cp: req.body.cp,
             house_number: req.body.house_number,
             apartment: req.body.apartment,
-            floor: req.body.floor
+            floor: req.body.floor,
+           // image: (req.files[0]) ? req.files[0].filename : req.body.images
+        },
+            {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(user => {
+                return res.redirect('/users/profile')
+
+            })
+    },
+
+    
+    addAdmin: function (req, res) {
+        let usersList = db.Users.findAll()
+
+
+        let requiredUser = db.Users.findByPk(req.params.id)
+
+        Promise.all([usersList, requiredUser])
+            .then(function ([usersList, user]) {
+                res.render('addAdmin', {
+                    title: 'BPLE - ' + user.name,
+                    user: user,
+                    usersList: usersList
+                })
+            })
+    },
+
+    saveAddAdmin: function (req, res) {
+        db.Users.update({
+            category: req.body.category
         },
             {
                 where: {
@@ -139,8 +165,31 @@ const usersController = {
 
             })
 
+    },
 
-    }
+    search: function (req, res) {
+
+        let usersSearch = db.Users.findAll({
+            where: {
+                [db.Sequelize.Op.or]: {
+                    email: { [db.Sequelize.Op.like]: `%${req.query.search}%` }, 
+                    first_name: { [db.Sequelize.Op.like]: `%${req.query.search}%` } 
+                }
+            }
+        })
+
+        Promise.all([usersSearch])
+        .then(function([users]){
+            res.render('adminUserList', {
+                title: 'BPLE - Usuarios ' + req.query.search,
+                users: users,
+                total: users.length,
+            })
+        })
+       
+    },
+
+
 }
 
 module.exports = usersController;

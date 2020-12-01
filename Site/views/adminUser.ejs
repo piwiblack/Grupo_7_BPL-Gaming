@@ -10,7 +10,8 @@
             <nav>
                 <ol class="breadcrumb text-white">
                     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Mi cuenta</li>
+                    <li class="breadcrumb-item"><a href="/users/userslist">Usuarios</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><%= user.first_name  %> <%= user.last_name  %>  </li>
                 </ol>
             </nav>
         </div>
@@ -22,7 +23,7 @@
             <main class="col-md-9">
                 <article class="card">
                     <header class="card-header">
-                        <h4 class="d-inline-block mr-3">Bienvenido</h4>
+                        <h4 class="d-inline-block mr-3">Datos</h4>
                     </header>
                     <div class="card-body">
                         <div class="row">
@@ -46,7 +47,7 @@
                                         <div class="col">
                                             <div class="input-group">
                                                 <input name="phone" class="form-control" placeholder="Telefono"
-                                                    type="text" name="phone" value="<%=user.phone%>">
+                                                    type="text" name="phone" value="<%=user.phone%>" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -58,17 +59,14 @@
                                                 name="email" value="<%=user.email%>" disabled>
                                         </div>
                                     </div>
-                                    <% if(user.category == "admin"){%>
+
                                     <div class="form-group form-row">
                                         <label class="col-md-3 col-form-label">Categoria</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" placeholder="nombre@gmail.com"
-                                                name="category" value="<%=user.category%>" disabled>
+                                            <input type="text" class="form-control" placeholder="categoria" name="email"
+                                                value="<%=user.category%>" disabled>
                                         </div>
                                     </div>
-
-                                    <% } %>
-
 
                             </aside>
                             <aside class="col-md-9">
@@ -78,7 +76,7 @@
                                         <label class="col-md-3 col-form-label">Provincia</label>
                                         <div class="col">
                                             <input type="text" class="form-control" placeholder="Provincia" name="state"
-                                                value="<%=user.state%>">
+                                                value="<%=user.state%>" disabled>
                                         </div>
                                     </div>
 
@@ -86,7 +84,7 @@
                                         <label class="col-md-3 col-form-label">Localidad</label>
                                         <div class="col">
                                             <input type="text" class="form-control" placeholder="Localidad" name="city"
-                                                value="<%=user.city%>">
+                                                value="<%=user.city%>" disabled>
                                         </div>
                                     </div>
 
@@ -94,7 +92,7 @@
                                         <label class="col-md-3 col-form-label">Codigo Postal</label>
                                         <div class="col">
                                             <input type="text" class="form-control" placeholder="Codigo Postal"
-                                                name="cp" value="<%=user.cp%>">
+                                                name="cp" value="<%=user.cp%>" disabled>
                                         </div>
                                     </div>
 
@@ -102,7 +100,7 @@
                                         <label class="col-md-3 col-form-label">Calle</label>
                                         <div class="col">
                                             <input type="text" class="form-control" placeholder="Calle" name="street"
-                                                value="<%=user.street%>">
+                                                value="<%=user.street%>" disabled>
                                         </div>
                                     </div>
 
@@ -110,7 +108,7 @@
                                         <label class="col-md-3 col-form-label">Numero</label>
                                         <div class="col">
                                             <input type="text" class="form-control" placeholder="Numero"
-                                                name="house_number" value="<%=user.house_number%>">
+                                                name="house_number" value="<%=user.house_number%>" disabled>
                                         </div>
                                     </div>
 
@@ -118,7 +116,7 @@
                                         <label class="col-md-3 col-form-label">Dpto</label>
                                         <div class="col">
                                             <input type="text" class="form-control" placeholder="Dpto" name="apartment"
-                                                value="<%=user.apartment%>">
+                                                value="<%=user.apartment%>" disabled>
                                         </div>
                                     </div>
 
@@ -126,30 +124,7 @@
                                         <label class="col-md-3 col-form-label">Piso</label>
                                         <div class="col">
                                             <input type="text" class="form-control" placeholder="Piso" name="floor"
-                                                value="<%=user.floor%>">
-                                        </div>
-                                    </div>
-
-                                 <!--<div class="form-group form-row">
-                                        <label class="col-md-3 col-form-label">Foto</label>
-                                        <div class="col">
-                                            <div class="input-group">
-                                                <input type="file" class="form-control" name="image" accept="image/*">
-                                            </div>
-                                            <span class="text-danger" id="photoError"></span>
-                                        </div>
-                                    </div> -->   
-
-                                    <div class="form mb-2">
-                                        <div class="offset-sm-3">
-                                            <a href="/product/productlist">
-                                                <button class="btn btn-outline-primary" type="button">
-                                                    <span class="text">Cancelar</span>
-                                                </button>
-                                            </a>
-                                            <button class="btn btn-primary" type="submit">
-                                                <span class="text">Aplicar</span>
-                                            </button>
+                                                value="<%=user.floor%>" disabled>
                                         </div>
                                     </div>
                             </aside>
