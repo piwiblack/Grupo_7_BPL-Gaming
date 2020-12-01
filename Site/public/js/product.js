@@ -19,6 +19,16 @@ function ConfirmCancelEdit(){
     }
 }
 
+function ConfirmEdit(){
+    var respuesta = confirm("¿Esta seguro que desea guardar los cambios?")
+
+    if(respuesta == true){
+        return true
+    }else{
+        return false
+    }
+}
+
 
 
 

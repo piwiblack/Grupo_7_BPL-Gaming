@@ -1,4 +1,3 @@
-
 function ConfirmDelate(){
     var respuesta = confirm("¿Esta seguro que desea eliminar eliminar el producto?")
 
@@ -9,9 +8,8 @@ function ConfirmDelate(){
     }
 }
 
-
-function ConfirmEdit(){
-    var respuesta = confirm("¿Esta seguro que desea aplicar los cambios?")
+function ConfirmCancelEdit(){
+    var respuesta = confirm("¿Esta seguro que desea descartar los cambios?")
 
     if(respuesta == true){
         return true
@@ -20,8 +18,8 @@ function ConfirmEdit(){
     }
 }
 
-function ConfirmCancelEdit(){
-    var respuesta = confirm("¿Esta seguro que desea descartar los cambios?")
+function ConfirmEdit(){
+    var respuesta = confirm("¿Esta seguro que desea guardar los cambios?")
 
     if(respuesta == true){
         return true

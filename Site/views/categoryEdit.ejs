@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('partials/head') %>
-
+<script src="/js/alerts.js"></script>
 <body>
     <%- include('partials/header') %>
     <section class="section-pagetop bg">
@@ -38,11 +38,11 @@
                                     <div class="form mb-2">
                                         <div class="offset-sm-3">
                                             <a href="/categories/categorieslist">
-                                                <button class="btn btn-outline-primary" type="button">
+                                                <button class="btn btn-outline-primary" type="button" onclick="return ConfirmCancelEdit()">
                                                     <span class="text">Cancelar</span>
                                                 </button>
                                             </a>
-                                            <button class="btn btn-primary" type="submit">
+                                            <button class="btn btn-primary" type="submit" onclick="return ConfirmEdit()">
                                                 <span class="text">Aplicar</span>
                                             </button>
                                         </div>

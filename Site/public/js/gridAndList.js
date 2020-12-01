@@ -1,14 +1,3 @@
-
-function ConfirmDelate(){
-    var respuesta = confirm("¿Esta seguro que desea eliminar eliminar el producto?")
-
-    if(respuesta == true){
-        return true
-    }else{
-        return false
-    }
-}
- 
 window.addEventListener('load', function () {
     let filasBoton = document.querySelector('#filasBoton')
     let filas = document.querySelector('#filas')

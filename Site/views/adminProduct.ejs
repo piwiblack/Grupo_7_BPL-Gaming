@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('partials/head') %>
-
+<script src="/js/alerts.js"></script>
 <body>
     <%- include('partials/header') %>
     <section class="section-pagetop bg">
@@ -62,7 +62,7 @@
                                     <span class="text">Editar</span>
                                 </a>
                                 <form action="/product/delete/<%= product.id %>?_method=DELETE" class="inline" method="POST">
-                                    <button class="btn btn-light " type="submit">
+                                    <button class="btn btn-light" onclick="return ConfirmDelate()" type="submit" >
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </form>
@@ -91,7 +91,7 @@
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <form action="/product/delete/<%= product.id %>?_method=DELETE" class="inline" method="POST">
-                                    <button class="btn btn-light " type="submit">
+                                    <button class="btn btn-light" onclick="return ConfirmDelate()" type="submit" >
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </form>
