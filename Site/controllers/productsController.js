@@ -38,16 +38,18 @@ const productsController = {
     detail: function (req, res) {
 
         let categoriesList = db.Categories.findAll();
+        let productList = db.Products.findAll();
         let productDetail = db.Products.findByPk(req.params.id)
 
 
-            Promise.all([categoriesList, productDetail])
-            .then(function ([categories, products]) {
+            Promise.all([categoriesList, productDetail, productList])
+            .then(function ([categories, products, productlist]) {
                 res.render('productDetail', {
                     title: 'BPLE - ' + products.name,
                     producto: products,
                     categories: categories,
-                    total: products.length
+                    total: products.length,
+                    productlist: productlist
                 })
             })
     },
