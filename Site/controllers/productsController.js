@@ -30,7 +30,7 @@ const productsController = {
                     title: 'BPLE - Productos',
                     products: products,
                     categories: categories,
-                    total: productos.length
+                    total: products.length
                 })
             })
     },
