@@ -6,6 +6,18 @@
 
 <body>
     <%- include('partials/header') %>
+    <section class="section-pagetop bg">
+        <div class="container">
+            <h2 class="title-page">Producto</h2>
+            <nav>
+                <ol class="breadcrumb text-white">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="/product/productlist ">Productos</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Editar Producto</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
     <div class="container padding-y">
         <div class="card">
             <div class="row no-gutters">
@@ -13,13 +25,13 @@
                     <article class="gallery-wrap">
                         <div class="img-big-wrap">
                             <div> <a href="#"><img src="/images/productImages/<%= product.images %>"></a></div>
-                        </div> <!-- slider-product.// -->
+                        </div>
                         <div class="thumbs-wrap">
                             <a href="" class="item-thumb"> <img src="/images/productImages/<%= product.images %>"></a>
                             <a href="" class="item-thumb"> <img src="/images/productImages/<%= product.images %>"></a>
                             <a href="" class="item-thumb"> <img src="/images/productImages/<%= product.images%>"></a>
-                        </div> <!-- slider-nav.// -->
-                    </article> <!-- gallery-wrap .end// -->
+                        </div>
+                    </article>
                 </aside>
                 <main class="col-md-6 border-left">
                     <article class="content-body">
@@ -36,7 +48,7 @@
                                     <input type="number" placeholder="Precio" class="form-control" name="price"
                                         value=<%= product.price%>>
                                 </div>
-                            </div> <!-- price-detail-wrap .// -->
+                            </div>
 
                             <select id="inputState" class="form-control mb-3" name="category">
                                 <% categories.forEach(category => { %>
@@ -87,84 +99,29 @@
                                         <% if(product.status == "on"){%>
                                         <input type="checkbox" class="custom-control-input" name="status" checked>
                                         <%}else{%>
-                                            <input type="checkbox" class="custom-control-input" name="status">
-                                            <% } %>
+                                        <input type="checkbox" class="custom-control-input" name="status">
+                                        <% } %>
 
                                         <div class="custom-control-label" for="customCheck1">Destacado</div>
                                     </label>
                                 </div>
                             </div>
-
                             <hr>
-                            <a href="/product/productlist">
+                            <a href="/product/productlist/<%= product.id  %> ">
                                 <button class="btn btn-outline-primary" type="button"
                                     onclick="return ConfirmCancelEdit()">
                                     <span class="text">Cancelar</span>
                                 </button>
                             </a>
-
                             <button class="btn btn-primary" type="submit" onclick="return ConfirmEdit()">
                                 <span class="text">Aplicar</span>
                             </button>
-
                         </form>
-
-
-                    </article> <!-- product-info-aside .// -->
-                </main> <!-- col.// -->
-            </div> <!-- row.// -->
+                    </article>
+                </main> 
+            </div> 
         </div>
-        <!--       <section class="padding-y">
-            <hr class="divider">
-        </section>
-
-        <output>
-             ============================ COMPONENT DETAIL 4  ================================= 
-            <article class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <aside class="col-md-7">
-                            <h5>Caracteristicas</h5>
-                            <dl class="row">
-                                <dt class="col-sm-5">
-                                    <div class="form-group">
-                                        <input type="text" placeholder="Caracteristica" class="form-control" name="">
-                                    </div>
-                                </dt>
-                                <dd class="col-sm-5">
-                                    <div class="form-group">
-                                        <input type="text" placeholder="Especifacion" class="form-control" name="">
-
-                                    </div>
-                                </dd>
-                                <div class="col-sm-1">
-                                    <a href="#" class="btn  btn-outline-primary"><i class="fas fa-plus"></i> </a>
-                                </div>
-                                <dt class="col-sm-5">Caracteristica</dt>
-                                <dd class="col-sm-5">Especifacion</dd>
-
-                            </dl>
-                        </aside>
-                        <aside class="col-md-5">
-                            <h5>Tener en cuenta</h5>
-                            <ul class="list-check">
-                                <li>Hacemos factura A y B.</li>
-                                <li>Todos los precios son finales IVA incluido.</li>
-                                <li>No aceptamos ningún product en parte de pago.</li>
-                                <li>Todos nuestro artículos son nuevos y se entregan en su empaque original.</li>
-                            </ul>
-                        </aside>
-                    </div>  row.// -
-                    <hr>
-                    <p>
-                        Para mas informacion visitar la pagina del fabricante <a href="#l">link del product</a>
-                    </p>
-                </div>  card-body.// 
-            </article> card.// 
-            ============================ COMPONENT DETAIL 4 .//END ================================= 
-        </output> -->
     </div>
     <%- include('partials/footer') %>
 </body>
-
 </html>

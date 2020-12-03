@@ -13,10 +13,10 @@
                 <ol class="breadcrumb text-white">
                     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
                     <% categories.forEach(category => { %>
-                        <% if (category.id == producto.id_category) { %>
-                            <li class="breadcrumb-item"><a href="/categories/search/<%=category.id%>"> <%= category.name %> </a>
+                    <% if (category.id == producto.id_category) { %>
+                    <li class="breadcrumb-item"><a href="/categories/search/<%=category.id%>"> <%= category.name %> </a>
                         <%} %>
-                    <% }) %>
+                        <% }) %>
                         </a></li>
                     <li class="breadcrumb-item active" aria-current="page"><%= producto.name %> </li>
                 </ol>
@@ -77,22 +77,44 @@
                                                 id="button-plus"> + </button>
                                         </div>
                                     </div>
-                                </div> <!-- col.// -->
+                                </div>
                             </div>
-
                             <a href="/users/login" class="btn  btn-primary"> Comprar </a>
                             <a href="/users/login" class="btn  btn-outline-primary">
                                 <span class="text">Añadir</span>
                                 <i class="fas fa-shopping-cart"></i>
                             </a>
-
                         </form>
-
-                    </article> <!-- product-info-aside .// -->
-                </main> <!-- col.// -->
-            </div> <!-- row.// -->
+                    </article>
+                </main>
+            </div>
         </div>
+        <% categories.forEach(category => { %>
+        <% if(category.id == producto.id_category){%>
+        <section class="section-name  padding-y-sm mt-5">
+            <div class="row">
+
+                <% for( let i = 0; i < productlist.length; i++ ) { %>
+                    <% if(category.id == productlist[i].id_category){%>
+                        <div class="col-lg-3 col-sm-4">
+                            <div href="#" class="card card-product-grid">
+                                <a href="/product/detail/<%= productlist[i].id %>" class="img-wrap"> <img
+                                        src="/images/productImages/<%= productlist[i].images %> "> </a>
+                                <figcaption class="info-wrap">
+                                    <a href="/product/detail/<%= productlist[i].id %>" class="title"><%= productlist[i].name %> </a>
+                                    <div class="price mt-1">$<%= productlist[i].price %> </div>
+                                </figcaption>
+                            </div>
+                        </div>
+                        <% }%>
+                    <% } %>
+            </div>
     </div>
+    </section>
+
+    <% }%>
+    <% }) %>
+
     <%- include('partials/footer') %>
 </body>
 
