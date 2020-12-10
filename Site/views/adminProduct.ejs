@@ -58,6 +58,12 @@
                                 <% }else{%>
                                 <dd class="col-sm-7">No </dd>
                                 <% } %>
+                                <dt class="col-sm-3">Archivado:</dt>
+                                <% if(product.archived == "on"){%>
+                                <dd class="col-sm-7">Si </dd>
+                                <% }else{%>
+                                <dd class="col-sm-7">No </dd>
+                                <% } %>
 
 
 
@@ -80,7 +86,6 @@
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </form>
-                                <a href="#" class="btn btn-light"> <i class="fa fa-folder"></i> </a>
                             </div> <!-- col.// -->
                         </div> <!-- row.// -->
                     </article> <!-- product-info-aside .// -->
@@ -111,7 +116,6 @@
                                     <i class="fa fa-times"></i>
                                 </button>
                             </form>
-                            <a href="#" class="btn btn-light"> <i class="fa fa-folder"></i> </a>
                         </div> <!-- col.// -->
                     </figcaption>
                 </div>

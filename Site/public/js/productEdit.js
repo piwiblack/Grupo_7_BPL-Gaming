@@ -34,7 +34,7 @@ function ConfirmEdit(){
 
 window.addEventListener('load', function () {
 
-    let form = qs('form#register')
+    let form = qs('form#edit')
 
     let inputName = form.elements[0]
     let inputPrice = form.elements[1]
@@ -58,8 +58,8 @@ window.addEventListener('load', function () {
                 nameError.innerHTML = errores.nombre;
                 this.classList.add('is-invalid')
                 break;
-            case this.value.trim().length < 5:
-                errores.nombre = "El nombre tienen que tener al menos 5 caracteres"
+            case this.value.trim().length < 3:
+                errores.nombre = "El nombre tienen que tener al menos 3 caracteres"
                 nameError.innerHTML = errores.nombre;
                 this.classList.add('is-invalid')
                 break;
@@ -181,7 +181,7 @@ window.addEventListener('load', function () {
         let error = false
         let elementoForm = this.elements;
 
-        for (let i = 0; i < elementoForm.length - 6; i++) {
+        for (let i = 0; i < elementoForm.length - 10; i++) {
             if (elementoForm[i].value == "") {
                 elementoForm[i].classList.add('is-invalid');
                 errors.innerHTML = '<li>' + "Los campos señalados son obligatorios" + '</li>'

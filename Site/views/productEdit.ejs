@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include('partials/head') %>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="/js/product.js"></script>
+<script src="/js/productEdit.js"></script>
 
 <body>
     <%- include('partials/header') %>
@@ -35,7 +35,7 @@
                 </aside>
                 <main class="col-md-6 border-left">
                     <article class="content-body">
-                        <form action="/product/edit/<%=product.id %>?_method=PUT" method="POST"
+                        <form id="edit" action="/product/edit/<%=product.id %>?_method=PUT" method="POST"
                             enctype="multipart/form-data">
 
                             <div class="form-group">
@@ -79,49 +79,78 @@
                                 </div>
                             </div>
 
-                            <div class="form">
-                                <label>Garantia</label>
-                                <div class="form-group flex-grow-0">
+                            <hr>
+
+                            <div class="row mt-2">
+                                <div class="form-group col-md flex-grow-0">
+                                    <label>Cantidad</label>
                                     <div class="input-group mb-3 input-spinner">
                                         <div class="input-group-prepend">
-                                            <button class="btn btn-light" type="button" id="button-minus"> − </button>
+                                            <button onclick="decrement()" class="btn btn-light" type="button"
+                                                id="button-minus"> − </button>
                                         </div>
-                                        <input type="text" class="form-control" name="warranty"
-                                            value=<%= product.warranty %>>
+                                        <input value="<%= product.warranty%>" id=demoInput type="number"
+                                            class="form-control" name="warranty">
                                         <div class="input-group-append">
-                                            <button class="btn btn-light" type="button" id="button-plus"> + </button>
+                                            <button onclick="increment()" class="btn btn-light" type="button"
+                                                id="button-plus"> + </button>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group col-md">
+                                    <label>Destacado</label>
+                                    <div class="mt-2">
+                                        <label class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" name="status" value="on" class="custom-control-input"
+                                                <% if(product.status == "on"){%> checked <%  } %>>
+                                            <div class="custom-control-label">Si</div>
+                                        </label>
 
-                                <div class="form-group">
-                                    <label class="custom-control custom-checkbox">
-                                        <% if(product.status == "on"){%>
-                                        <input type="checkbox" class="custom-control-input" name="status" checked>
-                                        <%}else{%>
-                                        <input type="checkbox" class="custom-control-input" name="status">
-                                        <% } %>
-
-                                        <div class="custom-control-label" for="customCheck1">Destacado</div>
-                                    </label>
+                                        <label class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" name="status" value="off" class="custom-control-input"
+                                                <% if(product.status != "on"){%> checked <%  } %>>
+                                            <div class="custom-control-label">No</div>
+                                        </label>
+                                    </div>
                                 </div>
+                                <div class="form-group col-md">
+                                    <label>Archivado</label>
+                                    <div class="mt-2">
+                                        <label class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" name="archived" value="on" class="custom-control-input"
+                                                <% if(product.archived == "on"){%> checked <%  } %>>
+                                            <div class="custom-control-label">Si</div>
+                                        </label>
+
+                                        <label class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" name="archived" value="off" class="custom-control-input"
+                                                <% if(product.archived != "on"){%> checked <%  } %>>
+                                            <div class="custom-control-label">No</div>
+                                        </label>
+                                    </div>
+                                </div> 
                             </div>
-                            <hr>
-                            <a href="/product/productlist/<%= product.id  %> ">
-                                <button class="btn btn-outline-primary" type="button"
-                                    onclick="return ConfirmCancelEdit()">
-                                    <span class="text">Cancelar</span>
+
+
+
+                            <div class="form">
+                                <hr>
+                                <a href="/product/productlist/<%= product.id  %> ">
+                                    <button class="btn btn-outline-primary" type="button"
+                                        onclick="return ConfirmCancelEdit()">
+                                        <span class="text">Cancelar</span>
+                                    </button>
+                                </a>
+                                <button class="btn btn-primary" type="submit" onclick="return ConfirmEdit()">
+                                    <span class="text">Aplicar</span>
                                 </button>
-                            </a>
-                            <button class="btn btn-primary" type="submit" onclick="return ConfirmEdit()">
-                                <span class="text">Aplicar</span>
-                            </button>
                         </form>
                     </article>
-                </main> 
-            </div> 
+                </main>
+            </div>
         </div>
     </div>
     <%- include('partials/footer') %>
 </body>
+
 </html>

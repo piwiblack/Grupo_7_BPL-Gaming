@@ -154,7 +154,8 @@ const productsController = {
             id_category: req.body.category,
             warranty: req.body.warranty,
             images: (req.files[0]) ? req.files[0].filename : req.body.images,
-            status: req.body.status
+            status: req.body.status,
+            archived: req.body.archived
         },
             {
                 where: {

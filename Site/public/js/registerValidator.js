@@ -18,7 +18,7 @@ window.addEventListener('load', function () {
 
 
     let errores = {}
-    let regExName = /^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/;
+    let regExName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
     let regExNumber = /^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/;
     let regExEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     let regExPass = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;

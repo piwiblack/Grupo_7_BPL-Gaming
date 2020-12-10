@@ -35,6 +35,9 @@ module.exports = (sequelize, dataTypes) => {
         status: {
             type: dataTypes.STRING(45),
         },
+        archived: {
+            type: dataTypes.STRING(45)
+        },
         id_category: {
             type: dataTypes.INTEGER
         }
