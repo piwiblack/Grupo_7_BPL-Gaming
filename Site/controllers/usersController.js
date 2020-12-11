@@ -26,6 +26,7 @@ const usersController = {
         } else {
             res.render('register', {
                 errors: errors.errors,
+                oldInput: req.body,
                 title: 'BPLE Gaming - Registro'
             })
         }
@@ -54,7 +55,11 @@ const usersController = {
                 })
 
         } else {
-            res.render('login', { errors: errors.errors, title: 'BPLE Gaming - Login' })
+            res.render('login', { 
+                errors: errors.errors,
+                oldInput: req.body,
+                title: 'BPLE Gaming - Login' 
+            })
         }
 
     },

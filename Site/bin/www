@@ -89,4 +89,4 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-console.log('El servidor esta funcionando en el puerto 3000')
+console.log('El servidor esta funcionando... \n=======================\n http://localhost:'+port+'\n=======================')

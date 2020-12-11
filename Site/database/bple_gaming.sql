@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `bple_gaming`.`products` (
   `status` VARCHAR(45) NULL DEFAULT NULL,
   `id_category` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `idCategory_idx` (`id_category` ASC) VISIBLE,
+  INDEX `idCategory_idx` (`id_category` ASC) ,
   CONSTRAINT `idCategory`
     FOREIGN KEY (`id_category`)
     REFERENCES `bple_gaming`.`categories` (`id`))
@@ -96,8 +96,8 @@ CREATE TABLE IF NOT EXISTS `bple_gaming`.`carts` (
   `bill` INT NOT NULL,
   `date` DATE NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `idUser_idx` (`id_user` ASC) VISIBLE,
-  INDEX `idProduct_idx` (`id_product` ASC) VISIBLE,
+  INDEX `idUser_idx` (`id_user` ASC) ,
+  INDEX `idProduct_idx` (`id_product` ASC) ,
   CONSTRAINT `idProduct`
     FOREIGN KEY (`id_product`)
     REFERENCES `bple_gaming`.`products` (`id`),

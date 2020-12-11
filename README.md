@@ -27,15 +27,15 @@
 
 ##  Temática del sitio y audiencia
 
-El sitio comercializará productos relacionados a la industria del gaming. Se venderan juegos, perifericos y giftcards para diferentes plataformas. Contará con una subscripción mensual, que traerá descuentos como beneficio para nuestros usuarios.
-La audiencia objetivo es tanto la familia como los jugadores individuales, que quieran sumergirse en el mundo del gaming y el entretenimiento. Adultos, jovenes y chicos, podran disfrutar de un gran catalogo de juegos y productos electronicos. 
+El sitio comercializará productos relacionados a la industria del gaming. Se venderan componentes para PC y perifericos para diferentes plataformas. 
+La audiencia objetivo es tanto la familia como los jugadores individuales, que quieran sumergirse en el mundo del gaming y el entretenimiento. Adultos, jovenes y chicos, podran disfrutar de un gran catalogo de productos electronicos. 
 
 ## Listado de 5 páginas referentes 
 
-- [Origin](https://www.origin.com)
-- [G2A](https://www.g2a.com)
-- [Steam](https://www.steam.com)
-- [Uplay](https://www.uplay.com)
+- [Logg](https://www.logg.com.ar)
+- [Mexx](https://www.mexx.com.ar)
+- [Compra Gamer](https://compragamer.com)
+- [Full H4rd](https://www.fullh4rd.com.ar/)
 - [AliExpress](https://es.aliexpress.com)
 
 
@@ -58,12 +58,9 @@ Las páginas que utilizamos como referentes estan vinculadas con los productos q
 - #9c9c9c.
 #### Familia Tipografica 
 - Inter, Arial, Helvetica Neue, Segoe UI, sans-serif.
-- Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol y Noto Color Emoji.
 - [Logo](https://github.com/piwiblack/Grupo_7_BPL-Gaming/blob/master/Site/public/images/logo.jpeg)
 
 
-## :pushpin: Segundo Sprint (07/09)
 - [Retro.md](https://github.com/piwiblack/Grupo_7_BPL-Gaming/blob/master/retro.md)
 ## Tablero de Trabajo
-- [GitHub](https://github.com/piwiblack/Grupo_7_BPL-Gaming/projects/1)
 - [Trello](https://trello.com/b/umPg0yRB/proyecto-integrador-g7)
