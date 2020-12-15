@@ -21,7 +21,7 @@
         <div class="container">
 
             <div class="row">
-                <aside class="col-md-3">
+                <aside class="col-md-3 filters">
 
                     <div class="card">
                         <article class="filter-group">
@@ -111,7 +111,7 @@
                     </div> <!-- card.// -->
 
                 </aside> <!-- col.// -->
-                <main class="col-md-9">
+                <main class="col-md-12 col-lg-9">
 
 
 
@@ -126,9 +126,9 @@
                             <% } %>
                             <% } %>
                             <% if(totalProducts == 1){ %>
-                            <span class="mr-md-auto"><%= totalProducts %> producto</span>
+                            <span class="mr-md-auto total-products"><%= totalProducts %> producto</span>
                             <% }else{ %>
-                            <span class="mr-md-auto"><%= totalProducts %> productos</span>
+                            <span class="mr-md-auto total-products"><%= totalProducts %> productos</span>
                             <% } %>
 
                             <div class="btn-group">

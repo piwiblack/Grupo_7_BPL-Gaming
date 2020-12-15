@@ -83,9 +83,9 @@
                                             <a href="/product/edit/<%= product.id %>" class="btn btn-light btn-block">
                                                 <span class="text">Editar</span>
                                             </a>
-                                        <form action="/product/delete/<%= product.id %>?_method=DELETE"
-                                            class="borrarForm" method="POST">
-                                            <button id="borrar" class="btn btn-light btn-block mt-2" onclick="return ConfirmDelate()" type="submit">
+                                        <form  action="/product/delete/<%= product.id %>?_method=DELETE"
+                                            class="borrarForm borrar" method="POST">
+                                            <button  class="btn btn-light btn-block mt-2"  type="submit">
                                                 <span class="text">Eliminar</span>
                                             </button>
                                         </form>
@@ -127,8 +127,8 @@
                                             <a href="/product/edit/<%= product.id %>" class="btn btn-light btn-block">
                                                 <span class="text">Editar</span>
                                             </a>
-                                        <form action="/product/delete/<%= product.id %>?_method=DELETE" method="POST">
-                                            <button class="btn btn-light btn-block mt-2" type="submit" onclick="return ConfirmDelate()">
+                                        <form class="borrar" action="/product/delete/<%= product.id %>?_method=DELETE" method="POST">
+                                            <button  class="btn btn-light btn-block mt-2" type="submit" >
                                                 <span class="text">Eliminar</span>
                                             </button>
                                         </form>

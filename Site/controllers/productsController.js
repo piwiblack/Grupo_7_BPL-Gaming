@@ -1,5 +1,6 @@
 const db = require('../database/models');
 const { Op, Sequelize } = require('sequelize');
+const fs = require('fs')
 
 
 const productsController = {
@@ -167,17 +168,21 @@ const productsController = {
     },
 
     delete: function (req, res) {
-        db.Products.destroy({
-            where: {
-                id: req.params.id
-            }
+        db.Products.findByPk(req.params.id)
+            .then(products=>{
+                fs.unlinkSync('./public/images/productImages/'+ products.images);
+                db.Products.destroy({
+                    where: {
+                        id: req.params.id
+                    }
+                })
+                .then(product => {
+                    return res.redirect('/product/productList')
+                })
+                .catch(err => {
+                    res.send(err)
+                })
         })
-            .then(product => {
-                return res.redirect('/product/productList')
-            })
-            .catch(err => {
-                res.send(err)
-            })
     },
 
 

@@ -1143,6 +1143,10 @@ a[class*='card'] {
 
 .form-inline input[type='number'] {
   max-width: 100px; }
+.total-products{
+  margin-right: 0.5rem; 
+  margin-left: 0.5rem; 
+}
 
 .input-spinner {
   width: 120px;

@@ -3,6 +3,7 @@
 <%- include('partials/head') %>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="/js/productEdit.js"></script>
+<script src="/js/alerts.js"></script>
 
 <body>
     <%- include('partials/header') %>
@@ -35,7 +36,7 @@
                 </aside>
                 <main class="col-md-6 border-left">
                     <article class="content-body">
-                        <form id="edit" action="/product/edit/<%=product.id %>?_method=PUT" method="POST"
+                        <form id="edit"  action="/product/edit/<%=product.id %>?_method=PUT" method="POST"
                             enctype="multipart/form-data">
 
                             <div class="form-group">
@@ -136,12 +137,12 @@
                             <div class="form">
                                 <hr>
                                 <a href="/product/productlist/<%= product.id  %> ">
-                                    <button class="btn btn-outline-primary" type="button"
-                                        onclick="return ConfirmCancelEdit()">
+                                    <button id="cancel-edit" class="btn btn-outline-primary confirm-cancel" type="submit" onclick="ConfirmCancelEdit()"
+>
                                         <span class="text">Cancelar</span>
                                     </button>
                                 </a>
-                                <button class="btn btn-primary" type="submit" onclick="return ConfirmEdit()">
+                                <button id="confirm-edit" class="btn btn-primary " type="submit" onclick="ConfirmEdit()" >
                                     <span class="text">Aplicar</span>
                                 </button>
                         </form>

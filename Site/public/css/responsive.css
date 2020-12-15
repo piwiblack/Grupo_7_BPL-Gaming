@@ -16,6 +16,12 @@
       display: none; } }
   @media all and (max-width: 768px) {
     /* mobile devices */
+    .banner{
+      display: none;
+    }
+    .filters{
+      display: none;
+    }
     .info-wrap .title{
       height: 80px;
     }

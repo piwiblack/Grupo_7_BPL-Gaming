@@ -80,9 +80,9 @@
                                 <a href="/product/edit/<%= product.id %>" class="btn  btn-primary">
                                     <span class="text">Editar</span>
                                 </a>
-                                <form action="/product/delete/<%= product.id %>?_method=DELETE" class="inline"
+                                <form  action="/product/delete/<%= product.id %>?_method=DELETE" class="inline borrar"
                                     method="POST">
-                                    <button class="btn btn-light" onclick="return ConfirmDelate()" type="submit">
+                                    <button class="btn btn-light"  type="submit">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </form>
@@ -110,9 +110,9 @@
                             <a href="/product/edit/<%= product.id %>" class="btn  btn-primary">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="/product/delete/<%= product.id %>?_method=DELETE" class="inline"
+                            <form  action="/product/delete/<%= product.id %>?_method=DELETE" class="inline borrar"
                                 method="POST">
-                                <button class="btn btn-light" onclick="return ConfirmDelate()" type="submit">
+                                <button  class="btn btn-light"  type="submit">
                                     <i class="fa fa-times"></i>
                                 </button>
                             </form>
